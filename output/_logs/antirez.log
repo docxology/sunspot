@@ -1,0 +1,143 @@
+2026-04-23T16:24:12 INFO [sunspot.cli] sunspot 0.1.0 | log level INFO
+2026-04-23T16:24:12 INFO [sunspot.cli] GitHub API credentials present (higher rate limit than unauthenticated).
+2026-04-23T16:24:12 INFO [sunspot.cli] --since not provided: looking up first commit date for antirez ...
+2026-04-23T16:24:13 INFO [sunspot.github.commits] first_commit_date(antirez): search-commits → 2006-06-16
+2026-04-23T16:24:13 INFO [sunspot.cli] --since defaulted to 2006-06-16 (first commit date for antirez)
+2026-04-23T16:24:13 INFO [sunspot.cli] user=antirez since=2006-06-16 until=2026-04-23 | metrics=ssn,f107,dst,ap
+2026-04-23T16:24:13 INFO [sunspot.cli] output directory: output/correlate/antirez__2006-06-16__2026-04-23
+2026-04-23T16:24:13 INFO [sunspot.correlate] viz style: font_scale=1.15 line_width=1.60 dpi=150 theme=light
+2026-04-23T16:24:13 INFO [sunspot.correlate] phase: fetch GitHub public commit timeseries
+2026-04-23T16:24:15 INFO [sunspot.github.commits] found 99 public non-fork repos for antirez
+2026-04-23T16:24:15 INFO [sunspot.github.commits] commits: 99 repos, window 2006-06-16..2026-04-23 (disk cache on)
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (1/99) antirez/linenoise: cache, 162 commits, 57 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (2/99) antirez/bme680-pure-mp: cache, 5 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (3/99) antirez/bplog: cache, 2 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (4/99) antirez/ZOT: cache, 4 commits, 3 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (5/99) antirez/picol: cache, 8 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (6/99) antirez/qwen-asr: cache, 6 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (7/99) antirez/voxtral.c: cache, 45 commits, 7 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (8/99) antirez/dump1090: cache, 118 commits, 45 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (9/99) antirez/iris.c: cache, 230 commits, 19 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (10/99) antirez/whisperbot: cache, 3 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (11/99) antirez/tgterm: cache, 5 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (12/99) antirez/botlib: cache, 34 commits, 12 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (13/99) antirez/microfont: cache, 18 commits, 3 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (14/99) antirez/gte-pure-C: cache, 11 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (15/99) antirez/zxfy: cache, 8 commits, 6 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (16/99) antirez/freakwan: cache, 374 commits, 80 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (17/99) antirez/Telegram2txt: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (18/99) antirez/toyforth: cache, 3 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (19/99) antirez/zx2040: cache, 45 commits, 14 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (20/99) antirez/gguf-tools: cache, 61 commits, 18 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (21/99) antirez/historical-redis-versions: cache, 2 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (22/99) antirez/c64-kitty: cache, 35 commits, 15 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (23/99) antirez/inverter: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (24/99) antirez/protoview: cache, 206 commits, 32 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (25/99) antirez/sds: cache, 60 commits, 19 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (26/99) antirez/hnstyle: cache, 5 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (27/99) antirez/ST77xx-pure-MP: cache, 53 commits, 13 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (28/99) antirez/listpack: cache, 12 commits, 6 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (29/99) antirez/ttt-rl: cache, 11 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (30/99) antirez/kilo: cache, 20 commits, 7 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (31/99) antirez/micropython-telegram-bot: cache, 7 commits, 5 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (32/99) antirez/hping: cache, 13 commits, 5 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (33/99) antirez/bma423-pure-mp: cache, 11 commits, 3 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (34/99) antirez/uc8151_micropython: cache, 66 commits, 10 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (35/99) antirez/smaz2: cache, 9 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (36/99) antirez/vl53l0x-nb: cache, 2 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (37/99) antirez/micropython-ft6x06: cache, 5 commits, 3 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (38/99) antirez/64-thermometer: cache, 26 commits, 7 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (39/99) antirez/t-watch-s3-micropython: cache, 42 commits, 9 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (40/99) antirez/talk32: cache, 43 commits, 12 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (41/99) antirez/smallchat: cache, 36 commits, 12 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (42/99) antirez/simple-language-model: cache, 8 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (43/99) antirez/LLM-FTC-sampling: cache, 4 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (44/99) antirez/rax: cache, 201 commits, 53 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (45/99) antirez/failed-3d-prints-bot: cache, 21 commits, 6 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (46/99) antirez/stonky: cache, 131 commits, 26 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (47/99) antirez/redlock-rb: cache, 6 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (48/99) antirez/flipper-asteroids: cache, 26 commits, 5 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (49/99) antirez/aocla: cache, 55 commits, 9 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (50/99) antirez/crack-checksum: cache, 3 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (51/99) antirez/redis-sampler: cache, 12 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (52/99) antirez/adventofcode2022: cache, 33 commits, 14 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (53/99) antirez/RESP3: cache, 49 commits, 9 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (54/99) antirez/load81: cache, 182 commits, 27 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (55/99) antirez/lamernews: cache, 299 commits, 56 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (56/99) antirez/shapeme: cache, 15 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (57/99) antirez/lua-cmsgpack: cache, 76 commits, 28 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (58/99) antirez/pngtostl: cache, 10 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (59/99) antirez/disque: cache, 602 commits, 183 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (60/99) antirez/tclircd: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (61/99) antirez/iconping: cache, 4 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (62/99) antirez/disque-module: cache, 37 commits, 9 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (63/99) antirez/gopher2redis: cache, 25 commits, 5 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (64/99) antirez/smaz: cache, 7 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (65/99) antirez/hiredis: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (66/99) antirez/otree: cache, 17 commits, 9 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (67/99) antirez/neural-redis: cache, 93 commits, 18 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (68/99) antirez/redis-cp-rewrite-sim: cache, 4 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (69/99) antirez/dict-scan-fuzz-tester: cache, 8 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (70/99) antirez/retwis: cache, 2 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (71/99) antirez/redis-rb-cluster: cache, 50 commits, 21 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (72/99) antirez/connect4-montecarlo: cache, 9 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (73/99) antirez/iqmeteo: cache, 7 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (74/99) antirez/siphash: cache, 2 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (75/99) antirez/nn-2003: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (76/99) antirez/recidiv: cache, 30 commits, 9 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (77/99) antirez/redimension: cache, 36 commits, 5 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (78/99) antirez/redis-timeseries: cache, 14 commits, 3 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (79/99) antirez/strabo: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (80/99) antirez/jsrt: cache, 22 commits, 5 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (81/99) antirez/rascan: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (82/99) antirez/lloogg: cache, 5 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (83/99) antirez/partitions: cache, 23 commits, 4 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (84/99) antirez/cache-mem-tester: cache, 2 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (85/99) antirez/redis-tools: cache, 52 commits, 17 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (86/99) antirez/visitors: cache, 4 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (87/99) antirez/codakido: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (88/99) antirez/gif-pure-tcl: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (89/99) antirez/aspark: cache, 10 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (90/99) antirez/sbignum: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (91/99) antirez/mc-benchmark: cache, 2 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (92/99) antirez/book-examples: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (93/99) antirez/nolate: cache, 57 commits, 3 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (94/99) antirez/Gitan: cache, 18 commits, 3 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (95/99) antirez/yaku-ns: cache, 6 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (96/99) antirez/Bigdis: cache, 5 commits, 2 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (97/99) antirez/redisdotphp: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (98/99) antirez/Jim: cache, 1 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] (99/99) antirez/Siboom: cache, 3 commits, 1 active days
+2026-04-23T16:24:15 INFO [sunspot.github.commits] commits done: 4106 total commits in window, __all__ max day=44.0, cache hits=99 api repos=0
+2026-04-23T16:24:15 INFO [sunspot.correlate] phase: GitHub done in 1.5s
+2026-04-23T16:24:15 INFO [sunspot.correlate] wrote per-repo series under output/correlate/antirez__2006-06-16__2026-04-23/data/commits/by_repo (99 repos)
+2026-04-23T16:24:15 INFO [sunspot.correlate] wrote output/correlate/antirez__2006-06-16__2026-04-23/data/commits/daily.csv (7252 rows) days_with_commits=948 commits_total=4106.0
+2026-04-23T16:24:15 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:24:15 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:24:15 INFO [sunspot.datasets.omni] OMNI2 daily: 21 year files (2006 … 2026)
+2026-04-23T16:24:17 INFO [sunspot.datasets.omni] OMNI2 daily: 7670 UTC days after resample (first load; memory-cached this run)
+2026-04-23T16:24:17 INFO [sunspot.correlate] wrote output/correlate/antirez__2006-06-16__2026-04-23/visualizations/dynamics/commits_and_solar.png (7d/30d MA, z-SSN, z-F10.7)
+2026-04-23T16:24:17 INFO [sunspot.correlate] wrote commit roll-ups: weekly.csv, monthly.csv, dow_means.csv, summary.csv
+2026-04-23T16:24:17 INFO [sunspot.correlate] commits daily: total=4106 active=948/7252 (13.1%) mean/day=0.566 mean/active=4.33 max=44 on 2026-01-18 weekday/weekend share=74%/26% streaks active=25d quiet=1019d
+2026-04-23T16:24:17 INFO [sunspot.correlate] metric ssn: load geodata + correlate + write
+2026-04-23T16:24:17 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:24:17 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:24:24 INFO [sunspot.correlate] metric ssn: n=7229 r=0.153 [0.130, 0.175] ρ=0.199 [0.176, 0.221] best_lag=12 peak_rho=0.203
+2026-04-23T16:24:24 INFO [sunspot.correlate] metric f107: load geodata + correlate + write
+2026-04-23T16:24:24 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 21 years (2006 … 2026) → 7670 days
+2026-04-23T16:24:31 INFO [sunspot.correlate] metric f107: n=7236 r=0.165 [0.142, 0.187] ρ=0.222 [0.200, 0.244] best_lag=12 peak_rho=0.224
+2026-04-23T16:24:31 INFO [sunspot.correlate] metric dst: load geodata + correlate + write
+2026-04-23T16:24:31 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 21 years (2006 … 2026) → 7670 days
+2026-04-23T16:24:39 INFO [sunspot.correlate] metric dst: n=7210 r=0.079 [0.056, 0.102] ρ=0.083 [0.060, 0.106] best_lag=43 peak_rho=0.093
+2026-04-23T16:24:39 INFO [sunspot.correlate] metric ap: load geodata + correlate + write
+2026-04-23T16:24:39 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 21 years (2006 … 2026) → 7670 days
+2026-04-23T16:24:46 INFO [sunspot.correlate] metric ap: n=7252 r=0.018 [-0.005, 0.041] ρ=0.095 [0.072, 0.118] best_lag=9 peak_rho=0.096
+2026-04-23T16:24:46 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:24:47 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:24:48 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:24:48 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:24:48 INFO [sunspot.correlate] wrote 12 analysis tables under output/correlate/antirez__2006-06-16__2026-04-23/analysis/tables: associations.csv, lag_profile.csv, ccf_profile.csv, ma_correlations.csv, mi_lag.csv, mutual_information.csv, regression_ols.csv, partial_correlation_ar1.csv, cross_metric_spearman.csv, periodogram_top.csv, commits_daily_summary.csv, per_repo_topk.csv
+2026-04-23T16:24:48 INFO [sunspot.correlate] wrote output/correlate/antirez__2006-06-16__2026-04-23/visualizations/executive_summary.png (top-level summary card)
+2026-04-23T16:25:24 INFO [sunspot.viz.mosaic] wrote output/correlate/antirez__2006-06-16__2026-04-23/visualizations/mosaic.png and output/correlate/antirez__2006-06-16__2026-04-23/visualizations/mosaic_index.json (sections=14, cols=15)
+2026-04-23T16:25:24 INFO [sunspot.correlate] done: statistics=output/correlate/antirez__2006-06-16__2026-04-23/statistics/report.json | total wall 70.3s
+Wrote under output/correlate/antirez__2006-06-16__2026-04-23 (statistics/, data/, visualizations/, analysis/)

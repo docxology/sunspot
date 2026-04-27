@@ -1,0 +1,56 @@
+2026-04-23T16:26:19 INFO [sunspot.cli] sunspot 0.1.0 | log level INFO
+2026-04-23T16:26:19 INFO [sunspot.cli] GitHub API credentials present (higher rate limit than unauthenticated).
+2026-04-23T16:26:19 INFO [sunspot.cli] --since not provided: looking up first commit date for gvanrossum ...
+2026-04-23T16:26:19 INFO [sunspot.github.commits] first_commit_date(gvanrossum): search-commits → 1990-08-09
+2026-04-23T16:26:19 INFO [sunspot.cli] --since defaulted to 1990-08-09 (first commit date for gvanrossum)
+2026-04-23T16:26:19 INFO [sunspot.cli] user=gvanrossum since=1990-08-09 until=2026-04-23 | metrics=ssn,f107,dst,ap
+2026-04-23T16:26:19 INFO [sunspot.cli] output directory: output/correlate/gvanrossum__1990-08-09__2026-04-23
+2026-04-23T16:26:19 INFO [sunspot.correlate] viz style: font_scale=1.15 line_width=1.60 dpi=150 theme=light
+2026-04-23T16:26:19 INFO [sunspot.correlate] phase: fetch GitHub public commit timeseries
+2026-04-23T16:26:20 INFO [sunspot.github.commits] found 12 public non-fork repos for gvanrossum
+2026-04-23T16:26:20 INFO [sunspot.github.commits] commits: 12 repos, window 1990-08-09..2026-04-23 (disk cache on)
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (1/12) gvanrossum/gvanrossum.github.io: cache, 243 commits, 102 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (2/12) gvanrossum/pythonlabs: cache, 11 commits, 4 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (3/12) gvanrossum/abc-unix: cache, 5 commits, 2 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (4/12) gvanrossum/c-parser: cache, 4 commits, 3 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (5/12) gvanrossum/old-demos: cache, 34 commits, 24 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (6/12) gvanrossum/patma: cache, 126 commits, 57 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (7/12) gvanrossum/pythonlabs-com-azure: cache, 28 commits, 16 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (8/12) gvanrossum/ctok: cache, 13 commits, 3 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (9/12) gvanrossum/guidos_time_machine: cache, 1 commits, 1 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (10/12) gvanrossum/pep550: cache, 33 commits, 8 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (11/12) gvanrossum/mypy-dummy: cache, 5 commits, 2 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] (12/12) gvanrossum/ballot-box: cache, 17 commits, 3 active days
+2026-04-23T16:26:20 INFO [sunspot.github.commits] commits done: 520 total commits in window, __all__ max day=13.0, cache hits=12 api repos=0
+2026-04-23T16:26:20 INFO [sunspot.correlate] phase: GitHub done in 0.6s
+2026-04-23T16:26:20 INFO [sunspot.correlate] wrote per-repo series under output/correlate/gvanrossum__1990-08-09__2026-04-23/data/commits/by_repo (12 repos)
+2026-04-23T16:26:20 INFO [sunspot.correlate] wrote output/correlate/gvanrossum__1990-08-09__2026-04-23/data/commits/daily.csv (13042 rows) days_with_commits=220 commits_total=520.0
+2026-04-23T16:26:20 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:26:20 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:26:20 INFO [sunspot.datasets.omni] OMNI2 daily: 37 year files (1990 … 2026)
+2026-04-23T16:26:22 INFO [sunspot.datasets.omni] OMNI2 daily: 13514 UTC days after resample (first load; memory-cached this run)
+2026-04-23T16:26:22 INFO [sunspot.correlate] wrote output/correlate/gvanrossum__1990-08-09__2026-04-23/visualizations/dynamics/commits_and_solar.png (7d/30d MA, z-SSN, z-F10.7)
+2026-04-23T16:26:22 INFO [sunspot.correlate] wrote commit roll-ups: weekly.csv, monthly.csv, dow_means.csv, summary.csv
+2026-04-23T16:26:22 INFO [sunspot.correlate] commits daily: total=520 active=220/13042 (1.7%) mean/day=0.040 mean/active=2.36 max=13 on 2020-06-12 weekday/weekend share=78%/22% streaks active=11d quiet=6973d
+2026-04-23T16:26:22 INFO [sunspot.correlate] metric ssn: load geodata + correlate + write
+2026-04-23T16:26:22 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:26:22 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:26:39 INFO [sunspot.correlate] metric ssn: n=13019 r=-0.050 [-0.067, -0.033] ρ=-0.078 [-0.095, -0.061] best_lag=23 peak_rho=-0.071
+2026-04-23T16:26:39 INFO [sunspot.correlate] metric f107: load geodata + correlate + write
+2026-04-23T16:26:39 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 37 years (1990 … 2026) → 13514 days
+2026-04-23T16:26:56 INFO [sunspot.correlate] metric f107: n=13020 r=-0.039 [-0.056, -0.022] ρ=-0.067 [-0.084, -0.050] best_lag=3 peak_rho=-0.064
+2026-04-23T16:26:56 INFO [sunspot.correlate] metric dst: load geodata + correlate + write
+2026-04-23T16:26:56 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 37 years (1990 … 2026) → 13514 days
+2026-04-23T16:27:13 INFO [sunspot.correlate] metric dst: n=13000 r=-0.025 [-0.042, -0.007] ρ=-0.043 [-0.060, -0.026] best_lag=4 peak_rho=-0.006
+2026-04-23T16:27:13 INFO [sunspot.correlate] metric ap: load geodata + correlate + write
+2026-04-23T16:27:13 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 37 years (1990 … 2026) → 13514 days
+2026-04-23T16:27:31 INFO [sunspot.correlate] metric ap: n=13042 r=-0.009 [-0.026, 0.008] ρ=-0.051 [-0.068, -0.033] best_lag=4 peak_rho=-0.018
+2026-04-23T16:27:31 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:27:31 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:27:33 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:27:33 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:27:33 INFO [sunspot.correlate] wrote 12 analysis tables under output/correlate/gvanrossum__1990-08-09__2026-04-23/analysis/tables: associations.csv, lag_profile.csv, ccf_profile.csv, ma_correlations.csv, mi_lag.csv, mutual_information.csv, regression_ols.csv, partial_correlation_ar1.csv, cross_metric_spearman.csv, periodogram_top.csv, commits_daily_summary.csv, per_repo_topk.csv
+2026-04-23T16:27:33 INFO [sunspot.correlate] wrote output/correlate/gvanrossum__1990-08-09__2026-04-23/visualizations/executive_summary.png (top-level summary card)
+2026-04-23T16:28:09 INFO [sunspot.viz.mosaic] wrote output/correlate/gvanrossum__1990-08-09__2026-04-23/visualizations/mosaic.png and output/correlate/gvanrossum__1990-08-09__2026-04-23/visualizations/mosaic_index.json (sections=14, cols=15)
+2026-04-23T16:28:09 INFO [sunspot.correlate] done: statistics=output/correlate/gvanrossum__1990-08-09__2026-04-23/statistics/report.json | total wall 109.4s
+Wrote under output/correlate/gvanrossum__1990-08-09__2026-04-23 (statistics/, data/, visualizations/, analysis/)

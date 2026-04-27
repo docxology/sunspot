@@ -1,0 +1,69 @@
+2026-04-23T16:22:26 INFO [sunspot.cli] sunspot 0.1.0 | log level INFO
+2026-04-23T16:22:26 INFO [sunspot.cli] GitHub API credentials present (higher rate limit than unauthenticated).
+2026-04-23T16:22:26 INFO [sunspot.cli] --since not provided: looking up first commit date for 4dsolutions ...
+2026-04-23T16:22:27 INFO [sunspot.github.commits] first_commit_date(4dsolutions): search-commits → 2013-10-27
+2026-04-23T16:22:27 INFO [sunspot.cli] --since defaulted to 2013-10-27 (first commit date for 4dsolutions)
+2026-04-23T16:22:27 INFO [sunspot.cli] user=4dsolutions since=2013-10-27 until=2026-04-23 | metrics=ssn,f107,dst,ap
+2026-04-23T16:22:27 INFO [sunspot.cli] output directory: output/correlate/4dsolutions__2013-10-27__2026-04-23
+2026-04-23T16:22:27 INFO [sunspot.correlate] viz style: font_scale=1.15 line_width=1.60 dpi=150 theme=light
+2026-04-23T16:22:27 INFO [sunspot.correlate] phase: fetch GitHub public commit timeseries
+2026-04-23T16:22:28 INFO [sunspot.github.commits] found 25 public non-fork repos for 4dsolutions
+2026-04-23T16:22:28 INFO [sunspot.github.commits] commits: 25 repos, window 2013-10-27..2026-04-23 (disk cache on)
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (1/25) 4dsolutions/Python5: cache, 492 commits, 194 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (2/25) 4dsolutions/School_of_Tomorrow: cache, 674 commits, 292 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (3/25) 4dsolutions/m4w: cache, 254 commits, 115 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (4/25) 4dsolutions/tiny_flask: cache, 90 commits, 28 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (5/25) 4dsolutions/clarusway_data_analysis: cache, 537 commits, 198 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (6/25) 4dsolutions/DigitalMathematics: cache, 68 commits, 26 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (7/25) 4dsolutions/elite_school: cache, 592 commits, 253 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (8/25) 4dsolutions/Curriculum_Development: cache, 61 commits, 28 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (9/25) 4dsolutions/SAISOFT: cache, 86 commits, 31 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (10/25) 4dsolutions/bootcamp: cache, 31 commits, 9 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (11/25) 4dsolutions/sandbox: cache, 4 commits, 2 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (12/25) 4dsolutions/python_camp: cache, 87 commits, 21 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (13/25) 4dsolutions/MartianMath: cache, 36 commits, 13 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (14/25) 4dsolutions/rusty_rays: cache, 10 commits, 3 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (15/25) 4dsolutions/C6XTY: cache, 2 commits, 1 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (16/25) 4dsolutions/CSN: cache, 3 commits, 2 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (17/25) 4dsolutions/GDC: cache, 5 commits, 3 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (18/25) 4dsolutions/ONLC_XPYS: cache, 4 commits, 1 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (19/25) 4dsolutions/WQM: cache, 3 commits, 2 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (20/25) 4dsolutions/NPYM: cache, 22 commits, 4 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (21/25) 4dsolutions/tetravolumes: cache, 7 commits, 3 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (22/25) 4dsolutions/raspbian3D: cache, 1 commits, 1 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (23/25) 4dsolutions/synmods: cache, 4 commits, 3 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (24/25) 4dsolutions/async_learning_engine: cache, 2 commits, 1 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] (25/25) 4dsolutions/BookCovers: cache, 4 commits, 1 active days
+2026-04-23T16:22:28 INFO [sunspot.github.commits] commits done: 3079 total commits in window, __all__ max day=19.0, cache hits=25 api repos=0
+2026-04-23T16:22:28 INFO [sunspot.correlate] phase: GitHub done in 1.1s
+2026-04-23T16:22:28 INFO [sunspot.correlate] wrote per-repo series under output/correlate/4dsolutions__2013-10-27__2026-04-23/data/commits/by_repo (25 repos)
+2026-04-23T16:22:28 INFO [sunspot.correlate] wrote output/correlate/4dsolutions__2013-10-27__2026-04-23/data/commits/daily.csv (4562 rows) days_with_commits=1089 commits_total=3079.0
+2026-04-23T16:22:28 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:22:28 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:22:28 INFO [sunspot.datasets.omni] OMNI2 daily: 14 year files (2013 … 2026)
+2026-04-23T16:22:29 INFO [sunspot.datasets.omni] OMNI2 daily: 5113 UTC days after resample (first load; memory-cached this run)
+2026-04-23T16:22:29 INFO [sunspot.correlate] wrote output/correlate/4dsolutions__2013-10-27__2026-04-23/visualizations/dynamics/commits_and_solar.png (7d/30d MA, z-SSN, z-F10.7)
+2026-04-23T16:22:29 INFO [sunspot.correlate] wrote commit roll-ups: weekly.csv, monthly.csv, dow_means.csv, summary.csv
+2026-04-23T16:22:29 INFO [sunspot.correlate] commits daily: total=3079 active=1089/4562 (23.9%) mean/day=0.675 mean/active=2.83 max=19 on 2019-03-06 weekday/weekend share=73%/27% streaks active=15d quiet=641d
+2026-04-23T16:22:29 INFO [sunspot.correlate] metric ssn: load geodata + correlate + write
+2026-04-23T16:22:29 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:22:29 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:22:34 INFO [sunspot.correlate] metric ssn: n=4539 r=0.029 [-0.000, 0.058] ρ=0.042 [0.013, 0.071] best_lag=48 peak_rho=0.077
+2026-04-23T16:22:34 INFO [sunspot.correlate] metric f107: load geodata + correlate + write
+2026-04-23T16:22:34 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 14 years (2013 … 2026) → 5113 days
+2026-04-23T16:22:39 INFO [sunspot.correlate] metric f107: n=4550 r=0.046 [0.017, 0.075] ρ=0.062 [0.033, 0.091] best_lag=47 peak_rho=0.083
+2026-04-23T16:22:39 INFO [sunspot.correlate] metric dst: load geodata + correlate + write
+2026-04-23T16:22:39 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 14 years (2013 … 2026) → 5113 days
+2026-04-23T16:22:44 INFO [sunspot.correlate] metric dst: n=4520 r=0.005 [-0.024, 0.034] ρ=0.033 [0.004, 0.063] best_lag=19 peak_rho=0.064
+2026-04-23T16:22:44 INFO [sunspot.correlate] metric ap: load geodata + correlate + write
+2026-04-23T16:22:44 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 14 years (2013 … 2026) → 5113 days
+2026-04-23T16:22:48 INFO [sunspot.correlate] metric ap: n=4562 r=0.014 [-0.015, 0.043] ρ=0.012 [-0.017, 0.041] best_lag=-42 peak_rho=0.060
+2026-04-23T16:22:49 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:22:49 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:22:50 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:22:50 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:22:50 INFO [sunspot.correlate] wrote 12 analysis tables under output/correlate/4dsolutions__2013-10-27__2026-04-23/analysis/tables: associations.csv, lag_profile.csv, ccf_profile.csv, ma_correlations.csv, mi_lag.csv, mutual_information.csv, regression_ols.csv, partial_correlation_ar1.csv, cross_metric_spearman.csv, periodogram_top.csv, commits_daily_summary.csv, per_repo_topk.csv
+2026-04-23T16:22:50 INFO [sunspot.correlate] wrote output/correlate/4dsolutions__2013-10-27__2026-04-23/visualizations/executive_summary.png (top-level summary card)
+2026-04-23T16:23:24 INFO [sunspot.viz.mosaic] wrote output/correlate/4dsolutions__2013-10-27__2026-04-23/visualizations/mosaic.png and output/correlate/4dsolutions__2013-10-27__2026-04-23/visualizations/mosaic_index.json (sections=14, cols=15)
+2026-04-23T16:23:24 INFO [sunspot.correlate] done: statistics=output/correlate/4dsolutions__2013-10-27__2026-04-23/statistics/report.json | total wall 57.3s
+Wrote under output/correlate/4dsolutions__2013-10-27__2026-04-23 (statistics/, data/, visualizations/, analysis/)

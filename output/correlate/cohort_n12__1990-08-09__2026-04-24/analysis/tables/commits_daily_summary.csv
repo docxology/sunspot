@@ -1,0 +1,2 @@
+total_days,days_with_commits,active_days_fraction,first_commit_date,last_commit_date,mean_per_day,median_per_day,std_per_day,p95_per_day,max_day,max_day_date,mean_per_active_day,longest_active_streak_days,longest_quiet_streak_days,weekday_total,weekend_total,weekday_share,weekend_share,weekday_mean,weekend_mean
+13043,3459,0.2651997239898796,2009-03-31,2026-04-24,1.7204630836464003,0.0,5.993062034334654,10.0,179.0,2026-03-03,6.487424111014744,109,6809,16421.0,6019.0,0.7317736185383245,0.2682263814616756,1.7624771922292584,1.6154052603327966

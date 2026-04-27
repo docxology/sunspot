@@ -1,0 +1,98 @@
+2026-04-23T16:28:10 INFO [sunspot.cli] sunspot 0.1.0 | log level INFO
+2026-04-23T16:28:10 INFO [sunspot.cli] GitHub API credentials present (higher rate limit than unauthenticated).
+2026-04-23T16:28:10 INFO [sunspot.cli] --since not provided: looking up first commit date for karpathy ...
+2026-04-23T16:28:11 INFO [sunspot.github.commits] first_commit_date(karpathy): search-commits → 2011-04-02
+2026-04-23T16:28:11 INFO [sunspot.cli] --since defaulted to 2011-04-02 (first commit date for karpathy)
+2026-04-23T16:28:11 INFO [sunspot.cli] user=karpathy since=2011-04-02 until=2026-04-23 | metrics=ssn,f107,dst,ap
+2026-04-23T16:28:11 INFO [sunspot.cli] output directory: output/correlate/karpathy__2011-04-02__2026-04-23
+2026-04-23T16:28:11 INFO [sunspot.correlate] viz style: font_scale=1.15 line_width=1.60 dpi=150 theme=light
+2026-04-23T16:28:11 INFO [sunspot.correlate] phase: fetch GitHub public commit timeseries
+2026-04-23T16:28:12 INFO [sunspot.github.commits] found 54 public non-fork repos for karpathy
+2026-04-23T16:28:12 INFO [sunspot.github.commits] commits: 54 repos, window 2011-04-02..2026-04-23 (disk cache on)
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (1/54) karpathy/nanochat: cache, 380 commits, 97 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (2/54) karpathy/karpathy.github.io: cache, 188 commits, 85 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (3/54) karpathy/autoresearch: cache, 36 commits, 9 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (4/54) karpathy/jobs: cache, 11 commits, 2 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (5/54) karpathy/rustbpe: cache, 11 commits, 1 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (6/54) karpathy/hn-time-capsule: cache, 16 commits, 2 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (7/54) karpathy/llm-council: cache, 5 commits, 1 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (8/54) karpathy/reader3: cache, 1 commits, 1 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (9/54) karpathy/nanoGPT: cache, 210 commits, 66 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (10/54) karpathy/rendergit: cache, 6 commits, 2 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (11/54) karpathy/llm.c: cache, 1536 commits, 119 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (12/54) karpathy/nn-zero-to-hero: cache, 12 commits, 10 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (13/54) karpathy/minGPT: cache, 94 commits, 33 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (14/54) karpathy/build-nanogpt: cache, 44 commits, 8 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (15/54) karpathy/micrograd: cache, 24 commits, 4 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (16/54) karpathy/llama2.c: cache, 523 commits, 69 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (17/54) karpathy/LLM101n: cache, 3 commits, 3 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (18/54) karpathy/minbpe: cache, 53 commits, 10 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (19/54) karpathy/makemore: cache, 21 commits, 7 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (20/54) karpathy/calorie: cache, 7 commits, 2 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (21/54) karpathy/lecun1989-repro: cache, 18 commits, 4 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (22/54) karpathy/ng-video-lecture: cache, 23 commits, 8 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (23/54) karpathy/char-rnn: cache, 88 commits, 37 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (24/54) karpathy/notpygamejs: cache, 7 commits, 4 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (25/54) karpathy/researchpooler: cache, 3 commits, 1 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (26/54) karpathy/karpathy: cache, 3 commits, 2 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (27/54) karpathy/arxiv-sanity-lite: cache, 75 commits, 22 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (28/54) karpathy/randomfun: cache, 21 commits, 14 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (29/54) karpathy/convnetjs: cache, 89 commits, 42 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (30/54) karpathy/arxiv-sanity-preserver: cache, 211 commits, 70 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (31/54) karpathy/deep-vector-quantization: cache, 14 commits, 5 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (32/54) karpathy/cryptos: cache, 65 commits, 17 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (33/54) karpathy/neuraltalk: cache, 33 commits, 16 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (34/54) karpathy/ulogme: cache, 73 commits, 33 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (35/54) karpathy/covid-sanity: cache, 38 commits, 8 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (36/54) karpathy/gitstats: cache, 2 commits, 1 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (37/54) karpathy/pytorch-normalizing-flows: cache, 9 commits, 4 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (38/54) karpathy/tsnejs: cache, 13 commits, 10 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (39/54) karpathy/reinforcejs: cache, 12 commits, 5 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (40/54) karpathy/pytorch-made: cache, 7 commits, 4 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (41/54) karpathy/svmjs: cache, 13 commits, 8 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (42/54) karpathy/find-birds: cache, 3 commits, 2 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (43/54) karpathy/neuraltalk2: cache, 53 commits, 16 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (44/54) karpathy/tf-agent: cache, 6 commits, 3 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (45/54) karpathy/nipspreview: cache, 8 commits, 3 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (46/54) karpathy/paper-notes: cache, 11 commits, 3 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (47/54) karpathy/recurrentjs: cache, 7 commits, 5 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (48/54) karpathy/EigenLibSVM: cache, 8 commits, 3 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (49/54) karpathy/scholaroctopus: cache, 2 commits, 2 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (50/54) karpathy/Random-Forest-Matlab: cache, 8 commits, 6 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (51/54) karpathy/researchlei: cache, 4 commits, 3 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (52/54) karpathy/twoolpy: cache, 8 commits, 6 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (53/54) karpathy/forestjs: cache, 4 commits, 3 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] (54/54) karpathy/MatlabWrapper: cache, 1 commits, 1 active days
+2026-04-23T16:28:12 INFO [sunspot.github.commits] commits done: 4121 total commits in window, __all__ max day=51.0, cache hits=54 api repos=0
+2026-04-23T16:28:12 INFO [sunspot.correlate] phase: GitHub done in 0.8s
+2026-04-23T16:28:12 INFO [sunspot.correlate] wrote per-repo series under output/correlate/karpathy__2011-04-02__2026-04-23/data/commits/by_repo (54 repos)
+2026-04-23T16:28:12 INFO [sunspot.correlate] wrote output/correlate/karpathy__2011-04-02__2026-04-23/data/commits/daily.csv (5501 rows) days_with_commits=824 commits_total=4121.0
+2026-04-23T16:28:12 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:28:12 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:28:12 INFO [sunspot.datasets.omni] OMNI2 daily: 16 year files (2011 … 2026)
+2026-04-23T16:28:13 INFO [sunspot.datasets.omni] OMNI2 daily: 5844 UTC days after resample (first load; memory-cached this run)
+2026-04-23T16:28:13 INFO [sunspot.correlate] wrote output/correlate/karpathy__2011-04-02__2026-04-23/visualizations/dynamics/commits_and_solar.png (7d/30d MA, z-SSN, z-F10.7)
+2026-04-23T16:28:13 INFO [sunspot.correlate] wrote commit roll-ups: weekly.csv, monthly.csv, dow_means.csv, summary.csv
+2026-04-23T16:28:13 INFO [sunspot.correlate] commits daily: total=4121 active=824/5501 (15.0%) mean/day=0.749 mean/active=5.00 max=51 on 2024-04-29 weekday/weekend share=72%/28% streaks active=87d quiet=246d
+2026-04-23T16:28:13 INFO [sunspot.correlate] metric ssn: load geodata + correlate + write
+2026-04-23T16:28:13 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:28:13 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:28:19 INFO [sunspot.correlate] metric ssn: n=5478 r=0.212 [0.186, 0.237] ρ=0.185 [0.159, 0.211] best_lag=21 peak_rho=0.199
+2026-04-23T16:28:19 INFO [sunspot.correlate] metric f107: load geodata + correlate + write
+2026-04-23T16:28:19 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 16 years (2011 … 2026) → 5844 days
+2026-04-23T16:28:25 INFO [sunspot.correlate] metric f107: n=5488 r=0.225 [0.200, 0.250] ρ=0.215 [0.189, 0.240] best_lag=21 peak_rho=0.228
+2026-04-23T16:28:25 INFO [sunspot.correlate] metric dst: load geodata + correlate + write
+2026-04-23T16:28:25 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 16 years (2011 … 2026) → 5844 days
+2026-04-23T16:28:30 INFO [sunspot.correlate] metric dst: n=5459 r=0.032 [0.005, 0.058] ρ=0.065 [0.039, 0.092] best_lag=22 peak_rho=0.121
+2026-04-23T16:28:30 INFO [sunspot.correlate] metric ap: load geodata + correlate + write
+2026-04-23T16:28:30 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 16 years (2011 … 2026) → 5844 days
+2026-04-23T16:28:36 INFO [sunspot.correlate] metric ap: n=5501 r=-0.003 [-0.030, 0.023] ρ=0.057 [0.031, 0.084] best_lag=49 peak_rho=0.115
+2026-04-23T16:28:36 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:28:36 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:28:38 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:28:38 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:28:38 INFO [sunspot.correlate] wrote 12 analysis tables under output/correlate/karpathy__2011-04-02__2026-04-23/analysis/tables: associations.csv, lag_profile.csv, ccf_profile.csv, ma_correlations.csv, mi_lag.csv, mutual_information.csv, regression_ols.csv, partial_correlation_ar1.csv, cross_metric_spearman.csv, periodogram_top.csv, commits_daily_summary.csv, per_repo_topk.csv
+2026-04-23T16:28:38 INFO [sunspot.correlate] wrote output/correlate/karpathy__2011-04-02__2026-04-23/visualizations/executive_summary.png (top-level summary card)
+2026-04-23T16:29:13 INFO [sunspot.viz.mosaic] wrote output/correlate/karpathy__2011-04-02__2026-04-23/visualizations/mosaic.png and output/correlate/karpathy__2011-04-02__2026-04-23/visualizations/mosaic_index.json (sections=14, cols=15)
+2026-04-23T16:29:13 INFO [sunspot.correlate] done: statistics=output/correlate/karpathy__2011-04-02__2026-04-23/statistics/report.json | total wall 61.6s
+Wrote under output/correlate/karpathy__2011-04-02__2026-04-23 (statistics/, data/, visualizations/, analysis/)

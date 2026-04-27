@@ -1,0 +1,100 @@
+2026-04-23T16:25:25 INFO [sunspot.cli] sunspot 0.1.0 | log level INFO
+2026-04-23T16:25:25 INFO [sunspot.cli] GitHub API credentials present (higher rate limit than unauthenticated).
+2026-04-23T16:25:25 INFO [sunspot.cli] --since not provided: looking up first commit date for docxology ...
+2026-04-23T16:25:26 INFO [sunspot.github.commits] first_commit_date(docxology): search-commits → 2019-12-20
+2026-04-23T16:25:26 INFO [sunspot.cli] --since defaulted to 2019-12-20 (first commit date for docxology)
+2026-04-23T16:25:26 INFO [sunspot.cli] user=docxology since=2019-12-20 until=2026-04-23 | metrics=ssn,f107,dst,ap
+2026-04-23T16:25:26 INFO [sunspot.cli] output directory: output/correlate/docxology__2019-12-20__2026-04-23
+2026-04-23T16:25:26 INFO [sunspot.correlate] viz style: font_scale=1.15 line_width=1.60 dpi=150 theme=light
+2026-04-23T16:25:26 INFO [sunspot.correlate] phase: fetch GitHub public commit timeseries
+2026-04-23T16:25:28 INFO [sunspot.github.commits] found 56 public non-fork repos for docxology
+2026-04-23T16:25:28 INFO [sunspot.github.commits] commits: 56 repos, window 2019-12-20..2026-04-23 (disk cache on)
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (1/56) docxology/docxology: cache, 28 commits, 13 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (2/56) docxology/cognitive_case_diagrams: cache, 7 commits, 3 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (3/56) docxology/MetaInformAnt: cache, 300 commits, 102 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (4/56) docxology/ivm-xyz: cache, 8 commits, 4 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (5/56) docxology/codomyrmex: cache, 833 commits, 89 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (6/56) docxology/biol-8: cache, 272 commits, 47 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (7/56) docxology/biol-1: cache, 272 commits, 47 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (8/56) docxology/active-inference-pocket-lab: cache, 10 commits, 3 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (9/56) docxology/links: cache, 12 commits, 6 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (10/56) docxology/ento_linguistics: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (11/56) docxology/template: cache, 612 commits, 72 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (12/56) docxology/multi-time: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (13/56) docxology/crescent-city: cache, 144 commits, 7 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (14/56) docxology/template_bioinformatics_project: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (15/56) docxology/steganographer: cache, 2 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (16/56) docxology/QuadCraft: cache, 107 commits, 53 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (17/56) docxology/timeline_generator: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (18/56) docxology/hhs-opendata: cache, 3 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (19/56) docxology/QuadMath: cache, 19 commits, 6 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (20/56) docxology/p3if: cache, 13 commits, 10 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (21/56) docxology/literature: cache, 24 commits, 5 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (22/56) docxology/curriculum: cache, 18 commits, 3 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (23/56) docxology/snake: cache, 7 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (24/56) docxology/course: cache, 5 commits, 5 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (25/56) docxology/opentir: cache, 3 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (26/56) docxology/active_inference: cache, 12 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (27/56) docxology/qr_live_protocol: cache, 6 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (28/56) docxology/godel_ivm: cache, 3 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (29/56) docxology/transformer: cache, 2 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (30/56) docxology/active_torchference: cache, 2 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (31/56) docxology/markdown_decision_process: cache, 5 commits, 5 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (32/56) docxology/EvoJump: cache, 5 commits, 3 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (33/56) docxology/ant_stack: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (34/56) docxology/goference: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (35/56) docxology/symergetics: cache, 9 commits, 3 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (36/56) docxology/test_public: cache, 1 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (37/56) docxology/cascadia: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (38/56) docxology/lean_niche: cache, 19 commits, 3 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (39/56) docxology/mdkv: cache, 7 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (40/56) docxology/service: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (41/56) docxology/infra-calc: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (42/56) docxology/Autonomous-Drone-Navigation-in-AirSim-With-Active-Inference: cache, 16 commits, 4 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (43/56) docxology/flick: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (44/56) docxology/README: cache, 1 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (45/56) docxology/ultralink-docx: cache, 19 commits, 8 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (46/56) docxology/obsidian-construction-from-text: cache, 3 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (47/56) docxology/Markov_Blanket_Detection: cache, 2 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (48/56) docxology/cognitive-engine: cache, 6 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (49/56) docxology/fuller-obsidian: cache, 1 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (50/56) docxology/cognitive: cache, 30 commits, 5 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (51/56) docxology/AgenticMesh: cache, 2 commits, 2 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (52/56) docxology/FORMINDEX: cache, 51 commits, 10 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (53/56) docxology/ActiveInferAnts: cache, 19 commits, 8 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (54/56) docxology/ant-pheromone: cache, 22 commits, 6 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (55/56) docxology/GrowthModel: cache, 6 commits, 1 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] (56/56) docxology/identity: cache, 0 commits, 0 active days
+2026-04-23T16:25:28 INFO [sunspot.github.commits] commits done: 2968 total commits in window, __all__ max day=167.0, cache hits=56 api repos=0
+2026-04-23T16:25:28 INFO [sunspot.correlate] phase: GitHub done in 2.2s
+2026-04-23T16:25:28 INFO [sunspot.correlate] wrote per-repo series under output/correlate/docxology__2019-12-20__2026-04-23/data/commits/by_repo (56 repos)
+2026-04-23T16:25:28 INFO [sunspot.correlate] wrote output/correlate/docxology__2019-12-20__2026-04-23/data/commits/daily.csv (2317 rows) days_with_commits=299 commits_total=2968.0
+2026-04-23T16:25:28 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:25:28 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:25:28 INFO [sunspot.datasets.omni] OMNI2 daily: 8 year files (2019 … 2026)
+2026-04-23T16:25:29 INFO [sunspot.datasets.omni] OMNI2 daily: 2922 UTC days after resample (first load; memory-cached this run)
+2026-04-23T16:25:29 INFO [sunspot.correlate] wrote output/correlate/docxology__2019-12-20__2026-04-23/visualizations/dynamics/commits_and_solar.png (7d/30d MA, z-SSN, z-F10.7)
+2026-04-23T16:25:29 INFO [sunspot.correlate] wrote commit roll-ups: weekly.csv, monthly.csv, dow_means.csv, summary.csv
+2026-04-23T16:25:29 INFO [sunspot.correlate] commits daily: total=2968 active=299/2317 (12.9%) mean/day=1.281 mean/active=9.93 max=167 on 2026-03-03 weekday/weekend share=72%/28% streaks active=41d quiet=638d
+2026-04-23T16:25:29 INFO [sunspot.correlate] metric ssn: load geodata + correlate + write
+2026-04-23T16:25:29 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:25:29 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:25:33 INFO [sunspot.correlate] metric ssn: n=2294 r=0.006 [-0.035, 0.047] ρ=0.151 [0.111, 0.191] best_lag=-59 peak_rho=0.231
+2026-04-23T16:25:33 INFO [sunspot.correlate] metric f107: load geodata + correlate + write
+2026-04-23T16:25:33 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 8 years (2019 … 2026) → 2922 days
+2026-04-23T16:25:36 INFO [sunspot.correlate] metric f107: n=2306 r=0.017 [-0.024, 0.058] ρ=0.144 [0.103, 0.184] best_lag=-59 peak_rho=0.200
+2026-04-23T16:25:36 INFO [sunspot.correlate] metric dst: load geodata + correlate + write
+2026-04-23T16:25:36 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 8 years (2019 … 2026) → 2922 days
+2026-04-23T16:25:39 INFO [sunspot.correlate] metric dst: n=2275 r=0.067 [0.026, 0.108] ρ=0.163 [0.122, 0.203] best_lag=-56 peak_rho=0.191
+2026-04-23T16:25:39 INFO [sunspot.correlate] metric ap: load geodata + correlate + write
+2026-04-23T16:25:39 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 8 years (2019 … 2026) → 2922 days
+2026-04-23T16:25:42 INFO [sunspot.correlate] metric ap: n=2317 r=0.046 [0.005, 0.086] ρ=0.205 [0.165, 0.244] best_lag=2 peak_rho=0.221
+2026-04-23T16:25:43 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:25:43 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:25:43 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:25:44 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:25:44 INFO [sunspot.correlate] wrote 12 analysis tables under output/correlate/docxology__2019-12-20__2026-04-23/analysis/tables: associations.csv, lag_profile.csv, ccf_profile.csv, ma_correlations.csv, mi_lag.csv, mutual_information.csv, regression_ols.csv, partial_correlation_ar1.csv, cross_metric_spearman.csv, periodogram_top.csv, commits_daily_summary.csv, per_repo_topk.csv
+2026-04-23T16:25:44 INFO [sunspot.correlate] wrote output/correlate/docxology__2019-12-20__2026-04-23/visualizations/executive_summary.png (top-level summary card)
+2026-04-23T16:26:17 INFO [sunspot.viz.mosaic] wrote output/correlate/docxology__2019-12-20__2026-04-23/visualizations/mosaic.png and output/correlate/docxology__2019-12-20__2026-04-23/visualizations/mosaic_index.json (sections=14, cols=15)
+2026-04-23T16:26:17 INFO [sunspot.correlate] done: statistics=output/correlate/docxology__2019-12-20__2026-04-23/statistics/report.json | total wall 51.1s
+Wrote under output/correlate/docxology__2019-12-20__2026-04-23 (statistics/, data/, visualizations/, analysis/)

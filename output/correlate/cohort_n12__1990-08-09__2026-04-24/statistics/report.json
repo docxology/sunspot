@@ -1,0 +1,454 @@
+{
+  "version": "0.1.0",
+  "report_kind": "cohort",
+  "user": "cohort(12 users)",
+  "cohort_users": [
+    "4dsolutions",
+    "AiwonA1",
+    "antirez",
+    "docxology",
+    "gvanrossum",
+    "karpathy",
+    "conorheins",
+    "BerenMillidge",
+    "alec-tschantz",
+    "soumith",
+    "fchollet",
+    "bordaigorl"
+  ],
+  "since": "1990-08-09",
+  "until": "2026-04-24",
+  "since_policy": "union",
+  "compare_user_logins": [],
+  "use_commit_cache": true,
+  "commits_total": 22440.0,
+  "commits_by_user": {
+    "4dsolutions": 3079.0,
+    "AiwonA1": 1020.0,
+    "antirez": 4106.0,
+    "docxology": 2976.0,
+    "gvanrossum": 520.0,
+    "karpathy": 4121.0,
+    "conorheins": 503.0,
+    "BerenMillidge": 2600.0,
+    "alec-tschantz": 1040.0,
+    "soumith": 1607.0,
+    "fchollet": 216.0,
+    "bordaigorl": 652.0
+  },
+  "user_activity": {
+    "4dsolutions": 1089,
+    "AiwonA1": 79,
+    "antirez": 948,
+    "docxology": 300,
+    "gvanrossum": 220,
+    "karpathy": 824,
+    "conorheins": 101,
+    "BerenMillidge": 581,
+    "alec-tschantz": 209,
+    "soumith": 510,
+    "fchollet": 114,
+    "bordaigorl": 316
+  },
+  "cohort_zero_commit_users": [],
+  "commits_summary": {
+    "total_days": 13043,
+    "days_with_commits": 3459,
+    "active_days_fraction": 0.2651997239898796,
+    "first_commit_date": "2009-03-31",
+    "last_commit_date": "2026-04-24",
+    "mean_per_day": 1.7204630836464003,
+    "median_per_day": 0.0,
+    "std_per_day": 5.993062034334654,
+    "p95_per_day": 10.0,
+    "max_day": 179.0,
+    "max_day_date": "2026-03-03",
+    "mean_per_active_day": 6.487424111014744,
+    "longest_active_streak_days": 109,
+    "longest_quiet_streak_days": 6809,
+    "dow_means_mon_to_sun": [
+      1.9414922168545357,
+      1.7777777777777777,
+      1.6044015029522276,
+      1.759656652360515,
+      1.729077253218884,
+      1.6119162640901772,
+      1.618894256575416
+    ],
+    "weekday_total": 16421.0,
+    "weekend_total": 6019.0,
+    "weekday_share": 0.7317736185383245,
+    "weekend_share": 0.2682263814616756,
+    "weekday_mean": 1.7624771922292584,
+    "weekend_mean": 1.6154052603327966
+  },
+  "metrics": {},
+  "per_repo_repos": 0,
+  "output_layout": {
+    "root": "output/correlate/cohort_n12__1990-08-09__2026-04-24",
+    "statistics": "output/correlate/cohort_n12__1990-08-09__2026-04-24/statistics",
+    "data": "output/correlate/cohort_n12__1990-08-09__2026-04-24/data",
+    "visualizations": "output/correlate/cohort_n12__1990-08-09__2026-04-24/visualizations",
+    "dynamics": "output/correlate/cohort_n12__1990-08-09__2026-04-24/visualizations/dynamics",
+    "analysis": "output/correlate/cohort_n12__1990-08-09__2026-04-24/analysis"
+  },
+  "cohort_pca": {
+    "user_order": [
+      "4dsolutions",
+      "AiwonA1",
+      "antirez",
+      "docxology",
+      "gvanrossum",
+      "karpathy",
+      "conorheins",
+      "BerenMillidge",
+      "alec-tschantz",
+      "soumith",
+      "fchollet",
+      "bordaigorl"
+    ],
+    "n_weeks": 1864,
+    "pc_scores": {
+      "4dsolutions": [
+        -25.60115453556457,
+        9.413112057685789
+      ],
+      "AiwonA1": [
+        -4.072175570755704,
+        4.444584926495512
+      ],
+      "antirez": [
+        -9.657882006265794,
+        9.644590366582138
+      ],
+      "docxology": [
+        -21.399321154815897,
+        -28.960547008029646
+      ],
+      "gvanrossum": [
+        -27.684383767780062,
+        -23.111942735246572
+      ],
+      "karpathy": [
+        -14.105600947748945,
+        6.801471921130293
+      ],
+      "conorheins": [
+        -9.413477222730531,
+        11.092957318084384
+      ],
+      "BerenMillidge": [
+        -15.464145539986227,
+        11.426031503664012
+      ],
+      "alec-tschantz": [
+        -10.775276156392792,
+        8.679925968448988
+      ],
+      "soumith": [
+        0.12221574127139864,
+        7.946672573917999
+      ],
+      "fchollet": [
+        -14.180368913063713,
+        16.29113180410246
+      ],
+      "bordaigorl": [
+        -20.134800464337378,
+        10.26661986352559
+      ]
+    },
+    "explained_variance_ratio": [
+      0.14480366401795575,
+      0.10655478424951932
+    ]
+  },
+  "cohort_dendrogram_leaves": [
+    "soumith",
+    "antirez",
+    "karpathy",
+    "fchollet",
+    "AiwonA1",
+    "alec-tschantz",
+    "conorheins",
+    "docxology",
+    "gvanrossum",
+    "4dsolutions",
+    "BerenMillidge",
+    "bordaigorl"
+  ],
+  "multi_user_topk": [
+    {
+      "user": "BerenMillidge",
+      "metric": "ssn",
+      "n": 13019,
+      "total_commits": 2600.0,
+      "active_days": 581,
+      "rho": -0.13919450359633165,
+      "p": 2.4893534019051288e-57,
+      "q_significant": true
+    },
+    {
+      "user": "karpathy",
+      "metric": "f107",
+      "n": 13020,
+      "total_commits": 4121.0,
+      "active_days": 824,
+      "rho": 0.13153847977822716,
+      "p": 2.426124952555657e-51,
+      "q_significant": true
+    },
+    {
+      "user": "BerenMillidge",
+      "metric": "f107",
+      "n": 13020,
+      "total_commits": 2600.0,
+      "active_days": 581,
+      "rho": -0.13147634686202486,
+      "p": 2.704737607108274e-51,
+      "q_significant": true
+    },
+    {
+      "user": "docxology",
+      "metric": "f107",
+      "n": 13020,
+      "total_commits": 2976.0,
+      "active_days": 300,
+      "rho": 0.124739314992061,
+      "p": 2.604396727799248e-46,
+      "q_significant": true
+    },
+    {
+      "user": "karpathy",
+      "metric": "ssn",
+      "n": 13019,
+      "total_commits": 4121.0,
+      "active_days": 824,
+      "rho": 0.1013544330782119,
+      "p": 4.452173848426856e-31,
+      "q_significant": true
+    },
+    {
+      "user": "docxology",
+      "metric": "ssn",
+      "n": 13019,
+      "total_commits": 2976.0,
+      "active_days": 300,
+      "rho": 0.10083469334795243,
+      "p": 8.930494428815658e-31,
+      "q_significant": true
+    },
+    {
+      "user": "AiwonA1",
+      "metric": "f107",
+      "n": 13020,
+      "total_commits": 1020.0,
+      "active_days": 79,
+      "rho": 0.09612393995118373,
+      "p": 4.145666000383305e-28,
+      "q_significant": true
+    },
+    {
+      "user": "antirez",
+      "metric": "f107",
+      "n": 13020,
+      "total_commits": 4106.0,
+      "active_days": 948,
+      "rho": 0.0918504787891853,
+      "p": 8.473327704356614e-26,
+      "q_significant": true
+    },
+    {
+      "user": "AiwonA1",
+      "metric": "ssn",
+      "n": 13019,
+      "total_commits": 1020.0,
+      "active_days": 79,
+      "rho": 0.08043467200312164,
+      "p": 3.8676388929425075e-20,
+      "q_significant": true
+    },
+    {
+      "user": "gvanrossum",
+      "metric": "ssn",
+      "n": 13019,
+      "total_commits": 520.0,
+      "active_days": 220,
+      "rho": -0.07807345384358431,
+      "p": 4.620569809394054e-19,
+      "q_significant": true
+    }
+  ],
+  "user_user_spearman_smoothed_30d": {
+    "4dsolutions": {
+      "4dsolutions": 1.0,
+      "AiwonA1": 0.2956584933266181,
+      "antirez": 0.38512222623506975,
+      "docxology": 0.5161592136656133,
+      "gvanrossum": 0.5077374406293794,
+      "karpathy": 0.5366613542007591,
+      "conorheins": 0.3489627945254418,
+      "BerenMillidge": 0.7997880562392835,
+      "alec-tschantz": 0.5130073301820112,
+      "soumith": 0.133440727817083,
+      "fchollet": 0.40971386054375813,
+      "bordaigorl": 0.6192512860723883
+    },
+    "AiwonA1": {
+      "4dsolutions": 0.2956584933266181,
+      "AiwonA1": 1.0,
+      "antirez": 0.12420925726737775,
+      "docxology": 0.5041677523508951,
+      "gvanrossum": -0.018444660157127334,
+      "karpathy": 0.07585198688300847,
+      "conorheins": 0.1789480165891629,
+      "BerenMillidge": 0.159943315203257,
+      "alec-tschantz": 0.34424361306244017,
+      "soumith": -0.07844597537445727,
+      "fchollet": 0.0708480869639053,
+      "bordaigorl": 0.11240229732997996
+    },
+    "antirez": {
+      "4dsolutions": 0.38512222623506975,
+      "AiwonA1": 0.12420925726737775,
+      "antirez": 1.0,
+      "docxology": 0.22191876312490488,
+      "gvanrossum": 0.24328972727354276,
+      "karpathy": 0.5444192874469335,
+      "conorheins": 0.09401012658124135,
+      "BerenMillidge": 0.3114101598417313,
+      "alec-tschantz": 0.286929024894875,
+      "soumith": 0.5070288825567199,
+      "fchollet": 0.2837515977872497,
+      "bordaigorl": 0.3371706824206672
+    },
+    "docxology": {
+      "4dsolutions": 0.5161592136656133,
+      "AiwonA1": 0.5041677523508951,
+      "antirez": 0.22191876312490488,
+      "docxology": 1.0,
+      "gvanrossum": 0.17454885162038275,
+      "karpathy": 0.34110975332229515,
+      "conorheins": 0.22396188795390676,
+      "BerenMillidge": 0.3920034043064638,
+      "alec-tschantz": 0.307784210409114,
+      "soumith": -0.11044276061543218,
+      "fchollet": 0.11402722453231944,
+      "bordaigorl": 0.27107257728387374
+    },
+    "gvanrossum": {
+      "4dsolutions": 0.5077374406293794,
+      "AiwonA1": -0.018444660157127334,
+      "antirez": 0.24328972727354276,
+      "docxology": 0.17454885162038275,
+      "gvanrossum": 1.0,
+      "karpathy": 0.2972442873756129,
+      "conorheins": 0.13587398703765902,
+      "BerenMillidge": 0.5718673738880534,
+      "alec-tschantz": 0.3883363749910417,
+      "soumith": 0.13032762979486318,
+      "fchollet": 0.2796733245801886,
+      "bordaigorl": 0.46456124733717846
+    },
+    "karpathy": {
+      "4dsolutions": 0.5366613542007591,
+      "AiwonA1": 0.07585198688300847,
+      "antirez": 0.5444192874469335,
+      "docxology": 0.34110975332229515,
+      "gvanrossum": 0.2972442873756129,
+      "karpathy": 1.0,
+      "conorheins": 0.1959808074911162,
+      "BerenMillidge": 0.4029760927384324,
+      "alec-tschantz": 0.24248325661999245,
+      "soumith": 0.46385144418463214,
+      "fchollet": 0.3478313532312051,
+      "bordaigorl": 0.46404080846273127
+    },
+    "conorheins": {
+      "4dsolutions": 0.3489627945254418,
+      "AiwonA1": 0.1789480165891629,
+      "antirez": 0.09401012658124135,
+      "docxology": 0.22396188795390676,
+      "gvanrossum": 0.13587398703765902,
+      "karpathy": 0.1959808074911162,
+      "conorheins": 1.0,
+      "BerenMillidge": 0.3414947669759083,
+      "alec-tschantz": 0.2614295428733121,
+      "soumith": -0.04176804647149725,
+      "fchollet": 0.10406248240315168,
+      "bordaigorl": 0.23154657150168992
+    },
+    "BerenMillidge": {
+      "4dsolutions": 0.7997880562392835,
+      "AiwonA1": 0.159943315203257,
+      "antirez": 0.3114101598417313,
+      "docxology": 0.3920034043064638,
+      "gvanrossum": 0.5718673738880534,
+      "karpathy": 0.4029760927384324,
+      "conorheins": 0.3414947669759083,
+      "BerenMillidge": 0.9999999999999999,
+      "alec-tschantz": 0.5219621411650017,
+      "soumith": 0.0010133723944518002,
+      "fchollet": 0.2930688844411981,
+      "bordaigorl": 0.5663124432552844
+    },
+    "alec-tschantz": {
+      "4dsolutions": 0.5130073301820112,
+      "AiwonA1": 0.34424361306244017,
+      "antirez": 0.286929024894875,
+      "docxology": 0.307784210409114,
+      "gvanrossum": 0.3883363749910417,
+      "karpathy": 0.24248325661999245,
+      "conorheins": 0.2614295428733121,
+      "BerenMillidge": 0.5219621411650017,
+      "alec-tschantz": 1.0,
+      "soumith": 0.0598377916822357,
+      "fchollet": 0.1634208114190327,
+      "bordaigorl": 0.316686712962894
+    },
+    "soumith": {
+      "4dsolutions": 0.133440727817083,
+      "AiwonA1": -0.07844597537445727,
+      "antirez": 0.5070288825567199,
+      "docxology": -0.11044276061543218,
+      "gvanrossum": 0.13032762979486318,
+      "karpathy": 0.46385144418463214,
+      "conorheins": -0.04176804647149725,
+      "BerenMillidge": 0.0010133723944518002,
+      "alec-tschantz": 0.0598377916822357,
+      "soumith": 1.0,
+      "fchollet": 0.33113221883169947,
+      "bordaigorl": 0.25962592648862126
+    },
+    "fchollet": {
+      "4dsolutions": 0.40971386054375813,
+      "AiwonA1": 0.0708480869639053,
+      "antirez": 0.2837515977872497,
+      "docxology": 0.11402722453231944,
+      "gvanrossum": 0.2796733245801886,
+      "karpathy": 0.3478313532312051,
+      "conorheins": 0.10406248240315168,
+      "BerenMillidge": 0.2930688844411981,
+      "alec-tschantz": 0.1634208114190327,
+      "soumith": 0.33113221883169947,
+      "fchollet": 1.0,
+      "bordaigorl": 0.3696389586848251
+    },
+    "bordaigorl": {
+      "4dsolutions": 0.6192512860723883,
+      "AiwonA1": 0.11240229732997996,
+      "antirez": 0.3371706824206672,
+      "docxology": 0.27107257728387374,
+      "gvanrossum": 0.46456124733717846,
+      "karpathy": 0.46404080846273127,
+      "conorheins": 0.23154657150168992,
+      "BerenMillidge": 0.5663124432552844,
+      "alec-tschantz": 0.316686712962894,
+      "soumith": 0.25962592648862126,
+      "fchollet": 0.3696389586848251,
+      "bordaigorl": 1.0
+    }
+  },
+  "executive_summary": "output/correlate/cohort_n12__1990-08-09__2026-04-24/visualizations/executive_summary.png",
+  "mosaic": "output/correlate/cohort_n12__1990-08-09__2026-04-24/visualizations/mosaic.png"
+}

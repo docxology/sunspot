@@ -1,0 +1,341 @@
+2026-04-23T16:29:14 INFO [sunspot.cli] sunspot 0.1.0 | log level INFO
+2026-04-23T16:29:14 INFO [sunspot.cli] GitHub API credentials present (higher rate limit than unauthenticated).
+2026-04-23T16:29:14 INFO [sunspot.cli] --since not provided: looking up first commit date for docxology ...
+2026-04-23T16:29:15 INFO [sunspot.github.commits] first_commit_date(docxology): search-commits → 2019-12-20
+2026-04-23T16:29:15 INFO [sunspot.cli] --since defaulted to 2019-12-20 (first commit date for docxology)
+2026-04-23T16:29:15 INFO [sunspot.cli] user=docxology since=2019-12-20 until=2026-04-23 | metrics=ssn,f107,dst,ap
+2026-04-23T16:29:15 INFO [sunspot.cli] output directory: output/correlate/_cross_user_compare
+2026-04-23T16:29:15 INFO [sunspot.correlate] viz style: font_scale=1.15 line_width=1.60 dpi=150 theme=light
+2026-04-23T16:29:15 INFO [sunspot.correlate] phase: fetch GitHub public commit timeseries
+2026-04-23T16:29:17 INFO [sunspot.github.commits] found 56 public non-fork repos for docxology
+2026-04-23T16:29:17 INFO [sunspot.github.commits] commits: 56 repos, window 2019-12-20..2026-04-23 (disk cache on)
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (1/56) docxology/docxology: cache, 28 commits, 13 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (2/56) docxology/cognitive_case_diagrams: cache, 7 commits, 3 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (3/56) docxology/MetaInformAnt: cache, 300 commits, 102 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (4/56) docxology/ivm-xyz: cache, 8 commits, 4 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (5/56) docxology/codomyrmex: cache, 833 commits, 89 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (6/56) docxology/biol-8: cache, 272 commits, 47 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (7/56) docxology/biol-1: cache, 272 commits, 47 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (8/56) docxology/active-inference-pocket-lab: cache, 10 commits, 3 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (9/56) docxology/links: cache, 12 commits, 6 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (10/56) docxology/ento_linguistics: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (11/56) docxology/template: cache, 612 commits, 72 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (12/56) docxology/multi-time: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (13/56) docxology/crescent-city: cache, 144 commits, 7 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (14/56) docxology/template_bioinformatics_project: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (15/56) docxology/steganographer: cache, 2 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (16/56) docxology/QuadCraft: cache, 107 commits, 53 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (17/56) docxology/timeline_generator: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (18/56) docxology/hhs-opendata: cache, 3 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (19/56) docxology/QuadMath: cache, 19 commits, 6 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (20/56) docxology/p3if: cache, 13 commits, 10 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (21/56) docxology/literature: cache, 24 commits, 5 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (22/56) docxology/curriculum: cache, 18 commits, 3 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (23/56) docxology/snake: cache, 7 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (24/56) docxology/course: cache, 5 commits, 5 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (25/56) docxology/opentir: cache, 3 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (26/56) docxology/active_inference: cache, 12 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (27/56) docxology/qr_live_protocol: cache, 6 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (28/56) docxology/godel_ivm: cache, 3 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (29/56) docxology/transformer: cache, 2 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (30/56) docxology/active_torchference: cache, 2 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (31/56) docxology/markdown_decision_process: cache, 5 commits, 5 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (32/56) docxology/EvoJump: cache, 5 commits, 3 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (33/56) docxology/ant_stack: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (34/56) docxology/goference: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (35/56) docxology/symergetics: cache, 9 commits, 3 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (36/56) docxology/test_public: cache, 1 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (37/56) docxology/cascadia: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (38/56) docxology/lean_niche: cache, 19 commits, 3 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (39/56) docxology/mdkv: cache, 7 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (40/56) docxology/service: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (41/56) docxology/infra-calc: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (42/56) docxology/Autonomous-Drone-Navigation-in-AirSim-With-Active-Inference: cache, 16 commits, 4 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (43/56) docxology/flick: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (44/56) docxology/README: cache, 1 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (45/56) docxology/ultralink-docx: cache, 19 commits, 8 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (46/56) docxology/obsidian-construction-from-text: cache, 3 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (47/56) docxology/Markov_Blanket_Detection: cache, 2 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (48/56) docxology/cognitive-engine: cache, 6 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (49/56) docxology/fuller-obsidian: cache, 1 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (50/56) docxology/cognitive: cache, 30 commits, 5 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (51/56) docxology/AgenticMesh: cache, 2 commits, 2 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (52/56) docxology/FORMINDEX: cache, 51 commits, 10 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (53/56) docxology/ActiveInferAnts: cache, 19 commits, 8 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (54/56) docxology/ant-pheromone: cache, 22 commits, 6 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (55/56) docxology/GrowthModel: cache, 6 commits, 1 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] (56/56) docxology/identity: cache, 0 commits, 0 active days
+2026-04-23T16:29:17 INFO [sunspot.github.commits] commits done: 2968 total commits in window, __all__ max day=167.0, cache hits=56 api repos=0
+2026-04-23T16:29:17 INFO [sunspot.correlate] phase: GitHub done in 2.2s
+2026-04-23T16:29:17 INFO [sunspot.correlate] wrote per-repo series under output/correlate/_cross_user_compare/data/commits/by_repo (56 repos)
+2026-04-23T16:29:17 INFO [sunspot.correlate] wrote output/correlate/_cross_user_compare/data/commits/daily.csv (2317 rows) days_with_commits=299 commits_total=2968.0
+2026-04-23T16:29:17 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:29:17 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:29:17 INFO [sunspot.datasets.omni] OMNI2 daily: 8 year files (2019 … 2026)
+2026-04-23T16:29:18 INFO [sunspot.datasets.omni] OMNI2 daily: 2922 UTC days after resample (first load; memory-cached this run)
+2026-04-23T16:29:18 INFO [sunspot.correlate] wrote output/correlate/_cross_user_compare/visualizations/dynamics/commits_and_solar.png (7d/30d MA, z-SSN, z-F10.7)
+2026-04-23T16:29:18 INFO [sunspot.correlate] wrote commit roll-ups: weekly.csv, monthly.csv, dow_means.csv, summary.csv
+2026-04-23T16:29:18 INFO [sunspot.correlate] commits daily: total=2968 active=299/2317 (12.9%) mean/day=1.281 mean/active=9.93 max=167 on 2026-03-03 weekday/weekend share=72%/28% streaks active=41d quiet=638d
+2026-04-23T16:29:18 INFO [sunspot.github.commits] found 25 public non-fork repos for 4dsolutions
+2026-04-23T16:29:18 INFO [sunspot.github.commits] commits: 25 repos, window 2019-12-20..2026-04-23 (disk cache on)
+2026-04-23T16:29:19 INFO [sunspot.github.commits] (1/25) 4dsolutions/Python5: api, 51 commits, 32 active days
+2026-04-23T16:29:22 INFO [sunspot.github.commits] (2/25) 4dsolutions/School_of_Tomorrow: api, 616 commits, 269 active days
+2026-04-23T16:29:24 INFO [sunspot.github.commits] (3/25) 4dsolutions/m4w: api, 254 commits, 115 active days
+2026-04-23T16:29:24 INFO [sunspot.github.commits] (4/25) 4dsolutions/tiny_flask: api, 13 commits, 5 active days
+2026-04-23T16:29:27 INFO [sunspot.github.commits] (5/25) 4dsolutions/clarusway_data_analysis: api, 537 commits, 198 active days
+2026-04-23T16:29:28 INFO [sunspot.github.commits] (6/25) 4dsolutions/DigitalMathematics: api, 63 commits, 25 active days
+2026-04-23T16:29:31 INFO [sunspot.github.commits] (7/25) 4dsolutions/elite_school: api, 592 commits, 253 active days
+2026-04-23T16:29:31 INFO [sunspot.github.commits] (8/25) 4dsolutions/Curriculum_Development: api, 61 commits, 28 active days
+2026-04-23T16:29:32 INFO [sunspot.github.commits] (9/25) 4dsolutions/SAISOFT: api, 2 commits, 2 active days
+2026-04-23T16:29:32 INFO [sunspot.github.commits] (10/25) 4dsolutions/bootcamp: api, 31 commits, 9 active days
+2026-04-23T16:29:33 INFO [sunspot.github.commits] (11/25) 4dsolutions/sandbox: api, 4 commits, 2 active days
+2026-04-23T16:29:33 INFO [sunspot.github.commits] (12/25) 4dsolutions/python_camp: api, 87 commits, 21 active days
+2026-04-23T16:29:33 INFO [sunspot.github.commits] (13/25) 4dsolutions/MartianMath: api, 1 commits, 1 active days
+2026-04-23T16:29:34 INFO [sunspot.github.commits] (14/25) 4dsolutions/rusty_rays: api, 0 commits, 0 active days
+2026-04-23T16:29:34 INFO [sunspot.github.commits] (15/25) 4dsolutions/C6XTY: api, 0 commits, 0 active days
+2026-04-23T16:29:35 INFO [sunspot.github.commits] (16/25) 4dsolutions/CSN: api, 0 commits, 0 active days
+2026-04-23T16:29:35 INFO [sunspot.github.commits] (17/25) 4dsolutions/GDC: api, 0 commits, 0 active days
+2026-04-23T16:29:35 INFO [sunspot.github.commits] (18/25) 4dsolutions/ONLC_XPYS: api, 0 commits, 0 active days
+2026-04-23T16:29:36 INFO [sunspot.github.commits] (19/25) 4dsolutions/WQM: api, 0 commits, 0 active days
+2026-04-23T16:29:36 INFO [sunspot.github.commits] (20/25) 4dsolutions/NPYM: api, 0 commits, 0 active days
+2026-04-23T16:29:37 INFO [sunspot.github.commits] (21/25) 4dsolutions/tetravolumes: api, 0 commits, 0 active days
+2026-04-23T16:29:37 INFO [sunspot.github.commits] (22/25) 4dsolutions/raspbian3D: api, 0 commits, 0 active days
+2026-04-23T16:29:37 INFO [sunspot.github.commits] (23/25) 4dsolutions/synmods: api, 0 commits, 0 active days
+2026-04-23T16:29:38 INFO [sunspot.github.commits] (24/25) 4dsolutions/async_learning_engine: api, 0 commits, 0 active days
+2026-04-23T16:29:38 INFO [sunspot.github.commits] (25/25) 4dsolutions/BookCovers: api, 0 commits, 0 active days
+2026-04-23T16:29:38 INFO [sunspot.github.commits] commits done: 2312 total commits in window, __all__ max day=16.0, cache hits=0 api repos=25
+2026-04-23T16:29:39 INFO [sunspot.github.commits] found 24 public non-fork repos for AiwonA1
+2026-04-23T16:29:39 INFO [sunspot.github.commits] commits: 24 repos, window 2019-12-20..2026-04-23 (disk cache on)
+2026-04-23T16:29:39 INFO [sunspot.github.commits] (1/24) AiwonA1/Syntheverse-: api, 11 commits, 2 active days
+2026-04-23T16:29:40 INFO [sunspot.github.commits] (2/24) AiwonA1/Syntheverse-Hydrogen-Holographic-RAG: api, 18 commits, 2 active days
+2026-04-23T16:29:40 INFO [sunspot.github.commits] (3/24) AiwonA1/FractalHydrogenHolography-Validation: api, 37 commits, 3 active days
+2026-04-23T16:29:41 INFO [sunspot.github.commits] (4/24) AiwonA1/HydrogenHolographPilot: api, 12 commits, 2 active days
+2026-04-23T16:29:41 INFO [sunspot.github.commits] (5/24) AiwonA1/Omniverse-for-Digital-Assistants-and-Agents: api, 17 commits, 7 active days
+2026-04-23T16:29:41 INFO [sunspot.github.commits] (6/24) AiwonA1/EnterpriseWorld-7DAI-Superintelligence: api, 11 commits, 2 active days
+2026-04-23T16:29:42 INFO [sunspot.github.commits] (7/24) AiwonA1/ParadiseWorld-1.0-AI-Game: api, 3 commits, 1 active days
+2026-04-23T16:29:42 INFO [sunspot.github.commits] (8/24) AiwonA1/FractiAgent-1.0: api, 3 commits, 2 active days
+2026-04-23T16:29:43 INFO [sunspot.github.commits] (9/24) AiwonA1/FractiData-1.0: api, 3 commits, 1 active days
+2026-04-23T16:29:43 INFO [sunspot.github.commits] (10/24) AiwonA1/fractiverse-router: api, 12 commits, 1 active days
+2026-04-23T16:29:44 INFO [sunspot.github.commits] (11/24) AiwonA1/L4-L7-Fractal-Self-Awareness-Intelligence-Router: api, 234 commits, 18 active days
+2026-04-23T16:29:45 WARNING [sunspot.github.commits] skipping AiwonA1/FractiVerse-1.0-Router--Production: empty or conflict (HTTP 409)
+2026-04-23T16:29:45 INFO [sunspot.github.commits] (12/24) AiwonA1/FractiVerse-1.0-Router--Production: api, 0 commits, 0 active days
+2026-04-23T16:29:45 WARNING [sunspot.github.commits] skipping AiwonA1/Zenodo: empty or conflict (HTTP 409)
+2026-04-23T16:29:45 INFO [sunspot.github.commits] (13/24) AiwonA1/Zenodo: api, 0 commits, 0 active days
+2026-04-23T16:29:45 WARNING [sunspot.github.commits] skipping AiwonA1/Knowledge-Tree: empty or conflict (HTTP 409)
+2026-04-23T16:29:45 INFO [sunspot.github.commits] (14/24) AiwonA1/Knowledge-Tree: api, 0 commits, 0 active days
+2026-04-23T16:29:46 INFO [sunspot.github.commits] (15/24) AiwonA1/JWST-SMACS-0723: api, 4 commits, 2 active days
+2026-04-23T16:29:46 INFO [sunspot.github.commits] (16/24) AiwonA1/Learning: api, 1 commits, 1 active days
+2026-04-23T16:29:46 INFO [sunspot.github.commits] (17/24) AiwonA1/CERN-Data: api, 1 commits, 1 active days
+2026-04-23T16:29:47 INFO [sunspot.github.commits] (18/24) AiwonA1/FractiLLM-main: api, 1 commits, 1 active days
+2026-04-23T16:29:47 WARNING [sunspot.github.commits] skipping AiwonA1/FractiVerse-Test-Core: empty or conflict (HTTP 409)
+2026-04-23T16:29:47 INFO [sunspot.github.commits] (19/24) AiwonA1/FractiVerse-Test-Core: api, 0 commits, 0 active days
+2026-04-23T16:29:49 INFO [sunspot.github.commits] (20/24) AiwonA1/FractiVerse-1.0: api, 252 commits, 12 active days
+2026-04-23T16:29:50 INFO [sunspot.github.commits] (21/24) AiwonA1/FractiCody1.0: api, 226 commits, 5 active days
+2026-04-23T16:29:51 INFO [sunspot.github.commits] (22/24) AiwonA1/FractiAI: api, 129 commits, 20 active days
+2026-04-23T16:29:51 INFO [sunspot.github.commits] (23/24) AiwonA1/Paradise-Game: api, 4 commits, 1 active days
+2026-04-23T16:29:52 INFO [sunspot.github.commits] (24/24) AiwonA1/Novelty-V1.0: api, 41 commits, 7 active days
+2026-04-23T16:29:52 INFO [sunspot.github.commits] commits done: 1020 total commits in window, __all__ max day=164.0, cache hits=0 api repos=24
+2026-04-23T16:29:53 INFO [sunspot.github.commits] found 99 public non-fork repos for antirez
+2026-04-23T16:29:53 INFO [sunspot.github.commits] commits: 99 repos, window 2019-12-20..2026-04-23 (disk cache on)
+2026-04-23T16:29:54 INFO [sunspot.github.commits] (1/99) antirez/linenoise: api, 36 commits, 13 active days
+2026-04-23T16:29:54 INFO [sunspot.github.commits] (2/99) antirez/bme680-pure-mp: api, 5 commits, 2 active days
+2026-04-23T16:29:55 INFO [sunspot.github.commits] (3/99) antirez/bplog: api, 2 commits, 2 active days
+2026-04-23T16:29:55 INFO [sunspot.github.commits] (4/99) antirez/ZOT: api, 4 commits, 3 active days
+2026-04-23T16:29:56 INFO [sunspot.github.commits] (5/99) antirez/picol: api, 8 commits, 4 active days
+2026-04-23T16:29:56 INFO [sunspot.github.commits] (6/99) antirez/qwen-asr: api, 6 commits, 4 active days
+2026-04-23T16:29:56 INFO [sunspot.github.commits] (7/99) antirez/voxtral.c: api, 45 commits, 7 active days
+2026-04-23T16:29:57 INFO [sunspot.github.commits] (8/99) antirez/dump1090: api, 40 commits, 11 active days
+2026-04-23T16:29:58 INFO [sunspot.github.commits] (9/99) antirez/iris.c: api, 230 commits, 19 active days
+2026-04-23T16:29:59 INFO [sunspot.github.commits] (10/99) antirez/whisperbot: api, 3 commits, 2 active days
+2026-04-23T16:29:59 INFO [sunspot.github.commits] (11/99) antirez/tgterm: api, 5 commits, 2 active days
+2026-04-23T16:30:00 INFO [sunspot.github.commits] (12/99) antirez/botlib: api, 34 commits, 12 active days
+2026-04-23T16:30:00 INFO [sunspot.github.commits] (13/99) antirez/microfont: api, 18 commits, 3 active days
+2026-04-23T16:30:01 INFO [sunspot.github.commits] (14/99) antirez/gte-pure-C: api, 11 commits, 2 active days
+2026-04-23T16:30:01 INFO [sunspot.github.commits] (15/99) antirez/zxfy: api, 8 commits, 6 active days
+2026-04-23T16:30:03 INFO [sunspot.github.commits] (16/99) antirez/freakwan: api, 374 commits, 80 active days
+2026-04-23T16:30:03 INFO [sunspot.github.commits] (17/99) antirez/Telegram2txt: api, 1 commits, 1 active days
+2026-04-23T16:30:04 INFO [sunspot.github.commits] (18/99) antirez/toyforth: api, 3 commits, 2 active days
+2026-04-23T16:30:04 INFO [sunspot.github.commits] (19/99) antirez/zx2040: api, 45 commits, 14 active days
+2026-04-23T16:30:05 INFO [sunspot.github.commits] (20/99) antirez/gguf-tools: api, 61 commits, 18 active days
+2026-04-23T16:30:05 INFO [sunspot.github.commits] (21/99) antirez/historical-redis-versions: api, 2 commits, 1 active days
+2026-04-23T16:30:06 INFO [sunspot.github.commits] (22/99) antirez/c64-kitty: api, 35 commits, 15 active days
+2026-04-23T16:30:06 INFO [sunspot.github.commits] (23/99) antirez/inverter: api, 1 commits, 1 active days
+2026-04-23T16:30:08 INFO [sunspot.github.commits] (24/99) antirez/protoview: api, 206 commits, 32 active days
+2026-04-23T16:30:08 INFO [sunspot.github.commits] (25/99) antirez/sds: api, 4 commits, 4 active days
+2026-04-23T16:30:08 INFO [sunspot.github.commits] (26/99) antirez/hnstyle: api, 5 commits, 1 active days
+2026-04-23T16:30:09 INFO [sunspot.github.commits] (27/99) antirez/ST77xx-pure-MP: api, 53 commits, 13 active days
+2026-04-23T16:30:09 INFO [sunspot.github.commits] (28/99) antirez/listpack: api, 2 commits, 1 active days
+2026-04-23T16:30:10 INFO [sunspot.github.commits] (29/99) antirez/ttt-rl: api, 11 commits, 2 active days
+2026-04-23T16:30:10 INFO [sunspot.github.commits] (30/99) antirez/kilo: api, 10 commits, 3 active days
+2026-04-23T16:30:11 INFO [sunspot.github.commits] (31/99) antirez/micropython-telegram-bot: api, 7 commits, 5 active days
+2026-04-23T16:30:11 INFO [sunspot.github.commits] (32/99) antirez/hping: api, 0 commits, 0 active days
+2026-04-23T16:30:11 INFO [sunspot.github.commits] (33/99) antirez/bma423-pure-mp: api, 11 commits, 3 active days
+2026-04-23T16:30:12 INFO [sunspot.github.commits] (34/99) antirez/uc8151_micropython: api, 66 commits, 10 active days
+2026-04-23T16:30:12 INFO [sunspot.github.commits] (35/99) antirez/smaz2: api, 9 commits, 4 active days
+2026-04-23T16:30:13 INFO [sunspot.github.commits] (36/99) antirez/vl53l0x-nb: api, 2 commits, 1 active days
+2026-04-23T16:30:13 INFO [sunspot.github.commits] (37/99) antirez/micropython-ft6x06: api, 5 commits, 3 active days
+2026-04-23T16:30:14 INFO [sunspot.github.commits] (38/99) antirez/64-thermometer: api, 26 commits, 7 active days
+2026-04-23T16:30:14 INFO [sunspot.github.commits] (39/99) antirez/t-watch-s3-micropython: api, 42 commits, 9 active days
+2026-04-23T16:30:15 INFO [sunspot.github.commits] (40/99) antirez/talk32: api, 43 commits, 12 active days
+2026-04-23T16:30:15 INFO [sunspot.github.commits] (41/99) antirez/smallchat: api, 36 commits, 12 active days
+2026-04-23T16:30:15 INFO [sunspot.github.commits] (42/99) antirez/simple-language-model: api, 8 commits, 4 active days
+2026-04-23T16:30:16 INFO [sunspot.github.commits] (43/99) antirez/LLM-FTC-sampling: api, 4 commits, 2 active days
+2026-04-23T16:30:16 INFO [sunspot.github.commits] (44/99) antirez/rax: api, 3 commits, 2 active days
+2026-04-23T16:30:17 INFO [sunspot.github.commits] (45/99) antirez/failed-3d-prints-bot: api, 21 commits, 6 active days
+2026-04-23T16:30:18 INFO [sunspot.github.commits] (46/99) antirez/stonky: api, 131 commits, 26 active days
+2026-04-23T16:30:18 INFO [sunspot.github.commits] (47/99) antirez/redlock-rb: api, 1 commits, 1 active days
+2026-04-23T16:30:18 INFO [sunspot.github.commits] (48/99) antirez/flipper-asteroids: api, 26 commits, 5 active days
+2026-04-23T16:30:19 INFO [sunspot.github.commits] (49/99) antirez/aocla: api, 55 commits, 9 active days
+2026-04-23T16:30:19 INFO [sunspot.github.commits] (50/99) antirez/crack-checksum: api, 3 commits, 1 active days
+2026-04-23T16:30:20 INFO [sunspot.github.commits] (51/99) antirez/redis-sampler: api, 0 commits, 0 active days
+2026-04-23T16:30:20 INFO [sunspot.github.commits] (52/99) antirez/adventofcode2022: api, 33 commits, 14 active days
+2026-04-23T16:30:21 INFO [sunspot.github.commits] (53/99) antirez/RESP3: api, 0 commits, 0 active days
+2026-04-23T16:30:21 INFO [sunspot.github.commits] (54/99) antirez/load81: api, 7 commits, 4 active days
+2026-04-23T16:30:21 INFO [sunspot.github.commits] (55/99) antirez/lamernews: api, 0 commits, 0 active days
+2026-04-23T16:30:22 INFO [sunspot.github.commits] (56/99) antirez/shapeme: api, 1 commits, 1 active days
+2026-04-23T16:30:22 INFO [sunspot.github.commits] (57/99) antirez/lua-cmsgpack: api, 0 commits, 0 active days
+2026-04-23T16:30:23 INFO [sunspot.github.commits] (58/99) antirez/pngtostl: api, 10 commits, 2 active days
+2026-04-23T16:30:23 INFO [sunspot.github.commits] (59/99) antirez/disque: api, 0 commits, 0 active days
+2026-04-23T16:30:24 INFO [sunspot.github.commits] (60/99) antirez/tclircd: api, 1 commits, 1 active days
+2026-04-23T16:30:24 INFO [sunspot.github.commits] (61/99) antirez/iconping: api, 0 commits, 0 active days
+2026-04-23T16:30:24 INFO [sunspot.github.commits] (62/99) antirez/disque-module: api, 2 commits, 2 active days
+2026-04-23T16:30:25 INFO [sunspot.github.commits] (63/99) antirez/gopher2redis: api, 0 commits, 0 active days
+2026-04-23T16:30:25 INFO [sunspot.github.commits] (64/99) antirez/smaz: api, 0 commits, 0 active days
+2026-04-23T16:30:26 INFO [sunspot.github.commits] (65/99) antirez/hiredis: api, 0 commits, 0 active days
+2026-04-23T16:30:26 INFO [sunspot.github.commits] (66/99) antirez/otree: api, 0 commits, 0 active days
+2026-04-23T16:30:27 INFO [sunspot.github.commits] (67/99) antirez/neural-redis: api, 0 commits, 0 active days
+2026-04-23T16:30:27 INFO [sunspot.github.commits] (68/99) antirez/redis-cp-rewrite-sim: api, 0 commits, 0 active days
+2026-04-23T16:30:28 INFO [sunspot.github.commits] (69/99) antirez/dict-scan-fuzz-tester: api, 0 commits, 0 active days
+2026-04-23T16:30:28 INFO [sunspot.github.commits] (70/99) antirez/retwis: api, 0 commits, 0 active days
+2026-04-23T16:30:28 INFO [sunspot.github.commits] (71/99) antirez/redis-rb-cluster: api, 0 commits, 0 active days
+2026-04-23T16:30:29 INFO [sunspot.github.commits] (72/99) antirez/connect4-montecarlo: api, 0 commits, 0 active days
+2026-04-23T16:30:29 INFO [sunspot.github.commits] (73/99) antirez/iqmeteo: api, 0 commits, 0 active days
+2026-04-23T16:30:29 INFO [sunspot.github.commits] (74/99) antirez/siphash: api, 0 commits, 0 active days
+2026-04-23T16:30:30 INFO [sunspot.github.commits] (75/99) antirez/nn-2003: api, 0 commits, 0 active days
+2026-04-23T16:30:30 INFO [sunspot.github.commits] (76/99) antirez/recidiv: api, 0 commits, 0 active days
+2026-04-23T16:30:31 INFO [sunspot.github.commits] (77/99) antirez/redimension: api, 0 commits, 0 active days
+2026-04-23T16:30:31 INFO [sunspot.github.commits] (78/99) antirez/redis-timeseries: api, 0 commits, 0 active days
+2026-04-23T16:30:31 INFO [sunspot.github.commits] (79/99) antirez/strabo: api, 0 commits, 0 active days
+2026-04-23T16:30:32 INFO [sunspot.github.commits] (80/99) antirez/jsrt: api, 0 commits, 0 active days
+2026-04-23T16:30:32 INFO [sunspot.github.commits] (81/99) antirez/rascan: api, 0 commits, 0 active days
+2026-04-23T16:30:33 INFO [sunspot.github.commits] (82/99) antirez/lloogg: api, 0 commits, 0 active days
+2026-04-23T16:30:33 INFO [sunspot.github.commits] (83/99) antirez/partitions: api, 0 commits, 0 active days
+2026-04-23T16:30:33 INFO [sunspot.github.commits] (84/99) antirez/cache-mem-tester: api, 0 commits, 0 active days
+2026-04-23T16:30:34 INFO [sunspot.github.commits] (85/99) antirez/redis-tools: api, 0 commits, 0 active days
+2026-04-23T16:30:34 INFO [sunspot.github.commits] (86/99) antirez/visitors: api, 0 commits, 0 active days
+2026-04-23T16:30:35 INFO [sunspot.github.commits] (87/99) antirez/codakido: api, 0 commits, 0 active days
+2026-04-23T16:30:35 INFO [sunspot.github.commits] (88/99) antirez/gif-pure-tcl: api, 0 commits, 0 active days
+2026-04-23T16:30:35 INFO [sunspot.github.commits] (89/99) antirez/aspark: api, 0 commits, 0 active days
+2026-04-23T16:30:36 INFO [sunspot.github.commits] (90/99) antirez/sbignum: api, 0 commits, 0 active days
+2026-04-23T16:30:36 INFO [sunspot.github.commits] (91/99) antirez/mc-benchmark: api, 0 commits, 0 active days
+2026-04-23T16:30:37 INFO [sunspot.github.commits] (92/99) antirez/book-examples: api, 0 commits, 0 active days
+2026-04-23T16:30:37 INFO [sunspot.github.commits] (93/99) antirez/nolate: api, 0 commits, 0 active days
+2026-04-23T16:30:37 INFO [sunspot.github.commits] (94/99) antirez/Gitan: api, 0 commits, 0 active days
+2026-04-23T16:30:38 INFO [sunspot.github.commits] (95/99) antirez/yaku-ns: api, 0 commits, 0 active days
+2026-04-23T16:30:38 INFO [sunspot.github.commits] (96/99) antirez/Bigdis: api, 0 commits, 0 active days
+2026-04-23T16:30:38 INFO [sunspot.github.commits] (97/99) antirez/redisdotphp: api, 0 commits, 0 active days
+2026-04-23T16:30:39 INFO [sunspot.github.commits] (98/99) antirez/Jim: api, 0 commits, 0 active days
+2026-04-23T16:30:39 INFO [sunspot.github.commits] (99/99) antirez/Siboom: api, 0 commits, 0 active days
+2026-04-23T16:30:39 INFO [sunspot.github.commits] commits done: 1821 total commits in window, __all__ max day=44.0, cache hits=0 api repos=99
+2026-04-23T16:30:40 INFO [sunspot.github.commits] found 12 public non-fork repos for gvanrossum
+2026-04-23T16:30:40 INFO [sunspot.github.commits] commits: 12 repos, window 2019-12-20..2026-04-23 (disk cache on)
+2026-04-23T16:30:42 INFO [sunspot.github.commits] (1/12) gvanrossum/gvanrossum.github.io: api, 202 commits, 77 active days
+2026-04-23T16:30:42 INFO [sunspot.github.commits] (2/12) gvanrossum/pythonlabs: api, 5 commits, 3 active days
+2026-04-23T16:30:42 INFO [sunspot.github.commits] (3/12) gvanrossum/abc-unix: api, 5 commits, 2 active days
+2026-04-23T16:30:43 INFO [sunspot.github.commits] (4/12) gvanrossum/c-parser: api, 4 commits, 3 active days
+2026-04-23T16:30:43 INFO [sunspot.github.commits] (5/12) gvanrossum/old-demos: api, 8 commits, 6 active days
+2026-04-23T16:30:44 INFO [sunspot.github.commits] (6/12) gvanrossum/patma: api, 126 commits, 57 active days
+2026-04-23T16:30:45 INFO [sunspot.github.commits] (7/12) gvanrossum/pythonlabs-com-azure: api, 8 commits, 2 active days
+2026-04-23T16:30:45 INFO [sunspot.github.commits] (8/12) gvanrossum/ctok: api, 0 commits, 0 active days
+2026-04-23T16:30:45 INFO [sunspot.github.commits] (9/12) gvanrossum/guidos_time_machine: api, 1 commits, 1 active days
+2026-04-23T16:30:46 INFO [sunspot.github.commits] (10/12) gvanrossum/pep550: api, 0 commits, 0 active days
+2026-04-23T16:30:46 INFO [sunspot.github.commits] (11/12) gvanrossum/mypy-dummy: api, 0 commits, 0 active days
+2026-04-23T16:30:47 INFO [sunspot.github.commits] (12/12) gvanrossum/ballot-box: api, 0 commits, 0 active days
+2026-04-23T16:30:47 INFO [sunspot.github.commits] commits done: 359 total commits in window, __all__ max day=13.0, cache hits=0 api repos=12
+2026-04-23T16:30:47 INFO [sunspot.github.commits] found 54 public non-fork repos for karpathy
+2026-04-23T16:30:47 INFO [sunspot.github.commits] commits: 54 repos, window 2019-12-20..2026-04-23 (disk cache on)
+2026-04-23T16:30:50 INFO [sunspot.github.commits] (1/54) karpathy/nanochat: api, 380 commits, 97 active days
+2026-04-23T16:30:50 INFO [sunspot.github.commits] (2/54) karpathy/karpathy.github.io: api, 29 commits, 15 active days
+2026-04-23T16:30:50 INFO [sunspot.github.commits] (3/54) karpathy/autoresearch: api, 36 commits, 9 active days
+2026-04-23T16:30:51 INFO [sunspot.github.commits] (4/54) karpathy/jobs: api, 11 commits, 2 active days
+2026-04-23T16:30:51 INFO [sunspot.github.commits] (5/54) karpathy/rustbpe: api, 11 commits, 1 active days
+2026-04-23T16:30:52 INFO [sunspot.github.commits] (6/54) karpathy/hn-time-capsule: api, 16 commits, 2 active days
+2026-04-23T16:30:52 INFO [sunspot.github.commits] (7/54) karpathy/llm-council: api, 5 commits, 1 active days
+2026-04-23T16:30:52 INFO [sunspot.github.commits] (8/54) karpathy/reader3: api, 1 commits, 1 active days
+2026-04-23T16:30:54 INFO [sunspot.github.commits] (9/54) karpathy/nanoGPT: api, 210 commits, 66 active days
+2026-04-23T16:30:54 INFO [sunspot.github.commits] (10/54) karpathy/rendergit: api, 6 commits, 2 active days
+2026-04-23T16:31:03 INFO [sunspot.github.commits] (11/54) karpathy/llm.c: api, 1536 commits, 119 active days
+2026-04-23T16:31:04 INFO [sunspot.github.commits] (12/54) karpathy/nn-zero-to-hero: api, 12 commits, 10 active days
+2026-04-23T16:31:04 INFO [sunspot.github.commits] (13/54) karpathy/minGPT: api, 94 commits, 33 active days
+2026-04-23T16:31:05 INFO [sunspot.github.commits] (14/54) karpathy/build-nanogpt: api, 44 commits, 8 active days
+2026-04-23T16:31:05 INFO [sunspot.github.commits] (15/54) karpathy/micrograd: api, 24 commits, 4 active days
+2026-04-23T16:31:09 INFO [sunspot.github.commits] (16/54) karpathy/llama2.c: api, 523 commits, 69 active days
+2026-04-23T16:31:09 INFO [sunspot.github.commits] (17/54) karpathy/LLM101n: api, 3 commits, 3 active days
+2026-04-23T16:31:10 INFO [sunspot.github.commits] (18/54) karpathy/minbpe: api, 53 commits, 10 active days
+2026-04-23T16:31:10 INFO [sunspot.github.commits] (19/54) karpathy/makemore: api, 21 commits, 7 active days
+2026-04-23T16:31:11 INFO [sunspot.github.commits] (20/54) karpathy/calorie: api, 7 commits, 2 active days
+2026-04-23T16:31:11 INFO [sunspot.github.commits] (21/54) karpathy/lecun1989-repro: api, 18 commits, 4 active days
+2026-04-23T16:31:11 INFO [sunspot.github.commits] (22/54) karpathy/ng-video-lecture: api, 23 commits, 8 active days
+2026-04-23T16:31:12 INFO [sunspot.github.commits] (23/54) karpathy/char-rnn: api, 0 commits, 0 active days
+2026-04-23T16:31:12 INFO [sunspot.github.commits] (24/54) karpathy/notpygamejs: api, 0 commits, 0 active days
+2026-04-23T16:31:13 INFO [sunspot.github.commits] (25/54) karpathy/researchpooler: api, 0 commits, 0 active days
+2026-04-23T16:31:13 INFO [sunspot.github.commits] (26/54) karpathy/karpathy: api, 3 commits, 2 active days
+2026-04-23T16:31:13 INFO [sunspot.github.commits] (27/54) karpathy/arxiv-sanity-lite: api, 75 commits, 22 active days
+2026-04-23T16:31:14 INFO [sunspot.github.commits] (28/54) karpathy/randomfun: api, 14 commits, 11 active days
+2026-04-23T16:31:14 INFO [sunspot.github.commits] (29/54) karpathy/convnetjs: api, 0 commits, 0 active days
+2026-04-23T16:31:15 INFO [sunspot.github.commits] (30/54) karpathy/arxiv-sanity-preserver: api, 1 commits, 1 active days
+2026-04-23T16:31:15 INFO [sunspot.github.commits] (31/54) karpathy/deep-vector-quantization: api, 14 commits, 5 active days
+2026-04-23T16:31:16 INFO [sunspot.github.commits] (32/54) karpathy/cryptos: api, 65 commits, 17 active days
+2026-04-23T16:31:16 INFO [sunspot.github.commits] (33/54) karpathy/neuraltalk: api, 0 commits, 0 active days
+2026-04-23T16:31:17 INFO [sunspot.github.commits] (34/54) karpathy/ulogme: api, 0 commits, 0 active days
+2026-04-23T16:31:17 INFO [sunspot.github.commits] (35/54) karpathy/covid-sanity: api, 38 commits, 8 active days
+2026-04-23T16:31:17 INFO [sunspot.github.commits] (36/54) karpathy/gitstats: api, 2 commits, 1 active days
+2026-04-23T16:31:18 INFO [sunspot.github.commits] (37/54) karpathy/pytorch-normalizing-flows: api, 0 commits, 0 active days
+2026-04-23T16:31:18 INFO [sunspot.github.commits] (38/54) karpathy/tsnejs: api, 0 commits, 0 active days
+2026-04-23T16:31:19 INFO [sunspot.github.commits] (39/54) karpathy/reinforcejs: api, 0 commits, 0 active days
+2026-04-23T16:31:19 INFO [sunspot.github.commits] (40/54) karpathy/pytorch-made: api, 0 commits, 0 active days
+2026-04-23T16:31:19 INFO [sunspot.github.commits] (41/54) karpathy/svmjs: api, 0 commits, 0 active days
+2026-04-23T16:31:20 INFO [sunspot.github.commits] (42/54) karpathy/find-birds: api, 0 commits, 0 active days
+2026-04-23T16:31:20 INFO [sunspot.github.commits] (43/54) karpathy/neuraltalk2: api, 0 commits, 0 active days
+2026-04-23T16:31:20 INFO [sunspot.github.commits] (44/54) karpathy/tf-agent: api, 0 commits, 0 active days
+2026-04-23T16:31:21 INFO [sunspot.github.commits] (45/54) karpathy/nipspreview: api, 0 commits, 0 active days
+2026-04-23T16:31:21 INFO [sunspot.github.commits] (46/54) karpathy/paper-notes: api, 0 commits, 0 active days
+2026-04-23T16:31:22 INFO [sunspot.github.commits] (47/54) karpathy/recurrentjs: api, 0 commits, 0 active days
+2026-04-23T16:31:22 INFO [sunspot.github.commits] (48/54) karpathy/EigenLibSVM: api, 0 commits, 0 active days
+2026-04-23T16:31:22 INFO [sunspot.github.commits] (49/54) karpathy/scholaroctopus: api, 0 commits, 0 active days
+2026-04-23T16:31:23 INFO [sunspot.github.commits] (50/54) karpathy/Random-Forest-Matlab: api, 0 commits, 0 active days
+2026-04-23T16:31:23 INFO [sunspot.github.commits] (51/54) karpathy/researchlei: api, 0 commits, 0 active days
+2026-04-23T16:31:24 INFO [sunspot.github.commits] (52/54) karpathy/twoolpy: api, 0 commits, 0 active days
+2026-04-23T16:31:24 INFO [sunspot.github.commits] (53/54) karpathy/forestjs: api, 0 commits, 0 active days
+2026-04-23T16:31:24 INFO [sunspot.github.commits] (54/54) karpathy/MatlabWrapper: api, 0 commits, 0 active days
+2026-04-23T16:31:24 INFO [sunspot.github.commits] commits done: 3275 total commits in window, __all__ max day=51.0, cache hits=0 api repos=54
+2026-04-23T16:31:24 INFO [sunspot.correlate] wrote per-user series under output/correlate/_cross_user_compare/data/commits/by_user (6 users)
+2026-04-23T16:31:24 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:31:24 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:31:25 INFO [sunspot.correlate] wrote output/correlate/_cross_user_compare/visualizations/dynamics/compare_users_30d_ma.png (multi-user 30d MA + z-SSN)
+2026-04-23T16:31:25 INFO [sunspot.correlate] metric ssn: load geodata + correlate + write
+2026-04-23T16:31:25 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:31:25 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:31:28 INFO [sunspot.correlate] metric ssn: n=2294 r=0.006 [-0.035, 0.047] ρ=0.151 [0.111, 0.191] best_lag=-59 peak_rho=0.231
+2026-04-23T16:31:28 INFO [sunspot.correlate] metric f107: load geodata + correlate + write
+2026-04-23T16:31:28 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 8 years (2019 … 2026) → 2922 days
+2026-04-23T16:31:31 INFO [sunspot.correlate] metric f107: n=2306 r=0.017 [-0.024, 0.058] ρ=0.144 [0.103, 0.184] best_lag=-59 peak_rho=0.200
+2026-04-23T16:31:31 INFO [sunspot.correlate] metric dst: load geodata + correlate + write
+2026-04-23T16:31:31 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 8 years (2019 … 2026) → 2922 days
+2026-04-23T16:31:35 INFO [sunspot.correlate] metric dst: n=2275 r=0.067 [0.026, 0.108] ρ=0.163 [0.122, 0.203] best_lag=-56 peak_rho=0.191
+2026-04-23T16:31:35 INFO [sunspot.correlate] metric ap: load geodata + correlate + write
+2026-04-23T16:31:35 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 8 years (2019 … 2026) → 2922 days
+2026-04-23T16:31:38 INFO [sunspot.correlate] metric ap: n=2317 r=0.046 [0.005, 0.086] ρ=0.205 [0.165, 0.244] best_lag=2 peak_rho=0.221
+2026-04-23T16:31:38 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:31:38 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:31:39 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:31:39 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:31:39 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:31:39 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:31:40 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:31:40 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:31:40 INFO [sunspot.correlate] wrote 13 analysis tables under output/correlate/_cross_user_compare/analysis/tables: associations.csv, lag_profile.csv, ccf_profile.csv, ma_correlations.csv, mi_lag.csv, mutual_information.csv, regression_ols.csv, partial_correlation_ar1.csv, cross_metric_spearman.csv, periodogram_top.csv, commits_daily_summary.csv, per_repo_topk.csv, multi_user_topk.csv
+2026-04-23T16:31:40 INFO [sunspot.correlate] wrote output/correlate/_cross_user_compare/visualizations/executive_summary.png (top-level summary card)
+2026-04-23T16:32:17 INFO [sunspot.viz.mosaic] wrote output/correlate/_cross_user_compare/visualizations/mosaic.png and output/correlate/_cross_user_compare/visualizations/mosaic_index.json (sections=16, cols=15)
+2026-04-23T16:32:17 INFO [sunspot.correlate] done: statistics=output/correlate/_cross_user_compare/statistics/report.json | total wall 181.6s
+Wrote under output/correlate/_cross_user_compare (statistics/, data/, visualizations/, analysis/)

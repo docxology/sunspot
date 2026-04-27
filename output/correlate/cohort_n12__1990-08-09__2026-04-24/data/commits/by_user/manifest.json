@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "user": "4dsolutions",
+      "file": "by_user/4dsolutions.csv",
+      "commits_in_window": 3079.0,
+      "active_days": 1089
+    },
+    {
+      "user": "AiwonA1",
+      "file": "by_user/AiwonA1.csv",
+      "commits_in_window": 1020.0,
+      "active_days": 79
+    },
+    {
+      "user": "antirez",
+      "file": "by_user/antirez.csv",
+      "commits_in_window": 4106.0,
+      "active_days": 948
+    },
+    {
+      "user": "docxology",
+      "file": "by_user/docxology.csv",
+      "commits_in_window": 2976.0,
+      "active_days": 300
+    },
+    {
+      "user": "gvanrossum",
+      "file": "by_user/gvanrossum.csv",
+      "commits_in_window": 520.0,
+      "active_days": 220
+    },
+    {
+      "user": "karpathy",
+      "file": "by_user/karpathy.csv",
+      "commits_in_window": 4121.0,
+      "active_days": 824
+    },
+    {
+      "user": "conorheins",
+      "file": "by_user/conorheins.csv",
+      "commits_in_window": 503.0,
+      "active_days": 101
+    },
+    {
+      "user": "BerenMillidge",
+      "file": "by_user/BerenMillidge.csv",
+      "commits_in_window": 2600.0,
+      "active_days": 581
+    },
+    {
+      "user": "alec-tschantz",
+      "file": "by_user/alec-tschantz.csv",
+      "commits_in_window": 1040.0,
+      "active_days": 209
+    },
+    {
+      "user": "soumith",
+      "file": "by_user/soumith.csv",
+      "commits_in_window": 1607.0,
+      "active_days": 510
+    },
+    {
+      "user": "fchollet",
+      "file": "by_user/fchollet.csv",
+      "commits_in_window": 216.0,
+      "active_days": 114
+    },
+    {
+      "user": "bordaigorl",
+      "file": "by_user/bordaigorl.csv",
+      "commits_in_window": 652.0,
+      "active_days": 316
+    }
+  ]
+}

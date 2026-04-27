@@ -1,0 +1,14 @@
+{
+  "mosaic": "visualizations/mosaic.png",
+  "cohort_mosaic": true,
+  "sections": [
+    "banner",
+    "exec",
+    "hdr_dyn",
+    "dyn",
+    "hdr_cohort",
+    "cohort_row",
+    "hdr_mu",
+    "mu"
+  ]
+}

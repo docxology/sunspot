@@ -1,0 +1,68 @@
+2026-04-23T16:23:26 INFO [sunspot.cli] sunspot 0.1.0 | log level INFO
+2026-04-23T16:23:26 INFO [sunspot.cli] GitHub API credentials present (higher rate limit than unauthenticated).
+2026-04-23T16:23:26 INFO [sunspot.cli] --since not provided: looking up first commit date for AiwonA1 ...
+2026-04-23T16:23:26 INFO [sunspot.github.commits] first_commit_date(AiwonA1): search-commits → 2024-10-09
+2026-04-23T16:23:26 INFO [sunspot.cli] --since defaulted to 2024-10-09 (first commit date for AiwonA1)
+2026-04-23T16:23:26 INFO [sunspot.cli] user=AiwonA1 since=2024-10-09 until=2026-04-23 | metrics=ssn,f107,dst,ap
+2026-04-23T16:23:26 INFO [sunspot.cli] output directory: output/correlate/AiwonA1__2024-10-09__2026-04-23
+2026-04-23T16:23:26 INFO [sunspot.correlate] viz style: font_scale=1.15 line_width=1.60 dpi=150 theme=light
+2026-04-23T16:23:26 INFO [sunspot.correlate] phase: fetch GitHub public commit timeseries
+2026-04-23T16:23:27 INFO [sunspot.github.commits] found 24 public non-fork repos for AiwonA1
+2026-04-23T16:23:27 INFO [sunspot.github.commits] commits: 24 repos, window 2024-10-09..2026-04-23 (disk cache on)
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (1/24) AiwonA1/Syntheverse-: cache, 11 commits, 2 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (2/24) AiwonA1/Syntheverse-Hydrogen-Holographic-RAG: cache, 18 commits, 2 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (3/24) AiwonA1/FractalHydrogenHolography-Validation: cache, 37 commits, 3 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (4/24) AiwonA1/HydrogenHolographPilot: cache, 12 commits, 2 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (5/24) AiwonA1/Omniverse-for-Digital-Assistants-and-Agents: cache, 17 commits, 7 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (6/24) AiwonA1/EnterpriseWorld-7DAI-Superintelligence: cache, 11 commits, 2 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (7/24) AiwonA1/ParadiseWorld-1.0-AI-Game: cache, 3 commits, 1 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (8/24) AiwonA1/FractiAgent-1.0: cache, 3 commits, 2 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (9/24) AiwonA1/FractiData-1.0: cache, 3 commits, 1 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (10/24) AiwonA1/fractiverse-router: cache, 12 commits, 1 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (11/24) AiwonA1/L4-L7-Fractal-Self-Awareness-Intelligence-Router: cache, 234 commits, 18 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (12/24) AiwonA1/FractiVerse-1.0-Router--Production: cache, 0 commits, 0 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (13/24) AiwonA1/Zenodo: cache, 0 commits, 0 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (14/24) AiwonA1/Knowledge-Tree: cache, 0 commits, 0 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (15/24) AiwonA1/JWST-SMACS-0723: cache, 4 commits, 2 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (16/24) AiwonA1/Learning: cache, 1 commits, 1 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (17/24) AiwonA1/CERN-Data: cache, 1 commits, 1 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (18/24) AiwonA1/FractiLLM-main: cache, 1 commits, 1 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (19/24) AiwonA1/FractiVerse-Test-Core: cache, 0 commits, 0 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (20/24) AiwonA1/FractiVerse-1.0: cache, 252 commits, 12 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (21/24) AiwonA1/FractiCody1.0: cache, 226 commits, 5 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (22/24) AiwonA1/FractiAI: cache, 129 commits, 20 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (23/24) AiwonA1/Paradise-Game: cache, 4 commits, 1 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] (24/24) AiwonA1/Novelty-V1.0: cache, 41 commits, 7 active days
+2026-04-23T16:23:27 INFO [sunspot.github.commits] commits done: 1020 total commits in window, __all__ max day=164.0, cache hits=24 api repos=0
+2026-04-23T16:23:27 INFO [sunspot.correlate] phase: GitHub done in 0.8s
+2026-04-23T16:23:27 INFO [sunspot.correlate] wrote per-repo series under output/correlate/AiwonA1__2024-10-09__2026-04-23/data/commits/by_repo (24 repos)
+2026-04-23T16:23:27 INFO [sunspot.correlate] wrote output/correlate/AiwonA1__2024-10-09__2026-04-23/data/commits/daily.csv (562 rows) days_with_commits=79 commits_total=1020.0
+2026-04-23T16:23:27 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:23:27 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:23:27 INFO [sunspot.datasets.omni] OMNI2 daily: 3 year files (2024 … 2026)
+2026-04-23T16:23:27 INFO [sunspot.datasets.omni] OMNI2 daily: 1096 UTC days after resample (first load; memory-cached this run)
+2026-04-23T16:23:28 INFO [sunspot.correlate] wrote output/correlate/AiwonA1__2024-10-09__2026-04-23/visualizations/dynamics/commits_and_solar.png (7d/30d MA, z-SSN, z-F10.7)
+2026-04-23T16:23:28 INFO [sunspot.correlate] wrote commit roll-ups: weekly.csv, monthly.csv, dow_means.csv, summary.csv
+2026-04-23T16:23:28 INFO [sunspot.correlate] commits daily: total=1020 active=79/562 (14.1%) mean/day=1.815 mean/active=12.91 max=164 on 2025-02-16 weekday/weekend share=54%/46% streaks active=11d quiet=134d
+2026-04-23T16:23:28 INFO [sunspot.correlate] metric ssn: load geodata + correlate + write
+2026-04-23T16:23:28 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:23:28 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:23:30 INFO [sunspot.correlate] metric ssn: n=539 r=0.109 [0.025, 0.192] ρ=0.161 [0.078, 0.243] best_lag=-37 peak_rho=0.234
+2026-04-23T16:23:30 INFO [sunspot.correlate] metric f107: load geodata + correlate + write
+2026-04-23T16:23:30 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 3 years (2024 … 2026) → 1096 days
+2026-04-23T16:23:32 INFO [sunspot.correlate] metric f107: n=552 r=0.087 [0.004, 0.169] ρ=0.255 [0.174, 0.333] best_lag=0 peak_rho=0.255
+2026-04-23T16:23:32 INFO [sunspot.correlate] metric dst: load geodata + correlate + write
+2026-04-23T16:23:32 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 3 years (2024 … 2026) → 1096 days
+2026-04-23T16:23:34 INFO [sunspot.correlate] metric dst: n=520 r=0.081 [-0.005, 0.166] ρ=0.029 [-0.058, 0.114] best_lag=42 peak_rho=0.199
+2026-04-23T16:23:34 INFO [sunspot.correlate] metric ap: load geodata + correlate + write
+2026-04-23T16:23:34 INFO [sunspot.datasets.omni] OMNI2 daily: memory hit 3 years (2024 … 2026) → 1096 days
+2026-04-23T16:23:36 INFO [sunspot.correlate] metric ap: n=562 r=-0.012 [-0.094, 0.071] ρ=0.050 [-0.033, 0.132] best_lag=42 peak_rho=0.151
+2026-04-23T16:23:36 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:23:36 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:23:37 INFO [sunspot.datasets.silso] SILSO load: https://www.sidc.be/silso/DATA/SN_d_tot_V2.0.csv
+2026-04-23T16:23:37 INFO [sunspot.datasets.silso] SILSO daily V2.0: 76061 rows in range
+2026-04-23T16:23:37 INFO [sunspot.correlate] wrote 12 analysis tables under output/correlate/AiwonA1__2024-10-09__2026-04-23/analysis/tables: associations.csv, lag_profile.csv, ccf_profile.csv, ma_correlations.csv, mi_lag.csv, mutual_information.csv, regression_ols.csv, partial_correlation_ar1.csv, cross_metric_spearman.csv, periodogram_top.csv, commits_daily_summary.csv, per_repo_topk.csv
+2026-04-23T16:23:37 INFO [sunspot.correlate] wrote output/correlate/AiwonA1__2024-10-09__2026-04-23/visualizations/executive_summary.png (top-level summary card)
+2026-04-23T16:24:11 INFO [sunspot.viz.mosaic] wrote output/correlate/AiwonA1__2024-10-09__2026-04-23/visualizations/mosaic.png and output/correlate/AiwonA1__2024-10-09__2026-04-23/visualizations/mosaic_index.json (sections=14, cols=15)
+2026-04-23T16:24:11 INFO [sunspot.correlate] done: statistics=output/correlate/AiwonA1__2024-10-09__2026-04-23/statistics/report.json | total wall 44.8s
+Wrote under output/correlate/AiwonA1__2024-10-09__2026-04-23 (statistics/, data/, visualizations/, analysis/)

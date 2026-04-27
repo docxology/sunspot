@@ -1,0 +1,12 @@
+4dsolutions
+AiwonA1
+antirez
+docxology
+gvanrossum
+karpathy
+conorheins
+BerenMillidge
+alec-tschantz
+soumith
+fchollet
+bordaigorl

@@ -1,5 +1,7 @@
 # AGENTS — `.github/`
 
+Human-oriented walkthrough: [`README.md`](README.md).
+
 | path | content |
 |------|---------|
 | [`workflows/ci.yml`](workflows/ci.yml) | GitHub Actions: Ubuntu, `astral-sh/setup-uv`, working directory default workspace root |

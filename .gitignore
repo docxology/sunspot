@@ -7,10 +7,10 @@ __pycache__/
 *.egg-info/
 dist/
 build/
-data/raw/
-output/*
+data/raw
 !output/README.md
 !output/github_data/README.md
 *.sqlite
 .coverage
 htmlcov/
+output/github_data/github_cache.sqlite3
