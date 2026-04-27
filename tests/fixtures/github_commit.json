@@ -1,0 +1,7 @@
+{
+  "sha": "abc",
+  "commit": {
+    "author": { "date": "2020-01-15T12:00:00Z" },
+    "committer": { "date": "2020-01-15T12:00:00Z" }
+  }
+}
