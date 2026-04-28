@@ -10,9 +10,9 @@
 | `client.default_sqlite_path()` | Default `output/github_data/github_cache.sqlite3` (or `SUNSPOT_CACHE`); may one-time copy from `~/.cache/sunspot/` |
 | `commit_cache.github_data_dir()` | `output/github_data` (cwd-relative) |
 | `commit_cache.commit_series_dir()` | `github_data_dir()/commit_series` or `SUNSPOT_COMMIT_SERIES` |
-| `client.http_client()` | `httpx.Client` to `https://api.github.com` |
-| `commits.list_public_repos(user_login, client=)` | Paginated public non-fork repos |
-| `commits.iter_commits(user, full_name, default_branch, since=, until=, client=)` | Yields authored `(sha, datetime)` from `/commits?author=user&since=...&until=...` |
+| `client.http_client()` | `httpx.Client` to `https://api.github.com` (60s read, 20s connect); `commits._get` retries `httpx.RequestError` up to 5 times with backoff |
+| `commits.list_public_repos(user_login, client=)` | Paginated public non-fork repos; empty list on HTTP 404 (missing user) |
+| `commits.iter_commits(user, full_name, default_branch, since=, until=, client=)` | Yields authored `(sha, datetime)` from `/commits?author=user&since=...&until=...`; no rows on HTTP 409/404. |
 | `commits.public_commit_time_series(user_login, since=, until=)` | `dict` keyed by `full_name` and `"__all__"` → daily `Series` |
 | `commit_cache.try_load_first_commit_date` / `save_first_commit_date` | JSON in `default_cache_dir()/first_commit_date/{login}.json` (sanitized name). |
 | `commits.first_commit_date(user_login, client=, use_cache=True) -> date \| None` | If `use_cache` and `client` is `None`, returns cached date when present. Else: `GET /search/commits?…` then `/users/…` `created_at`. Writes successful results to the cache. Used by the CLI when `--since` is omitted. |

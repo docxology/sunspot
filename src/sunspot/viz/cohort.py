@@ -204,3 +204,191 @@ def save_cohort_user_summary(
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     metadata_footer(fig, parts=_meta(period, [f"users={len(rows)}"]), style=s)
     _save(fig, Path(out), s)
+
+
+def save_cohort_activity_scatter(
+    user_summary: list[dict[str, object]] | pd.DataFrame,
+    *,
+    out: Path,
+    period: Period = None,
+    n_cohort: int | None = None,
+    style: PlotStyle | None = None,
+) -> None:
+    """
+    For large *n* cohorts: scatter of total commits vs active days (all logins),
+    with jitter-friendly alpha. Skips the unreadable per-user bar charts.
+    """
+    s = _push(style)
+    if isinstance(user_summary, pd.DataFrame):
+        df = user_summary
+    else:
+        df = pd.DataFrame(user_summary)
+    if df.empty or "active_days" not in df.columns or "total_commits" not in df.columns:
+        return
+    ad = pd.to_numeric(df["active_days"], errors="coerce").to_numpy(dtype=float)
+    tc = pd.to_numeric(df["total_commits"], errors="coerce").to_numpy(dtype=float)
+    n = int(len(df))
+    fig, ax = plt.subplots(figsize=(7.2, 5.2))
+    ax.scatter(
+        ad, tc, s=12, alpha=0.35, color=s.palette[0], edgecolors="none",
+    )
+    ax.set_xlabel("active days in window")
+    ax.set_ylabel("total commits")
+    ax.set_title("Cohort activity (all logins)")
+    ax.grid(True, alpha=0.4)
+    fig.tight_layout(rect=(0, 0.04, 1, 1))
+    extras = [f"points={n}"]
+    if n_cohort is not None:
+        extras.append(f"cohort_n={n_cohort}")
+    metadata_footer(fig, parts=_meta(period, extras), style=s)
+    _save(fig, Path(out), s)
+
+
+def save_correlation_distribution_histogram(
+    mu_long: pd.DataFrame,
+    *,
+    metric: str,
+    out: Path,
+    out_csv: Path,
+    period: Period = None,
+    style: PlotStyle | None = None,
+    n_cohort: int | None = None,
+) -> dict[str, Any]:
+    """
+    Histogram of Spearman ``rho`` across users for one geophysical metric.
+
+    When some users have non-finite ``rho``, the figure uses two panels: a bar
+    for the count *without* finite ρ (so the full cohort size is shown) and a
+    histogram of *finite* ρ. Bar heights sum with histogram counts to the
+    table row count (and ``n_cohort`` when set).
+
+    Writes ``out`` (PNG) and ``out_csv`` with **one row per user** for that metric.
+    """
+    s = _push(style)
+    m = str(metric).strip()
+    sel = mu_long[mu_long["metric"].astype(str).str.strip() == m].copy()
+    path_csv = Path(out_csv)
+    path_csv.parent.mkdir(parents=True, exist_ok=True)
+    col_order = (
+        "user", "metric", "n", "total_commits", "active_days", "rho", "p",
+        "insufficient_active", "q_significant",
+    )
+    cols = [c for c in col_order if c in sel.columns]
+    (sel[cols] if cols else sel).to_csv(path_csv, index=False)
+
+    rho = pd.to_numeric(sel["rho"], errors="coerce").to_numpy(dtype=float)
+    finite = rho[np.isfinite(rho)]
+    n_in_table = int(len(sel))
+    n_finite = int(finite.size)
+    n_nonfinite = n_in_table - n_finite
+    n_insuff = 0
+    if "insufficient_active" in sel.columns:
+        n_insuff = int(sel["insufficient_active"].fillna(False).astype(bool).sum())
+    n_account = int(n_cohort) if n_cohort is not None else n_in_table
+    summary: dict[str, Any] = {
+        "metric": m,
+        "n_rows": n_in_table,
+        "n_finite_rho": n_finite,
+        "n_no_finite_rho": n_nonfinite,
+        "n_insufficient_active": n_insuff,
+    }
+    if n_cohort is not None:
+        summary["n_cohort"] = int(n_cohort)
+    if n_finite == 0:
+        summary.update({
+            "mean": None, "std": None, "median": None, "q25": None, "q75": None,
+        })
+        fig, ax0 = plt.subplots(figsize=(7.5, 4.5))
+        ax0.bar(
+            0, n_in_table, color=s.palette[2], width=0.55, alpha=0.88,
+            edgecolor=s.axis_fg, linewidth=0.4, label="no finite ρ",
+        )
+        ax0.set_xticks([0], [f"no finite ρ\n({n_in_table} users)"])
+        ax0.set_ylabel("user count (full cohort for this metric)")
+        ax0.set_title(f"No Spearman ρ to bin · {m}")
+        ax0.set_ylim(0, max(n_in_table, 1) * 1.08)
+        ax0.grid(axis="y", alpha=0.4)
+        fig.suptitle(
+            f"Cohort = {n_account} users in table; all lack finite ρ (inactive / low variance)",
+            fontsize=s.base_size * 0.85, y=1.02,
+        )
+        fig.tight_layout(rect=(0, 0.05, 1, 0.96))
+        foot = [f"metric={m}", f"rows={n_in_table}"]
+        if n_cohort is not None:
+            foot.append(f"cohort_n={n_cohort}")
+        if n_insuff:
+            foot.append(f"insufficient_active={n_insuff}")
+        metadata_footer(fig, parts=_meta(period, foot), style=s)
+        _save(fig, Path(out), s)
+        return summary
+
+    mean_v = float(np.mean(finite))
+    std_v = float(np.std(finite, ddof=1)) if n_finite > 1 else 0.0
+    med_v = float(np.median(finite))
+    q25, q75 = float(np.quantile(finite, 0.25)), float(np.quantile(finite, 0.75))
+    summary.update({
+        "mean": mean_v,
+        "std": std_v,
+        "median": med_v,
+        "q25": q25,
+        "q75": q75,
+    })
+
+    if n_nonfinite > 0:
+        fig, (ax0, ax1) = plt.subplots(
+            1, 2, figsize=(9.2, 4.5),
+            gridspec_kw={"width_ratios": [1, 2.1], "wspace": 0.28},
+        )
+        ax0.bar(
+            0, n_nonfinite, color=s.palette[2], width=0.55, alpha=0.88,
+            edgecolor=s.axis_fg, linewidth=0.4,
+        )
+        ax0.set_xticks([0], ["no finite ρ"])
+        ax0.set_ylabel("user count")
+        ax0.set_title("Not in ρ bins")
+        ax0.set_ylim(0, max(n_nonfinite, 1) * 1.08)
+        ax0.grid(axis="y", alpha=0.4)
+        ax = ax1
+    else:
+        fig, ax = plt.subplots(figsize=(7.5, 4.5))
+
+    n_bins = min(48, max(8, n_finite // 5 + 1))
+    ax.hist(finite, bins=n_bins, color=s.palette[0], alpha=0.88, edgecolor=s.axis_fg, linewidth=0.4)
+    ax.axvline(
+        med_v, color=s.palette[1], linestyle="--", linewidth=1.2,
+        label=f"median={med_v:+.3f}",
+    )
+    ax.set_xlabel("Spearman ρ (commits vs metric)")
+    ax.set_ylabel("user count")
+    ax.set_title(f"Finite ρ only (n={n_finite})")
+    ax.legend(loc="upper right", fontsize=s.base_size * 0.75)
+    ax.grid(axis="y", alpha=0.4)
+    if n_nonfinite > 0:
+        fig.suptitle(
+            f"Cross-user distribution · {m} — {n_account} users = "
+            f"{n_nonfinite} w/o finite ρ (left) + {n_finite} w/ (right hist)",
+            fontsize=s.base_size * 0.82, y=1.03,
+        )
+    else:
+        fig.suptitle(
+            f"Cross-user distribution · {m} — all {n_account} users have finite ρ",
+            fontsize=s.base_size * 0.85, y=1.02,
+        )
+    fig.tight_layout(rect=(0, 0.05, 1, 0.93))
+    extras = [
+        f"metric={m}",
+        (
+            f"N={n_account}: {n_nonfinite} w/o + {n_finite} w/ finite ρ"
+            if n_nonfinite
+            else f"N={n_account} (all with finite ρ)"
+        ),
+        f"n_finite={n_finite}",
+        f"mean={mean_v:+.3f} IQR=[{q25:+.3f},{q75:+.3f}]",
+    ]
+    if n_cohort is not None and n_cohort != n_in_table:
+        extras.append(f"rows_vs_cohort={n_in_table}/{n_cohort}")
+    if n_insuff:
+        extras.append(f"insufficient_active={n_insuff}")
+    metadata_footer(fig, parts=_meta(period, extras), style=s)
+    _save(fig, Path(out), s)
+    return summary

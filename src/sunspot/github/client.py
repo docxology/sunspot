@@ -1,16 +1,14 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
 
 import httpx
 
+from sunspot import config
+
 
 def github_token() -> str | None:
-    t = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    if t and t.strip():
-        return t.strip()
-    return None
+    return config.github_token_from_env()
 
 
 def has_github_token() -> bool:
@@ -38,10 +36,8 @@ def default_sqlite_path() -> Path:
     containing ``github_cache.sqlite3``). The parent directory is created if
     missing; ``~`` in ``SUNSPOT_CACHE`` is expanded.
     """
-    d = os.environ.get("SUNSPOT_CACHE")
-    if d and str(d).strip():
-        base = Path(d).expanduser().resolve()
-    else:
+    base = config.sqlite_parent_dir_from_env()
+    if base is None:
         from sunspot.github.commit_cache import github_data_dir
 
         base = github_data_dir()
@@ -53,7 +49,8 @@ def default_sqlite_path() -> Path:
 def http_client() -> httpx.Client:
     return httpx.Client(
         base_url="https://api.github.com",
-        timeout=httpx.Timeout(30.0, connect=10.0),
+        # connect=20: flaky networks can exceed 10s; _get() also retries httpx.RequestError
+        timeout=httpx.Timeout(60.0, connect=20.0),
         headers=github_headers(),
         follow_redirects=True,
     )

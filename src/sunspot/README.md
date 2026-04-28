@@ -1,7 +1,7 @@
 # `sunspot` package
 
 Typer CLI in `cli.py` with two entry points (`correlate`, `cohort`),
-orchestration in `correlate.py` / `cohort.py`, with subpackages for data
+orchestration in `correlate/` / `cohort.py`, with subpackages for data
 ingest, GitHub, alignment, statistics, tables, and plotting.
 
 ## Layout
@@ -9,7 +9,8 @@ ingest, GitHub, alignment, statistics, tables, and plotting.
 | path | role |
 |------|------|
 | `cli.py` | `sunspot` console script (`sunspot correlate …`, `sunspot cohort …`) |
-| `correlate.py` | Single-user pipeline: join commits with geophysical series; write report, commit data under `data/commits/`, per-metric tree, summaries, plots, mosaic |
+| `correlate/` | Single-user pipeline (`pipeline.run_correlation_report`): join commits with geophysical series; write report, `data/commits/`, per-metric tree, summaries, plots, mosaic (see `correlate/AGENTS.md`) |
+| `config.py` | Env helpers + defaults consumed by CLI, `datasets.cache`, `github`, `viz.style` |
 | `cohort.py` + `cohort_presets.py` | Multi-user–only pipeline (`report_kind="cohort"`): no per-metric deep dive, adds cohort PCA / dendrogram / weekly heatmap |
 | `tables.py` | Plaintext CSV sidecars under `analysis/tables/` (one per statistical block) + schema `README.md` |
 | `logutil.py` | Logger setup (`sunspot` logger, `--log-level` / `SUNSPOT_LOG_LEVEL`) |

@@ -41,12 +41,16 @@ On startup, `configure_sunspot_logging` (see [logutil.md](logutil.md)) runs, the
 
 ## `cohort`
 
-*Either* comma-separated `logins` *or* `--preset` (see [`cohort_presets.py`](../../src/sunspot/cohort_presets.py): `panel`, `ai`, `famous`, `wide`, `full` — not both at once). Presets are expanding lists of public GitHub logins for comparison-style runs.
+*Either* `--preset` **or** a combination of optional comma `logins` and/or `--logins-file` (see [`cohort_presets.py`](../../src/sunspot/cohort_presets.py)). Do not mix `--preset` with file/arg logins.
 
 | option / arg | type | notes |
 |--------------|------|--------|
-| `logins` | argument, optional | Comma list; required if no `--preset`. |
+| `logins` | argument, optional | Comma list; merged with `--logins-file` (file first, then this). |
+| `--logins-file` | path | One login per line, `#` comments; union with `logins`. |
 | `--preset` | string | `panel`, `ai`, `famous`, `wide`, or `full`. |
+| `--min-active-days` | int | Default `30` → `run_cohort_report` / `multi_user_associations`. |
+| `--large-cohort` | flag | Skip O(n²) pairwise user stats and non-scaling cohort plots; keep associations + histograms. |
+| `--large-cohort-threshold` | int | Default `200`: also enable that behavior when login count ≥ threshold. |
 | `--since` | `YYYY-MM-DD`, optional | UTC start. Omitted: see `--since-policy` and [github.md](github.md) `first_commit_date` per login. |
 | `--since-policy` | string | Used only when `--since` is omitted. Default **`union`**: `min` of known first-commit dates (longest calendar window; aligns with long solar/geomag series). **`intersection`** (aliases accepted in code: `i`, `max`, `tight`): `max` of first commits — shortest span where every account already existed. |
 | `--until` | `YYYY-MM-DD`, optional | Default: today (UTC). |

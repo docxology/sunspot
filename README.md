@@ -84,7 +84,7 @@ flowchart TD
 | Subfolder | Contents |
 |-----------|----------|
 | `statistics/` | `report.json` — Pearson r + Fisher-z 95 % CI, Spearman ρ + Bonett–Wright CI, optional bootstrap CI, Kendall τ, lag block (best lag, profile p-min, FDR-significant lag count), CCF (peak / Bartlett band, AR(1) pre-whitening flag), Lomb–Scargle dominant period and top-5 peaks, cross-metric matrix, per-repo top-10, multi-user top-k. |
-| `data/` | `commits_daily.csv`; per-repo `commits/by_repo/*.csv` + `commits/manifest.json`; per-metric `{m}/aligned_daily.csv` and `{m}/rolling.csv`. |
+| `data/` | `commits/daily.csv` and roll-ups under `commits/`; per-repo `commits/by_repo/*.csv` + `commits/manifest.json`; per-metric `{m}/aligned_daily.csv` and `{m}/rolling.csv`. |
 | `visualizations/` | `dynamics/`, `overview/`, `per_repo/`, per-metric tiles, optional `multi_user/`, and a `mosaic.png` graphical abstract. |
 | `analysis/` | `summary.txt`, `methods.md`, `per_repo_summary.csv`, `multi_user_associations.csv` (when `--compare-users` is set). |
 
@@ -124,6 +124,8 @@ The Python package in this repository is your project’s license; **SILSO** dat
 ## Documentation
 
 - [docs/README.md](docs/README.md) — modular API reference (`docs/api/*.md`) for public `sunspot` functions and subpackages
+- [docs/configuration.md](docs/configuration.md) — environment variables and `sunspot.config`
+- [docs/large_cohort.md](docs/large_cohort.md) — many logins, `--logins-file`, large-cohort histograms
 - [SPEC.md](SPEC.md) — scope, ethics, and limitations
 
 ## See also

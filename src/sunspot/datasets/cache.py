@@ -4,20 +4,18 @@ from __future__ import annotations
 
 import hashlib
 import logging
-import os
 from pathlib import Path
 from typing import Any
 
 import httpx
 
+from sunspot import config
+
 _LOG = logging.getLogger(__name__)
 
 
 def default_cache_dir() -> Path:
-    base = os.environ.get("XDG_CACHE_HOME")
-    if base:
-        return Path(base) / "sunspot"
-    return Path.home() / ".cache" / "sunspot"
+    return config.dataset_cache_dir()
 
 
 def cache_path_for_url(url: str, suffix: str) -> Path:

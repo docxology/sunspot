@@ -1,0 +1,7 @@
+# sample logins for parser tests (not for live API)
+alice
+bob
+
+charlie
+# trailing
+dave

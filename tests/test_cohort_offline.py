@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from sunspot.cohort import run_cohort_report
+from sunspot.cohort import read_logins_file, regenerate_cohort_visualizations, run_cohort_report
 from sunspot.cohort_presets import expand_preset
 
 
@@ -73,3 +73,82 @@ def test_run_cohort_report_offline(
     assert (tmp_path / "analysis" / "multi_user_associations.csv").is_file()
     assert (tmp_path / "analysis" / "tables" / "cohort_user_summary.csv").is_file()
     assert (tmp_path / "visualizations" / "mosaic.png").is_file()
+    assert (tmp_path / "visualizations" / "cohort" / "correlation_distribution_ssn.png").is_file()
+    assert (tmp_path / "analysis" / "correlation_distribution_ssn.csv").is_file()
+    assert "correlation_distribution" in rj
+    assert "ssn" in rj["correlation_distribution"]
+
+
+@patch("sunspot.cohort._series_for_metric", side_effect=_metric_factory)
+@patch("sunspot.cohort.public_commit_time_series", side_effect=_mock_commits)
+def test_run_cohort_report_large_cohort_skips_pairwise(
+    _pc: object, _met: object, tmp_path: Path,
+) -> None:
+    s0, u0 = date(2023, 1, 1), date(2023, 4, 1)
+    run_cohort_report(
+        ["u1", "u2"],
+        since=s0,
+        until=u0,
+        metrics=["ssn"],
+        out_dir=tmp_path,
+        use_commit_cache=True,
+        make_mosaic=False,
+        large_cohort=True,
+    )
+    rj = json.loads((tmp_path / "statistics" / "report.json").read_text())
+    assert rj.get("large_cohort") is True
+    assert "user_user_spearman_smoothed_30d" not in rj
+    assert "correlation_distribution" in rj
+    assert (tmp_path / "visualizations" / "cohort" / "correlation_distribution_ssn.png").is_file()
+    assert (tmp_path / "visualizations" / "cohort" / "user_activity_scatter.png").is_file()
+    assert not (tmp_path / "visualizations" / "cohort" / "user_pca_scatter.png").exists()
+
+
+def test_read_logins_file_parses_comments_and_order() -> None:
+    p = __import__("pathlib").Path(__file__).resolve().parent / "fixtures" / "cohort_logins.txt"
+    got = read_logins_file(p)
+    assert got == ["alice", "bob", "charlie", "dave"]
+
+
+@patch("sunspot.cohort._series_for_metric", side_effect=_metric_factory)
+@patch("sunspot.cohort.public_commit_time_series", side_effect=_mock_commits)
+def test_cohort_respects_min_active_days(
+    _pc: object, _met: object, tmp_path: Path,
+) -> None:
+    s0, u0 = date(2023, 1, 1), date(2023, 4, 1)
+    run_cohort_report(
+        ["u1", "u2"],
+        since=s0,
+        until=u0,
+        metrics=["ssn"],
+        out_dir=tmp_path,
+        min_active_days=5000,
+        make_mosaic=False,
+    )
+    rj = json.loads((tmp_path / "statistics" / "report.json").read_text())
+    assert rj.get("min_active_days") == 5000
+    assoc = pd.read_csv(tmp_path / "analysis" / "multi_user_associations.csv")
+    assert len(assoc) == 2
+    assert assoc["insufficient_active"].all()
+
+
+@patch("sunspot.cohort._series_for_metric", side_effect=_metric_factory)
+@patch("sunspot.cohort.public_commit_time_series", side_effect=_mock_commits)
+def test_regenerate_cohort_visualizations_rewrites_pngs(
+    _pc: object, _met: object, tmp_path: Path,
+) -> None:
+    s0, u0 = date(2023, 1, 1), date(2023, 4, 1)
+    run_cohort_report(
+        ["u1", "u2"],
+        since=s0,
+        until=u0,
+        metrics=["ssn", "f107"],
+        out_dir=tmp_path,
+        make_mosaic=False,
+    )
+    pca = tmp_path / "visualizations" / "cohort" / "user_pca_scatter.png"
+    assert pca.is_file()
+    pca.unlink()
+    assert not pca.is_file()
+    regenerate_cohort_visualizations(tmp_path, make_mosaic=False)
+    assert pca.is_file() and pca.stat().st_size > 100

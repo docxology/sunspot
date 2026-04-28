@@ -12,11 +12,12 @@ Plots read these defaults via :func:`get_style`. Override per-plot by passing
 
 from __future__ import annotations
 
-import os
 from dataclasses import dataclass, field, replace
 from datetime import date
 
 import matplotlib
+
+from sunspot import config
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
@@ -78,10 +79,7 @@ class PlotStyle:
 
 
 def _env_style() -> PlotStyle:
-    fs = float(os.environ.get("SUNSPOT_FONT_SCALE", "1.45"))
-    lw = float(os.environ.get("SUNSPOT_LINEWIDTH", "1.9"))
-    dpi = int(os.environ.get("SUNSPOT_DPI", "300"))
-    theme = os.environ.get("SUNSPOT_THEME", "light").strip().lower() or "light"
+    fs, lw, dpi, theme = config.read_plot_style_env()
     palette = PALETTE_DARK if theme == "dark" else PALETTE_LIGHT
     return PlotStyle(font_scale=fs, line_width=lw, dpi=dpi, theme=theme, palette=palette)
 

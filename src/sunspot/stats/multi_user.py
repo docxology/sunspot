@@ -28,10 +28,15 @@ def multi_user_associations(
     For every (user, metric) pair, compute rank/linear correlation over aligned
     UTC days. Returns long-form DataFrame with columns:
 
-    ``user, metric, n, total_commits, active_days, rho, p, q_significant``
+    ``user, metric, n, total_commits, active_days, rho, p, insufficient_active,
+    q_significant``
+
+    Users with ``active_days < min_active_days`` still get one row per metric
+    with ``rho``/``p`` = NaN and ``insufficient_active`` = True (cohort-wide
+    tables and histogram CSVs list every login).
 
     ``q_significant`` is the BH-FDR flag at level ``fdr_q``, computed
-    independently per metric across users.
+    independently per metric across users (finite ``p`` only).
     """
     rows: list[dict[str, object]] = []
     metric_cols = list(metrics_frame.columns)
@@ -39,10 +44,23 @@ def multi_user_associations(
         c = s.sort_index().astype(float)
         active = int((c > 0).sum())
         total = float(c.sum())
-        if active < min_active_days:
-            _LOG.debug("multi-user: skip %s (active=%d < %d)", user, active, min_active_days)
-            continue
         for m in metric_cols:
+            if active < min_active_days:
+                _LOG.debug(
+                    "multi-user: %s metric=%s inactive window (active=%d < %d)",
+                    user, m, active, min_active_days,
+                )
+                rows.append({
+                    "user": user,
+                    "metric": m,
+                    "n": 0,
+                    "total_commits": total,
+                    "active_days": active,
+                    "rho": float("nan"),
+                    "p": float("nan"),
+                    "insufficient_active": True,
+                })
+                continue
             g = metrics_frame[m].astype(float)
             common = c.index.intersection(g.index)
             cc = c.reindex(common).to_numpy(dtype=float)
@@ -52,9 +70,14 @@ def multi_user_associations(
             gg = gg[mask]
             if cc.size < 4 or float(np.std(cc)) == 0.0 or float(np.std(gg)) == 0.0:
                 rows.append({
-                    "user": user, "metric": m, "n": int(cc.size),
-                    "total_commits": total, "active_days": active,
-                    "rho": float("nan"), "p": float("nan"),
+                    "user": user,
+                    "metric": m,
+                    "n": int(cc.size),
+                    "total_commits": total,
+                    "active_days": active,
+                    "rho": float("nan"),
+                    "p": float("nan"),
+                    "insufficient_active": False,
                 })
                 continue
             if method == "spearman":
@@ -64,15 +87,23 @@ def multi_user_associations(
             else:
                 r = scipy_stats.pearsonr(cc, gg)
             rows.append({
-                "user": user, "metric": m, "n": int(cc.size),
-                "total_commits": total, "active_days": active,
+                "user": user,
+                "metric": m,
+                "n": int(cc.size),
+                "total_commits": total,
+                "active_days": active,
                 "rho": float(r.statistic if hasattr(r, "statistic") else r[0]),
                 "p": float(r.pvalue if hasattr(r, "pvalue") else r[1]),
+                "insufficient_active": False,
             })
     df = pd.DataFrame(rows)
     if df.empty:
-        df["q_significant"] = pd.Series(dtype=bool)
-        return df
+        return pd.DataFrame(
+            columns=[
+                "user", "metric", "n", "total_commits", "active_days",
+                "rho", "p", "insufficient_active", "q_significant",
+            ],
+        )
     flags = np.zeros(len(df), dtype=bool)
     for m in metric_cols:
         sel = df["metric"].to_numpy() == m

@@ -131,3 +131,41 @@ def test_cohort_accepts_logging_flags(tmp_path: Path, monkeypatch) -> None:
     assert result.exit_code == 0, result.output
     assert seen["logins"] == ["alice", "bob"]
     assert seen["kwargs"]["out_dir"] == out
+
+
+def test_cohort_logins_file_merges_and_passes_large_threshold(
+    tmp_path: Path, monkeypatch,
+) -> None:
+    """File + comma logins union; threshold triggers large_cohort in kwargs."""
+    f = tmp_path / "logins.txt"
+    f.write_text("alice\nbob\n", encoding="utf-8")
+    seen: dict[str, object] = {}
+
+    def fake_run(logins, **kwargs):
+        seen["logins"] = list(logins)
+        seen["kwargs"] = kwargs
+        out_dir = Path(kwargs["out_dir"])
+        (out_dir / "statistics").mkdir(parents=True, exist_ok=True)
+        (out_dir / "statistics" / "report.json").write_text("{}", encoding="utf-8")
+        return {}
+
+    monkeypatch.setattr(cli_mod, "run_cohort_report", fake_run)
+    # carol from arg -> order file first then charlie,dave -> wait we need 3 for threshold 3
+    f2 = tmp_path / "l2.txt"
+    f2.write_text("alice\nbob\ncarol\n", encoding="utf-8")
+    out = tmp_path / "o"
+    result = CliRunner().invoke(
+        app,
+        [
+            "cohort", "dave",  # 4th login
+            "--logins-file", str(f2),
+            "--since", "2020-01-01",
+            "--until", "2020-01-31",
+            "--out", str(out),
+            "--large-cohort-threshold", "3",
+        ],
+    )
+    assert result.exit_code == 0, result.output
+    assert set(seen["logins"]) == {"alice", "bob", "carol", "dave"}
+    assert seen["kwargs"].get("large_cohort") is True
+    assert seen["kwargs"].get("min_active_days") == 30

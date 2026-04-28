@@ -1,11 +1,18 @@
 import json
 from datetime import date
 from pathlib import Path
+from unittest.mock import MagicMock
 
 import httpx
 
 from sunspot.github import commits as gh
-from sunspot.github.commits import _commit_dt, first_commit_date, iter_commits
+from sunspot.github.commits import (
+    _commit_dt,
+    _get,
+    first_commit_date,
+    iter_commits,
+    list_public_repos,
+)
 
 FIX = Path(__file__).parent / "fixtures" / "github_commit.json"
 
@@ -125,3 +132,54 @@ def test_iter_commits_scopes_api_to_author_and_window(tmp_path, monkeypatch) -> 
     assert seen_params["sha"] == "main"
     assert seen_params["since"] == "2024-01-01T00:00:00Z"
     assert seen_params["until"] == "2024-01-31T23:59:59Z"
+
+
+def test_iter_commits_empty_on_404(tmp_path, monkeypatch) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(404, json={"message": "Not Found"})
+
+    monkeypatch.setenv("SUNSPOT_CACHE", str(tmp_path))
+    client = _client_with(httpx.MockTransport(handler))
+    try:
+        rows = list(
+            iter_commits(
+                "alice",
+                "alice/gone",
+                "main",
+                since=date(2024, 1, 1),
+                until=date(2024, 1, 31),
+                client=client,
+            )
+        )
+    finally:
+        client.close()
+    assert rows == []
+
+
+def test_get_retries_on_transient_request_error(monkeypatch) -> None:
+    monkeypatch.setattr("sunspot.github.commits.time.sleep", lambda _s: None)
+    req = httpx.Request("GET", "https://api.github.com/foo")
+    ok = httpx.Response(200, json={}, request=httpx.Request("GET", "https://api.github.com/foo"))
+    c = MagicMock()
+    c.get = MagicMock(
+        side_effect=[
+            httpx.ConnectTimeout("timeout", request=req),
+            httpx.ConnectTimeout("timeout", request=req),
+            ok,
+        ],
+    )
+    r = _get(c, "/foo", {})
+    assert r.status_code == 200
+    assert c.get.call_count == 3
+
+
+def test_list_public_repos_empty_on_404(tmp_path, monkeypatch) -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(404, json={"message": "Not Found"})
+
+    monkeypatch.setenv("SUNSPOT_CACHE", str(tmp_path))
+    client = _client_with(httpx.MockTransport(handler))
+    try:
+        assert list_public_repos("goneuser", client=client) == []
+    finally:
+        client.close()

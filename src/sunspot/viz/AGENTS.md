@@ -82,6 +82,8 @@ crossing the Bartlett band.
 | `save_cohort_dendrogram(users_commits, *, out, period=None, style=None)` | `cohort/user_dendrogram.png` |
 | `save_cohort_timeseries_heatmap(users_commits, *, out, max_cols=260, period=None, style=None)` | `cohort/user_weekly_heatmap.png` |
 | `save_cohort_user_summary(user_summary, *, out, period=None, style=None)` | `cohort/user_summary.png` |
+| `save_cohort_activity_scatter(user_summary, *, out, period=None, n_cohort=None, style=None)` | large-cohort: `user_activity_scatter.png` (commits vs active days) |
+| `save_correlation_distribution_histogram(mu_long, *, metric, out, out_csv, period=None, style=None, n_cohort=None) -> dict` | `cohort/correlation_distribution_{metric}.png` + one-row-per-user CSV (inc. `insufficient_active`) |
 
 ## `mosaic.py`
 

@@ -1,6 +1,8 @@
 # AGENTS — `tests`
 
-All tests run offline (no network) unless marked `@pytest.mark.integration`.
+Default `uv run pytest` applies `-m "not integration"` from `pyproject.toml`, so
+network tests are skipped unless you run `uv run pytest -m integration` or override
+`addopts`. Other tests are offline (no network).
 Parsers exercise **real** dataset snippets in `fixtures/`, not hand-rolled mock
 numbers, so format regressions surface as failed parses instead of silent drift.
 
@@ -13,8 +15,10 @@ numbers, so format regressions surface as failed parses instead of silent drift.
 | `test_omni_parse.py`        | `_parse_omni2_hourly_line` + `_parse_omni2_hourly_lines` → daily resample (`fixtures/omni2_oneline.txt`) |
 | `test_github_model.py`      | `_commit_dt` on `fixtures/github_commit.json`; `first_commit_date` across search-commits / `/users` fallback / both-fail; `iter_commits` request scoping via `httpx.MockTransport` |
 | `test_github_client_cache.py` | `github_token` / `github_headers` / `default_sqlite_path` env handling; `commit_series_cache_path` + `save_/try_load_commit_series` round-trip (sanitized segments, meta JSON, cache-miss path) |
+| `test_config.py`            | `sunspot.config`: `dataset_cache_dir`, `github_token_from_env`, `read_plot_style_env` fallbacks |
 | `test_datasets_cache.py`    | `default_cache_dir` / `cache_path_for_url` / `ensure_cached_url` + `read_text_cached` with an `httpx.MockTransport`; HTTP 404 surfaces; `default_correlate_dir` + `default_cohort_dir` slug shape |
-| `test_cli_defaults.py`      | Typer `CliRunner`: `--since` defaults via monkeypatched `first_commit_date`, `--until` defaults to today, swapped-dates rejection, unresolvable-`--since` error text, cohort logging flags |
+| `test_integration_network.py` | `@pytest.mark.integration`: real HTTP to pinned SILSO URL via `ensure_cached_url` (opt-in; see `pyproject.toml` `addopts`) |
+| `test_cli_defaults.py`      | Typer `CliRunner`: correlate `--since`/`--until`; cohort `--logins-file` merge + `large_cohort` kwargs; logging flags |
 | `test_logging.py`           | `parse_log_level`; `configure_sunspot_logging` idempotent level change |
 | `test_align.py`             | `to_daily_dataframe` (naming + empty), `join_on_dates` (outer union, unnamed fallback, sort), `zscore` (constant + centering), `clip_to_window` (inclusive bounds, None-unbounded, dtype preservation) |
 | `test_stats.py`             | `association_metrics`, `lag_correlation_search`, `rolling_pearson`, `fdr_on_pvalues` baseline |
@@ -29,7 +33,8 @@ numbers, so format regressions surface as failed parses instead of silent drift.
 | `test_style_and_new_plots.py` | `PlotStyle` / `set_style` / `period_label`; CCF / ACF-PACF / periodogram / multi-user bundle / quantile_response / joint_density / seasonal_calendar / stacked_panel / ma_corr_curve / dow_response / regression diagnostics / mi_lag |
 | `test_mosaic.py`            | `assemble_mosaic` indexes all sections; `save_executive_summary` renders a card from a synthetic report |
 | `test_correlate_offline.py` | End-to-end `run_correlation_report` with commits monkeypatched to a zero series; asserts full artifact tree, per-metric tables, multi-user tree when `compare_user_logins` is set |
-| `test_cohort_offline.py`    | `expand_preset` returns non-empty; `run_cohort_report` end-to-end with commits + metrics mocked (cohort PCA, dendrogram, user-metric heatmap, mosaic) |
+| `test_cohort_offline.py`    | `expand_preset`; `run_cohort_report` (associations, correlation distribution PNG/CSV, large_cohort omits pairwise); `read_logins_file` fixture |
+| `test_cohort_distribution_plot.py` | `save_correlation_distribution_histogram` synthetic + empty-ρ edge case |
 
 ## Fixtures
 

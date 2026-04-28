@@ -11,6 +11,9 @@ see [SPEC.md](../SPEC.md).
 |-------|--------|---------|
 | Statistical methods | [`methods/`](methods/README.md) | Regression diagnostics, correlation, time-lag analysis, mutual information |
 | Geophysical inputs  | [`measures/`](measures/README.md) | SSN, F10.7, Dst, Ap — physics, units, sources, pitfalls |
+| Environment and CLI | [`configuration.md`](configuration.md) | `SUNSPOT_*` / `XDG_*` / GitHub token table and `config.py` |
+| Many logins (cohort) | [`large_cohort.md`](large_cohort.md) | `--logins-file`, large-cohort mode, correlation histograms |
+
 
 ## API reference
 

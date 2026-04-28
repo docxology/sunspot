@@ -1,11 +1,14 @@
 # `sunspot.correlate`
 
-Source: [`src/sunspot/correlate.py`](../../src/sunspot/correlate.py).
+Source: package [`src/sunspot/correlate/`](../../src/sunspot/correlate/) — main entry
+[`pipeline.py`](../../src/sunspot/correlate/pipeline.py) (`run_correlation_report`), plus
+[`_io.py`](../../src/sunspot/correlate/_io.py), [`_series.py`](../../src/sunspot/correlate/_series.py),
+[`_report_helpers.py`](../../src/sunspot/correlate/_report_helpers.py).
 
 | name | description |
 |------|-------------|
 | `default_correlate_dir(user: str, since: date, until: date) -> Path` | `output/correlate/{user}__{since}__{until}/` (slashes in `user` sanitized). |
-| `run_correlation_report(user, *, since, until, metrics, out_dir, use_commit_cache=True, compare_user_logins=None, rolling_window=90, lag_max=60, bootstrap=0, prewhiten=True, top_repos=8, enable_acf=True, enable_spectral=True, make_mosaic=True, style_overrides=None) -> dict` | Full pipeline: commits + metrics, stats (associations, CIs, full lag/CCF profiles, ACF/PACF, periodogram + band power, multi-user), plots (per-metric, overview, per-repo, dynamics, multi-user), JSON/CSVs. Returns the report dict also written to `statistics/report.json`. |
+| `run_correlation_report(user, *, since, until, metrics, out_dir, use_commit_cache=True, compare_user_logins=None, rolling_window=90, lag_max=60, make_mosaic=True, bootstrap=0, prewhiten=True, top_repos=8, enable_acf=True, enable_spectral=True, style_overrides=None) -> dict` | Full pipeline: commits + metrics, stats (associations, CIs, full lag/CCF profiles, ACF/PACF, periodogram + band power, multi-user), plots (per-metric, overview, per-repo, dynamics, multi-user), JSON/CSVs. Returns the report dict also written to `statistics/report.json`. |
 
 ## Output layout (under `out_dir`)
 

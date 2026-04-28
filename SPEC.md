@@ -27,5 +27,6 @@
 
 ## Future
 
-- Optional network integration tests.
 - Optional TEC/foF2 ingest behind the same `datasets/` API.
+
+**Integration tests:** `@pytest.mark.integration` (e.g. live SILSO URL fetch) is opt-in — default `pytest` uses `-m "not integration"` in `pyproject.toml`; run `uv run pytest -m integration` to include them.

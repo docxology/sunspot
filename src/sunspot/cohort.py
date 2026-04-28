@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import logging
 import time
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +28,7 @@ from sunspot.correlate import (  # private helpers, shared pipeline pieces
     _write_methods,
     _write_per_user_commits,
 )
+from sunspot.github.commit_cache import commit_series_dir
 from sunspot.github.commits import public_commit_time_series
 from sunspot.stats.multi_user import (
     cohort_dendrogram_leaves,
@@ -36,10 +38,12 @@ from sunspot.stats.multi_user import (
 )
 from sunspot.tables import write_analysis_tables
 from sunspot.viz.cohort import (
+    save_cohort_activity_scatter,
     save_cohort_dendrogram,
     save_cohort_pca_scatter,
     save_cohort_timeseries_heatmap,
     save_cohort_user_summary,
+    save_correlation_distribution_histogram,
 )
 from sunspot.viz.mosaic import assemble_cohort_mosaic, save_cohort_executive_summary
 from sunspot.viz.multi_user import (
@@ -84,13 +88,24 @@ def _cohort_user_summary(umap: dict[str, pd.Series]) -> list[dict[str, Any]]:
     return sorted(rows, key=lambda r: float(r["total_commits"]), reverse=True)
 
 
+def read_logins_file(path: Path) -> list[str]:
+    """
+    One GitHub login per line; ``#`` starts a comment; empty lines ignored.
+    """
+    text = Path(path).expanduser().read_text(encoding="utf-8", errors="replace")
+    out: list[str] = []
+    for line in text.splitlines():
+        s = line.split("#", 1)[0].strip()
+        if s:
+            out.append(s)
+    return out
+
+
 def default_cohort_dir(
     n_users: int, since, until, *, slug: str = "cohort",
 ) -> Path:
     """``output/correlate/{slug}_n{count}__{since}__{until}/``."""
-    from datetime import date as date_cls
-
-    if not isinstance(since, date_cls) or not isinstance(until, date_cls):
+    if not isinstance(since, date) or not isinstance(until, date):
         raise TypeError("since and until must be date objects")
     return (
         Path("output")
@@ -99,61 +114,24 @@ def default_cohort_dir(
     )
 
 
-def run_cohort_report(
-    logins: list[str],
-    *,
-    since,
-    until,
+def _cohort_emit_report_and_visualizations(
+    umap: dict[str, pd.Series],
+    ulist: list[str],
+    since: date,
+    until: date,
     metrics: list[str],
     out_dir: Path,
-    use_commit_cache: bool = True,
-    make_mosaic: bool = True,
-    style_overrides: dict[str, Any] | None = None,
-    since_policy: str | None = None,
+    *,
+    use_commit_cache: bool,
+    since_policy: str | None,
+    min_active_days: int,
+    large_cohort: bool,
+    make_mosaic: bool,
+    t_pipeline_start: float,
 ) -> dict[str, Any]:
-    """
-    Multi-user run only: writes ``data/commits/`` (``daily.csv`` = sum of users,
-    ``by_user/``, wide matrix optional in report), ``analysis/``,
-    ``statistics/report.json`` with ``report_kind`` = ``"cohort"``,
-    ``visualizations/cohort/`` and ``visualizations/multi_user/`` (no
-    ``{metric}/`` tiles, no per-repo).
-
-    ``since_policy`` (from the CLI) is only recorded in the report for traceability:
-    e.g. ``"union"`` = cohort window starts at the *earliest* first-commit date
-    among logins; ``"intersection"`` = start at the *latest* (shortest common
-    span).
-    """
-    from datetime import date as date_cls
-
     out_dir = Path(out_dir)
-    raw = [x.strip() for x in logins if x and str(x).strip()]
-    ulist = list(dict.fromkeys(raw))
-    if len(ulist) < 2:
-        raise ValueError("cohort needs at least two distinct logins")
-
-    if style_overrides:
-        applied = set_style(**style_overrides)
-        _LOG.info(
-            "viz style: font_scale=%.2f line_width=%.2f dpi=%d theme=%s",
-            applied.font_scale, applied.line_width, applied.dpi, applied.theme,
-        )
-
     idx = pd.date_range(pd.Timestamp(since), pd.Timestamp(until), freq="D")
-    t0 = time.perf_counter()
-    umap: dict[str, pd.Series] = {}
-    for u in ulist:
-        _LOG.info("cohort: fetching %s", u)
-        cm = public_commit_time_series(
-            u, since=since, until=until, use_commit_cache=use_commit_cache,
-        )
-        a = cm.get("__all__", pd.Series(dtype=float))
-        s = a.reindex(idx).fillna(0.0)
-        s.name = "commits"
-        umap[u] = s
-    t1 = time.perf_counter()
-    _LOG.info("cohort: GitHub done in %.1fs (%s users)", t1 - t0, len(ulist))
-
-    period = (since, until) if isinstance(since, date_cls) else (None, None)
+    period = (since, until) if isinstance(since, date) else (None, None)
     commits_sum = pd.concat(umap.values(), axis=1).fillna(0.0).sum(axis=1)
     commits_sum.name = "commits"
 
@@ -193,15 +171,18 @@ def run_cohort_report(
     mu_dir = vis_dir / "multi_user"
     mu_dir.mkdir(parents=True, exist_ok=True)
 
-    try:
-        ssn_z = _series_for_metric("ssn", since=since, until=until)
-        save_compare_users_moving_averages(
-            umap, ssn_z, out=vis_dyn / "compare_users_30d_ma.png",
-            window=30, period=period,
-        )
-        _LOG.info("cohort: wrote %s", vis_dyn / "compare_users_30d_ma.png")
-    except Exception as e:  # noqa: BLE001
-        _LOG.warning("cohort: compare 30d MA failed: %s", e)
+    if not large_cohort:
+        try:
+            ssn_z = _series_for_metric("ssn", since=since, until=until)
+            save_compare_users_moving_averages(
+                umap, ssn_z, out=vis_dyn / "compare_users_30d_ma.png",
+                window=30, period=period,
+            )
+            _LOG.info("cohort: wrote %s", vis_dyn / "compare_users_30d_ma.png")
+        except Exception as e:  # noqa: BLE001
+            _LOG.warning("cohort: compare 30d MA failed: %s", e)
+    else:
+        _LOG.info("cohort: large_cohort — skipped dynamics/compare_users_30d_ma.png")
 
     metric_frames: dict[str, pd.Series] = {}
     for m in metrics:
@@ -246,87 +227,134 @@ def run_cohort_report(
             "dynamics": str(vis_dyn),
             "analysis": str(analysis_dir),
         },
+        "min_active_days": int(min_active_days),
+        "large_cohort": bool(large_cohort),
     }
 
-    pca = pca_users_weekly(umap, n_components=2)
-    if pca:
-        report["cohort_pca"] = pca
+    if not large_cohort:
+        pca = pca_users_weekly(umap, n_components=2)
+        if pca:
+            report["cohort_pca"] = pca
+            try:
+                save_cohort_pca_scatter(
+                    pca, out=vis_cohort / "user_pca_scatter.png", period=period,
+                )
+            except Exception as e:  # noqa: BLE001
+                _LOG.debug("cohort pca plot: %s", e)
+        hro, cex = cohort_dendrogram_leaves(umap)
+        if cex:
+            report["cohort_clustering_excluded_users"] = cex
+        if hro:
+            report["cohort_dendrogram_leaves"] = hro
         try:
-            save_cohort_pca_scatter(
-                pca, out=vis_cohort / "user_pca_scatter.png", period=period,
+            save_cohort_dendrogram(umap, out=vis_cohort / "user_dendrogram.png", period=period)
+        except Exception as e:  # noqa: BLE001
+            _LOG.debug("cohort dendrogram: %s", e)
+        try:
+            save_cohort_timeseries_heatmap(
+                umap, out=vis_cohort / "user_weekly_heatmap.png", period=period,
             )
         except Exception as e:  # noqa: BLE001
-            _LOG.debug("cohort pca plot: %s", e)
-    hro, cex = cohort_dendrogram_leaves(umap)
-    if cex:
-        report["cohort_clustering_excluded_users"] = cex
-    if hro:
-        report["cohort_dendrogram_leaves"] = hro
-    try:
-        save_cohort_dendrogram(umap, out=vis_cohort / "user_dendrogram.png", period=period)
-    except Exception as e:  # noqa: BLE001
-        _LOG.debug("cohort dendrogram: %s", e)
-    try:
-        save_cohort_timeseries_heatmap(
-            umap, out=vis_cohort / "user_weekly_heatmap.png", period=period,
+            _LOG.debug("cohort heatmap: %s", e)
+        try:
+            save_cohort_user_summary(
+                user_summary, out=vis_cohort / "user_summary.png", period=period,
+            )
+        except Exception as e:  # noqa: BLE001
+            _LOG.debug("cohort user summary plot: %s", e)
+    else:
+        _LOG.info(
+            "cohort: large_cohort — skipped PCA, dendrogram, weekly heatmap, user_summary PNG",
         )
-    except Exception as e:  # noqa: BLE001
-        _LOG.debug("cohort heatmap: %s", e)
-    try:
-        save_cohort_user_summary(
-            user_summary, out=vis_cohort / "user_summary.png", period=period,
-        )
-    except Exception as e:  # noqa: BLE001
-        _LOG.debug("cohort user summary plot: %s", e)
+        try:
+            save_cohort_activity_scatter(
+                user_summary,
+                out=vis_cohort / "user_activity_scatter.png",
+                period=period,
+                n_cohort=len(ulist),
+            )
+        except Exception as e:  # noqa: BLE001
+            _LOG.debug("cohort activity scatter: %s", e)
 
     if not cm_frame.empty:
         try:
-            mu_long = multi_user_associations(umap, cm_frame, method="spearman")
+            mu_long = multi_user_associations(
+                umap, cm_frame, method="spearman", min_active_days=min_active_days,
+            )
             (analysis_dir / "multi_user_associations.csv").write_text(
                 mu_long.to_csv(index=False), encoding="utf-8",
             )
-            report["multi_user_topk"] = (
-                mu_long.assign(absrho=mu_long["rho"].abs())
-                .sort_values("absrho", ascending=False)
-                .head(10)
-                .drop(columns=["absrho"])
-                .to_dict(orient="records")
-            )
-            save_multi_user_heatmap(
-                mu_long, out=mu_dir / "user_metric_spearman_heatmap.png",
-                metric_order=list(cm_frame.columns), period=period,
-            )
+            if "rho" not in mu_long.columns or mu_long["rho"].notna().sum() == 0:
+                report["multi_user_topk"] = []
+            else:
+                mu_t = mu_long.dropna(subset=["rho"])
+                report["multi_user_topk"] = (
+                    mu_t.assign(absrho=mu_t["rho"].abs())
+                    .sort_values("absrho", ascending=False)
+                    .head(10)
+                    .drop(columns=["absrho"])
+                    .to_dict(orient="records")
+                )
+            if not large_cohort:
+                save_multi_user_heatmap(
+                    mu_long, out=mu_dir / "user_metric_spearman_heatmap.png",
+                    metric_order=list(cm_frame.columns), period=period,
+                )
+            dist_payload: dict[str, Any] = {}
+            for m in list(cm_frame.columns):
+                sub = (
+                    (analysis_dir / f"correlation_distribution_{m}.csv")
+                )
+                summ = save_correlation_distribution_histogram(
+                    mu_long,
+                    metric=str(m),
+                    out=vis_cohort / f"correlation_distribution_{m}.png",
+                    out_csv=sub,
+                    period=period,
+                    n_cohort=len(ulist),
+                )
+                dist_payload[str(m)] = summ
+            report["correlation_distribution"] = dist_payload
         except Exception as e:  # noqa: BLE001
             _LOG.warning("cohort multi_user heatmap/assoc: %s", e)
-    try:
-        ssn_mu = _series_for_metric("ssn", since=since, until=until)
-        save_multi_user_overview(
-            umap, ssn_mu, out=mu_dir / "overview_30d_ma.png",
-            window=30, period=period,
+    if not large_cohort:
+        try:
+            ssn_mu = _series_for_metric("ssn", since=since, until=until)
+            save_multi_user_overview(
+                umap, ssn_mu, out=mu_dir / "overview_30d_ma.png",
+                window=30, period=period,
+            )
+            save_multi_user_rank_matrix(
+                umap, out=mu_dir / "user_user_rank_matrix.png",
+                smoothing_window=30, method="spearman", period=period,
+            )
+            save_multi_user_cumulative(
+                umap, ssn_mu, out=mu_dir / "cumulative_vs_solar.png", period=period,
+            )
+            save_multi_user_phase(
+                umap, ssn_mu, out=mu_dir / "phase_by_ssn_quantile.png", period=period,
+            )
+        except Exception as e:  # noqa: BLE001
+            _LOG.debug("cohort multi_user overview: %s", e)
+    else:
+        _LOG.info(
+            "cohort: large_cohort — skipped multi_user overview, rank matrix, phase/cumulative",
         )
-        save_multi_user_rank_matrix(
-            umap, out=mu_dir / "user_user_rank_matrix.png",
-            smoothing_window=30, method="spearman", period=period,
-        )
-        save_multi_user_cumulative(
-            umap, ssn_mu, out=mu_dir / "cumulative_vs_solar.png", period=period,
-        )
-        save_multi_user_phase(
-            umap, ssn_mu, out=mu_dir / "phase_by_ssn_quantile.png", period=period,
-        )
-    except Exception as e:  # noqa: BLE001
-        _LOG.debug("cohort multi_user overview: %s", e)
 
-    # Pairwise user×user matrix in report
-    rmat = multi_user_rank_matrix(umap, method="spearman", smoothing_window=30)
-    if not rmat.empty:
-        uu: dict[str, dict[str, float | None]] = {}
-        for a in rmat.index:
-            uu[str(a)] = {}
-            for b in rmat.columns:
-                v = rmat.loc[a, b]
-                uu[str(a)][str(b)] = None if pd.isna(v) else float(v)
-        report["user_user_spearman_smoothed_30d"] = uu
+    if not large_cohort:
+        rmat = multi_user_rank_matrix(umap, method="spearman", smoothing_window=30)
+        if not rmat.empty:
+            uu: dict[str, dict[str, float | None]] = {}
+            for a in rmat.index:
+                uu[str(a)] = {}
+                for b in rmat.columns:
+                    v = rmat.loc[a, b]
+                    uu[str(a)][str(b)] = None if pd.isna(v) else float(v)
+            report["user_user_spearman_smoothed_30d"] = uu
+    else:
+        _LOG.info(
+            "cohort: large_cohort — skipped user_user_spearman_smoothed_30d in report (O(n²))",
+        )
 
     (stats_dir / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     (analysis_dir / "summary.txt").write_text(
@@ -371,13 +399,159 @@ def run_cohort_report(
         stats_dir / "report.json",
         n_png,
         n_tables,
-        t2 - t0,
+        t2 - t_pipeline_start,
     )
     return report
 
 
+def regenerate_cohort_visualizations(
+    out_dir: Path,
+    *,
+    make_mosaic: bool = True,
+) -> dict[str, Any]:
+    """
+    Rebuild analysis exports, ``statistics/report.json``, and all cohort PNGs from
+    ``data/commits/daily_users_wide.csv`` and the existing cohort
+    ``statistics/report.json`` (for dates, metrics, and flags). Does **not** call
+    GitHub; use this after deleting ``visualizations/`` to redraw plots.
+    """
+    out_dir = Path(out_dir)
+    rpath = out_dir / DIR_STATISTICS / "report.json"
+    wpath = out_dir / DIR_DATA / "commits" / "daily_users_wide.csv"
+    if not rpath.is_file():
+        raise FileNotFoundError(
+            f"regenerate needs an existing cohort report: {rpath}",
+        )
+    if not wpath.is_file():
+        raise FileNotFoundError(
+            f"regenerate needs wide commit matrix: {wpath}",
+        )
+    rep = json.loads(rpath.read_text(encoding="utf-8"))
+    if rep.get("report_kind") != "cohort":
+        raise ValueError("report.json is not report_kind=cohort")
+    since = date.fromisoformat(str(rep.get("since", ""))[:10])
+    until = date.fromisoformat(str(rep.get("until", ""))[:10])
+    ulist = list(rep.get("cohort_users") or [])
+    if len(ulist) < 2:
+        raise ValueError("cohort_users in report has fewer than 2 logins")
+    metrics = [str(x) for x in (rep.get("requested_metrics") or ["ssn", "f107", "dst", "ap"])]
+    min_active_days = int(rep.get("min_active_days", 30))
+    large_cohort = bool(rep.get("large_cohort", False))
+    use_commit_cache = bool(rep.get("use_commit_cache", True))
+    spol = rep.get("since_policy")
+    since_policy: str | None = str(spol) if spol is not None else None
+
+    idx = pd.date_range(pd.Timestamp(since), pd.Timestamp(until), freq="D")
+    wide = pd.read_csv(wpath, index_col=0, parse_dates=True)
+    wide.index = pd.DatetimeIndex(wide.index).tz_localize(None).normalize()
+    umap: dict[str, pd.Series] = {}
+    for u in ulist:
+        if u not in wide.columns:
+            _LOG.warning("regenerate cohort viz: %r not in wide matrix; using zeros", u)
+            umap[u] = pd.Series(0.0, index=idx, name="commits")
+        else:
+            s = wide[u].reindex(idx).fillna(0.0)
+            s.name = "commits"
+            umap[u] = s
+    t0 = time.perf_counter()
+    _LOG.info("cohort: regenerating visualizations and analysis from disk (no GitHub)")
+    return _cohort_emit_report_and_visualizations(
+        umap, ulist, since, until, metrics, out_dir,
+        use_commit_cache=use_commit_cache,
+        since_policy=since_policy,
+        min_active_days=min_active_days,
+        large_cohort=large_cohort,
+        make_mosaic=make_mosaic,
+        t_pipeline_start=t0,
+    )
+
+
+def run_cohort_report(
+    logins: list[str],
+    *,
+    since,
+    until,
+    metrics: list[str],
+    out_dir: Path,
+    use_commit_cache: bool = True,
+    make_mosaic: bool = True,
+    style_overrides: dict[str, Any] | None = None,
+    since_policy: str | None = None,
+    min_active_days: int = 30,
+    large_cohort: bool = False,
+) -> dict[str, Any]:
+    """
+    Multi-user run only: writes ``data/commits/`` (``daily.csv`` = sum of users,
+    ``by_user/``, wide matrix optional in report), ``analysis/``,
+    ``statistics/report.json`` with ``report_kind`` = ``"cohort"``,
+    ``visualizations/cohort/`` and ``visualizations/multi_user/`` (no
+    ``{metric}/`` tiles, no per-repo).
+
+    ``since_policy`` (from the CLI) is only recorded in the report for traceability:
+    e.g. ``"union"`` = cohort window starts at the *earliest* first-commit date
+    among logins; ``"intersection"`` = start at the *latest* (shortest common
+    span).
+
+    ``min_active_days`` is passed to :func:`multi_user_associations` (users with
+    fewer active days in-window get NaN ``rho``/``p`` and ``insufficient_active``
+    True, one row per login per metric in ``multi_user_associations.csv``).
+
+    When ``large_cohort`` is true, skip O(N²) user×user correlation, PCA,
+    dendrogram, and other plots that do not scale to hundreds of users; still
+    write commits, ``multi_user_associations.csv``, and per-metric correlation
+    distribution histograms plus summaries.
+    """
+    out_dir = Path(out_dir)
+    raw = [x.strip() for x in logins if x and str(x).strip()]
+    ulist = list(dict.fromkeys(raw))
+    if len(ulist) < 2:
+        raise ValueError("cohort needs at least two distinct logins")
+
+    if style_overrides:
+        applied = set_style(**style_overrides)
+        _LOG.info(
+            "viz style: font_scale=%.2f line_width=%.2f dpi=%d theme=%s",
+            applied.font_scale, applied.line_width, applied.dpi, applied.theme,
+        )
+
+    if not isinstance(since, date) or not isinstance(until, date):
+        raise TypeError("since and until must be date instances")
+    since_d, until_d = since, until
+
+    idx = pd.date_range(pd.Timestamp(since_d), pd.Timestamp(until_d), freq="D")
+    t0 = time.perf_counter()
+    umap: dict[str, pd.Series] = {}
+    for u in ulist:
+        _LOG.info("cohort: fetching %s", u)
+        cm = public_commit_time_series(
+            u, since=since_d, until=until_d, use_commit_cache=use_commit_cache,
+        )
+        a = cm.get("__all__", pd.Series(dtype=float))
+        s = a.reindex(idx).fillna(0.0)
+        s.name = "commits"
+        umap[u] = s
+    t1 = time.perf_counter()
+    _LOG.info("cohort: GitHub done in %.1fs (%s users)", t1 - t0, len(ulist))
+    _LOG.info(
+        "cohort: commit series cache (SUNSPOT_COMMIT_SERIES / default github_data): %s",
+        commit_series_dir(),
+    )
+
+    return _cohort_emit_report_and_visualizations(
+        umap, ulist, since_d, until_d, metrics, out_dir,
+        use_commit_cache=use_commit_cache,
+        since_policy=since_policy,
+        min_active_days=min_active_days,
+        large_cohort=large_cohort,
+        make_mosaic=make_mosaic,
+        t_pipeline_start=t0,
+    )
+
+
 __all__ = [
     "default_cohort_dir",
+    "read_logins_file",
+    "regenerate_cohort_visualizations",
     "run_cohort_report",
     "expand_preset",
 ]

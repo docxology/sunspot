@@ -106,8 +106,29 @@ def test_multi_user_associations_flags_synthetic_signal() -> None:
     df = multi_user_associations(
         users, pd.DataFrame({"m": metric, "other": other}), method="spearman",
     )
-    assert {"user", "metric", "rho", "p", "q_significant"}.issubset(df.columns)
+    assert {"user", "metric", "rho", "p", "q_significant", "insufficient_active"}.issubset(
+        df.columns,
+    )
     assert df["q_significant"].any()
+
+
+def test_multi_user_associations_inactive_user_emits_row() -> None:
+    idx = pd.date_range("2020-01-01", periods=50, freq="D")
+    rng = np.random.default_rng(0)
+    metric = pd.Series(rng.normal(size=len(idx)), index=idx, name="m")
+    low = pd.Series(0.0, index=idx)
+    high = pd.Series((rng.random(len(idx)) * 3.0).round(), index=idx)
+    users = {"inactive": low, "active": high}
+    df = multi_user_associations(
+        users,
+        pd.DataFrame({"m": metric}),
+        method="spearman",
+        min_active_days=5,
+    )
+    assert len(df) == 2
+    inact = df[df["user"] == "inactive"]
+    assert bool(inact["insufficient_active"].iloc[0])
+    assert pd.isna(inact["rho"].iloc[0])
 
 
 def test_multi_user_rank_matrix_returns_symmetric_unit_diag() -> None:

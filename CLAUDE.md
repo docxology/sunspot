@@ -13,9 +13,10 @@ All Python work goes through `uv` (project uses `uv_build`, Python `>=3.12`):
 ```bash
 uv sync --all-groups            # install deps + dev group (pytest, ruff)
 uv run ruff check src tests     # lint (rules: E, F, I, W; line-length 100)
-uv run pytest                   # full test suite (offline — no network required)
+uv run pytest                   # default: excludes @pytest.mark.integration (see pyproject addopts)
 uv run pytest tests/test_stats.py::test_name   # single test
-uv run pytest -m integration    # network-dependent tests (marker declared in pyproject)
+uv run pytest -m integration    # only network / live-URL tests (e.g. SILSO fetch)
+uv run pytest -m "integration or not integration"  # full selection including integration
 ```
 
 CI (`.github/workflows/ci.yml`) runs exactly: `uv sync --all-groups` → `uv run ruff check src tests` → `uv run pytest -q`. Match that locally before pushing.
@@ -29,11 +30,11 @@ uv run sunspot cohort a,b,c             # multi-user among-user analysis
 uv run sunspot cohort --preset ai       # presets live in src/sunspot/cohort_presets.py
 ```
 
-Env overrides: `SUNSPOT_LOG_LEVEL`, `SUNSPOT_FONT_SCALE`, `SUNSPOT_LINEWIDTH`, `SUNSPOT_DPI`, `SUNSPOT_THEME`, `SUNSPOT_CACHE` (datasets cache root), `SUNSPOT_COMMIT_SERIES` (per-repo CSV cache), `XDG_CACHE_HOME`.
+Env overrides: see [`docs/configuration.md`](docs/configuration.md) and `src/sunspot/config.py` — e.g. `SUNSPOT_LOG_LEVEL`, `SUNSPOT_FONT_SCALE`, `SUNSPOT_LINEWIDTH`, `SUNSPOT_DPI`, `SUNSPOT_THEME`, `SUNSPOT_CACHE` (dir containing `github_cache.sqlite3`), `SUNSPOT_COMMIT_SERIES` (per-repo CSV tree), `XDG_CACHE_HOME` (under it: `…/sunspot/url/` for dataset files).
 
 ## Architecture
 
-Data flow (orchestrated by `src/sunspot/correlate.py::run_correlation_report`):
+Data flow (orchestrated by `src/sunspot/correlate/pipeline.py::run_correlation_report`):
 
 1. **Ingest commits** — `github.commits.public_commit_time_series(user, since, until)` walks `/users/{u}/repos` then `/repos/{u}/{r}/commits?author={u}&since=...&until=...`, with a sqlite dedup DB and per-repo CSV cache (defaults under `output/github_data/`; legacy `~/.cache/sunspot/commit_series/` is still read). `github.commits.first_commit_date` supplies the `--since` default via `GET /search/commits?q=author:USER&sort=author-date&order=asc`, falling back to account `created_at`.
 2. **Ingest geophysical series** — `datasets/silso.py` (SILSO daily V2.0) and `datasets/omni.py` (OMNI2 hourly → daily mean for F10.7, Dst, ap, R). Downloads cache to `~/.cache/sunspot/url/` (override with `XDG_CACHE_HOME` or `SUNSPOT_CACHE`).
@@ -52,7 +53,7 @@ Data flow (orchestrated by `src/sunspot/correlate.py::run_correlation_report`):
 | Module | Role |
 |--------|------|
 | `cli.py` | Typer app. Configures logging **first**, resolves date window, then sets the global `viz.PlotStyle` from `--font-scale`/`--line-width`/`--dpi`/`--theme`. Rejects `--since > --until`. |
-| `correlate.py` | The big orchestrator (~50KB). All of the per-metric / overview / per-repo / multi-user artifact writing lives here. |
+| `correlate/` | Package; `pipeline.py` is the main orchestrator. See `src/sunspot/correlate/AGENTS.md`. |
 | `cohort.py` + `cohort_presets.py` | Multi-user pipeline. Presets: `full`, `panel`, `ai`, `famous`, `wide`. |
 | `tables.py` | `write_analysis_tables` — tidy CSV-per-analysis exports + schema README. |
 | `logutil.py` | `configure_sunspot_logging` (logger name `sunspot`, handler on stderr). Call before any work. |

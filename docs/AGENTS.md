@@ -3,6 +3,8 @@
 | path | content |
 |------|---------|
 | [`README.md`](README.md)                 | Human index: links to API and topic guides; high-level Mermaid map |
+| [`configuration.md`](configuration.md) | Env vars and `src/sunspot/config.py` |
+| [`large_cohort.md`](large_cohort.md) | Many-login cohort, `--logins-file`, distribution histograms |
 | [`measures/`](measures/README.md)        | Per-dataset references (`ssn`, `f107`, `dst`, `ap`) — physics, source, cadence, pitfalls |
 | [`methods/`](methods/README.md)          | Topical method notes (regression, correlation, time-lag, mutual information) |
 | [`api/cli.md`](api/cli.md)               | Typer entry: `main`, `cmd_correlate` |

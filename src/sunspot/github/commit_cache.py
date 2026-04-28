@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 from datetime import date
 from pathlib import Path
 
 import pandas as pd
 
+from sunspot import config
 from sunspot.datasets.cache import default_cache_dir
 
 _LOG = logging.getLogger(__name__)
@@ -34,9 +34,9 @@ def commit_series_dir() -> Path:
     Set ``SUNSPOT_COMMIT_SERIES`` to an absolute path to use a different root
     (replaces the default, not merged with ``github_data_dir()``).
     """
-    env = os.environ.get("SUNSPOT_COMMIT_SERIES")
-    if env and str(env).strip():
-        return Path(env).expanduser().resolve()
+    override = config.commit_series_root_from_env()
+    if override is not None:
+        return override
     return (github_data_dir() / "commit_series").resolve()
 
 

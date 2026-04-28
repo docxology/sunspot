@@ -68,6 +68,7 @@ Cohort runs only; backend `Agg` like other viz modules. Uses [`cohort_correlatio
 | `save_cohort_dendrogram(users_commits, *, out, period=None, style=None)` | Average-linkage dendrogram; metadata may note how many logins were excluded. |
 | `save_cohort_timeseries_heatmap(users_commits, *, out, max_cols=260, period=None, style=None)` | Weekly sums, per-user z-score, downsampled columns if long. |
 | `save_cohort_user_summary(user_summary, *, out, period=None, style=None)` | Per-user total commits and active-day bars. |
+| `save_correlation_distribution_histogram(mu_long, *, metric, out, out_csv, period=None, style=None) -> dict` | Histogram of per-user Spearman ρ for one metric; writes PNG + per-metric CSV; returns summary for `report.json`. |
 
 ## `mosaic` ([`mosaic.py`](../../src/sunspot/viz/mosaic.py))
 

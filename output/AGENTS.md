@@ -14,4 +14,4 @@
 - `analysis/summary.txt` is the human-readable rollup; `methods.md` documents data sources and the statistical pipeline.
 - `visualizations/` is laid out so the mosaic can be rebuilt purely from disk: per-metric `{ssn,f107,dst,ap,…}/`, plus `dynamics/`, `overview/`, `per_repo/`, optional `multi_user/`, and the top-level `mosaic.png` + `mosaic_index.json` (and `executive_summary.png`).
 
-**Pipeline:** [correlate.py](../src/sunspot/correlate.py) `run_correlation_report` writes all artifacts. Human index: [docs/api/correlate.md](../docs/api/correlate.md). Plaintext sidecar writer: [`sunspot.tables.write_analysis_tables`](../src/sunspot/tables.py).
+**Pipeline:** [correlate/pipeline.py](../src/sunspot/correlate/pipeline.py) `run_correlation_report` writes all artifacts. Human index: [docs/api/correlate.md](../docs/api/correlate.md). Plaintext sidecar writer: [`sunspot.tables.write_analysis_tables`](../src/sunspot/tables.py).

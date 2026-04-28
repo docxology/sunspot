@@ -120,10 +120,35 @@ def _wait_for_github_rate_limit(response: httpx.Response) -> None:
 
 
 def _get(client: httpx.Client, path: str, params: dict[str, Any]) -> httpx.Response:
-    """GET with handling for primary rate limit (403/429) and empty remaining."""
-    attempt = 0
+    """GET with handling for primary rate limit (403/429) and transient network errors."""
+    rate_attempt = 0
+    max_net_retries = 5
     while True:
-        r = client.get(path, params=params)
+        net_i = 0
+        while True:
+            try:
+                r = client.get(path, params=params)
+                break
+            except httpx.RequestError as e:
+                if net_i >= max_net_retries:
+                    _LOG.error(
+                        "GET %s: network error after %s retries: %s",
+                        path,
+                        max_net_retries,
+                        e,
+                    )
+                    raise
+                net_i += 1
+                wait = min(60.0, 2.0**net_i)
+                _LOG.warning(
+                    "GET %s: %s (network retry %s/%s, sleeping %.1fs)",
+                    path,
+                    e,
+                    net_i,
+                    max_net_retries,
+                    wait,
+                )
+                time.sleep(wait)
         rem = r.headers.get("X-RateLimit-Remaining", "")
         _LOG.debug(
             "GET %s status=%s remaining=%s",
@@ -132,13 +157,13 @@ def _get(client: httpx.Client, path: str, params: dict[str, Any]) -> httpx.Respo
             rem,
         )
         if r.status_code == 403 and rem == "0":
-            attempt += 1
-            _LOG.info("rate limit response (attempt %s), waiting", attempt)
+            rate_attempt += 1
+            _LOG.info("rate limit response (attempt %s), waiting", rate_attempt)
             _wait_for_github_rate_limit(r)
             continue
         if r.status_code in (403, 429) and "rate" in (r.text or "").lower():
-            attempt += 1
-            _LOG.info("rate limit text in body (attempt %s), waiting", attempt)
+            rate_attempt += 1
+            _LOG.info("rate limit text in body (attempt %s), waiting", rate_attempt)
             _wait_for_github_rate_limit(r)
             continue
         return r
@@ -248,6 +273,11 @@ def list_public_repos(
                 f"/users/{user_login}/repos",
                 params={"per_page": 100, "page": page, "type": "owner", "sort": "pushed"},
             )
+            if r.status_code == 404:
+                _LOG.warning(
+                    "skipping %s: /users/.../repos → HTTP 404 (gone or renamed?)", user_login
+                )
+                return []
             r.raise_for_status()
             if not _LOW_RATE_LIMIT_WARNED:
                 lim = r.headers.get("X-RateLimit-Limit", "")
@@ -344,7 +374,9 @@ def iter_commits(
     client: httpx.Client | None = None,
 ) -> Iterator[tuple[str, datetime]]:
     """
-    Walk ``/commits`` in reverse chronological order. Commits are limited to
+    Walk ``/commits`` in reverse chronological order. Returns no rows if the
+    API responds with HTTP 409 (empty or conflict) or 404 (repo missing,
+    e.g. renamed or deleted but still listed). Commits are limited to
     ``since``/``until`` (passed to the API) so we do not page backward from
     HEAD through years of history when only a window is needed — pathological
     for large repos (e.g. the Linux kernel). Stop when a page is short or
@@ -369,6 +401,9 @@ def iter_commits(
             )
             if r.status_code == 409:
                 _LOG.warning("skipping %s: empty or conflict (HTTP 409)", full_name)
+                break
+            if r.status_code == 404:
+                _LOG.warning("skipping %s: not found (HTTP 404)", full_name)
                 break
             r.raise_for_status()
             _throttle(r.headers.get("X-RateLimit-Remaining"))

@@ -52,7 +52,7 @@ All MI values are in **nats** (natural-log basis).
 
 | name | kind | signature / description |
 |------|------|-------------------------|
-| `multi_user_associations` | function | `(users_commits, metrics_frame, *, method='spearman', fdr_q=0.1, min_active_days=30) -> DataFrame` — long-form `user, metric, n, total_commits, active_days, rho, p, q_significant`; BH-FDR per metric across users |
+| `multi_user_associations` | function | `(users_commits, metrics_frame, *, method='spearman', fdr_q=0.1, min_active_days=30) -> DataFrame` — long-form `user, metric, n, total_commits, active_days, rho, p, insufficient_active, q_significant`; one row per user×metric; inactive users get NaN ρ; BH-FDR per metric across users |
 | `multi_user_rank_matrix` | function | `(users_commits, *, method='spearman', smoothing_window=30) -> DataFrame` — pairwise user×user correlation of smoothed activity |
 | `pca_users_weekly` | function | `(users_commits, *, n_components=2) -> dict \| None` — weekly resample, row z-score, SVD; PC scores per user |
 | `cohort_correlation_dendrogram_data` | function | `(users_commits, *, min_row_std=0) -> dict \| None` — average linkage on `pdist` **correlation** of weekly sum rows; omits users with no cross-week variation (avoids non-finite distances); `linkage` may be `None` if \<2 users qualify |

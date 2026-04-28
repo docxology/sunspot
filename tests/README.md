@@ -21,7 +21,10 @@ corruption.
   tests that need the network with `@pytest.mark.integration` (see
   `pyproject.toml` markers).
 
-Run: `uv run pytest` (matches CI, which also runs `uv run ruff check src tests`).
+Run: `uv run pytest` (matches CI: `ruff` + pytest with `-m "not integration"` from
+`pyproject.toml`). Integration tests (real network): `uv run pytest -m integration`.
+Full selection: `uv run pytest -m "integration or not integration"`.
+
 Single test: `uv run pytest tests/test_stats.py::test_lag`.
 
 See `AGENTS.md` for a file-by-file inventory.
