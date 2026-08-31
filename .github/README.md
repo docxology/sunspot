@@ -40,7 +40,7 @@ Pushes to other branches and PRs that do not target `main` do not run this workf
 
    - `uv sync --all-groups` installs the main environment **and** dev groups (e.g. tools used by `ruff` and `pytest` per `pyproject.toml`).
    - Ruff lints `src/` and `tests/` only; extend paths by changing that line in the workflow.
-   - `pytest -q` runs the full suite under `testpaths = ["tests"]` with no extra `-m` filter, matching a default local `uv run pytest`. The suite is [documented as offline-by-default](../tests/README.md); the `integration` marker in `pyproject.toml` is for tests that need network or a GitHub token (`uv run pytest -m integration`). If integration-marked tests are added later, decide whether they belong in this job (Actions has network) or should be opt-in only—today’s workflow does not exclude them.
+   - `pytest -q` runs the suite under `testpaths = ["tests"]`; because `pyproject.toml` sets `addopts = ["-m", "not integration"]`, the filter applies to this bare `pytest -q` too — **integration-marked tests are excluded from CI as well as locally** (the workflow YAML itself adds no `-m` flag, but addopts always apply). The `integration` marker is for tests that need network or a GitHub token (`uv run pytest -m integration`). If integration coverage should run in Actions (which has network), change the workflow line to `uv run pytest -m integration` or drop the addopts filter explicitly.
 
 No secrets, caches, or matrix strategy are used in the current file.
 
