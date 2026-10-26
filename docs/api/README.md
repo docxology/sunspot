@@ -16,4 +16,4 @@ public module, derived from the source (keep in sync when signatures change).
 | `tables.md` | `sunspot.tables` — plaintext CSV sidecars |
 | `viz.md` | `sunspot.viz` — plots, style, mosaic |
 
-Index: [`../README.md`](../README.md). Local-only — never commit.
+Index: [`../README.md`](../README.md).

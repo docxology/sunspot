@@ -51,6 +51,7 @@ On startup, `configure_sunspot_logging` (see [logutil.md](logutil.md)) runs, the
 | `--min-active-days` | int | Default `30` → `run_cohort_report` / `multi_user_associations`. |
 | `--large-cohort` | flag | Skip O(n²) pairwise user stats and non-scaling cohort plots; keep associations + histograms. |
 | `--large-cohort-threshold` | int | Default `200`: also enable that behavior when login count ≥ threshold. |
+| `--regenerate-viz` | flag | Rebuild `analysis/`, `statistics/report.json`, and cohort PNGs from an existing run (no GitHub fetch): uses `--out`, else the newest cohort run under `output/correlate/` that has `statistics/report.json` and `data/commits/daily_users_wide.csv`. |
 | `--since` | `YYYY-MM-DD`, optional | UTC start. Omitted: see `--since-policy` and [github.md](github.md) `first_commit_date` per login. |
 | `--since-policy` | string | Used only when `--since` is omitted. Default **`union`**: `min` of known first-commit dates (longest calendar window; aligns with long solar/geomag series). **`intersection`** (aliases accepted in code: `i`, `max`, `tight`): `max` of first commits — shortest span where every account already existed. |
 | `--until` | `YYYY-MM-DD`, optional | Default: today (UTC). |

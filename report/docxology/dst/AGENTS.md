@@ -1,9 +1,5 @@
 # AGENTS.md — `sunspot/report/docxology/dst`
 
-> Local-only path under `projects/ongoing/DataTools/` — matched by the
-> root `.gitignore` rule `projects/*`; never commit. Repo-wide policy:
-> see `/Volumes/external_drive/Git/template/projects/ongoing/AGENTS.md`.
-
 ## What this is
 
 Per-metric report artifacts (Dst index (geomagnetic)) for the docxology correlation run,
@@ -23,4 +19,3 @@ dual_axis.png, lag.png, rolling.csv, scatter.png
   values before the first 90-day window — blank cells are expected, not corruption.
 - These are a curated subset; regenerate full runs with
   `uv run sunspot correlate docxology …` rather than editing artifacts here.
-- Never `git add` anything under `projects/ongoing/`.

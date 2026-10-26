@@ -70,6 +70,6 @@ Every package directory has an `AGENTS.md` (root, `src/sunspot/`, and each subpa
 - **Datasets and attribution:** SILSO is CC BY-NC (non-commercial); OMNI2/SPDF and NOAA SWPC are public but want proper citation. Don't bake SILSO values into committed fixtures without checking the license angle.
 - **Framing:** results are **exploratory correlations**, never causal. `SPEC.md` is explicit about this; keep that tone in any `summary.txt`/`methods.md` edits.
 
-## Outputs and caches (gitignored)
+## Outputs and caches
 
-`output/*` is ignored except the committed `README.md` stubs. Treat it as scratch space. The CLI default run root is `output/correlate/{user}__{since}__{until}/`. GitHub per-repo commit CSVs + dedup sqlite default to `output/github_data/`.
+Run directories under `output/correlate/` are untracked scratch space. What *is* versioned under `output/`: the `README.md` / `AGENTS.md` layout stubs, the `github_data/` per-repo commit-CSV tree (the `github_cache.sqlite3` dedup DB is ignored via `*.sqlite`), `_logs/` notes, and the cohort run logs / login lists. The CLI default run root is `output/correlate/{user}__{since}__{until}/`. GitHub per-repo commit CSVs + dedup sqlite default to `output/github_data/`.

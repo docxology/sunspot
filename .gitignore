@@ -1,3 +1,4 @@
+.DS_Store
 .venv/
 __pycache__/
 *.py[cod]
@@ -8,9 +9,8 @@ __pycache__/
 dist/
 build/
 data/raw
-!output/README.md
-!output/github_data/README.md
 *.sqlite
 .coverage
 htmlcov/
 output/github_data/github_cache.sqlite3
+.cursor/hooks/state/*.json

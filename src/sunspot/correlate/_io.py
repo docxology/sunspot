@@ -86,7 +86,7 @@ def _write_commit_rollups(
 
     labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     s = commits.sort_index().astype(float).fillna(0.0)
-    dow = pd.to_datetime(s.index).dayofweek
+    dow = pd.to_datetime(s.index).day_of_week
     rows = []
     for k, lab in enumerate(labels):
         sel = s[dow == k]

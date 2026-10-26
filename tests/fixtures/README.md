@@ -10,4 +10,4 @@ data sources surfaces as a failing parse, never silent numeric corruption.
 | `github_commit.json` | GitHub model tests | `/repos/{owner}/{repo}/commits` JSON payload |
 | `cohort_logins.txt` | cohort tests | one login per line (`read_logins_file` input) |
 
-Parent: [`../README.md`](../README.md). Local-only — never commit.
+Parent: [`../README.md`](../README.md).

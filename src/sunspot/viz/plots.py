@@ -1600,7 +1600,7 @@ def save_dow_response(
     out.parent.mkdir(parents=True, exist_ok=True)
     c = commits.dropna().astype(float)
     c.index = pd.to_datetime(c.index)
-    dow = c.index.dayofweek
+    dow = c.index.day_of_week
     means = [float(c[dow == k].mean()) if int((dow == k).sum()) else float("nan")
              for k in range(7)]
     counts = [int((dow == k).sum()) for k in range(7)]
@@ -1637,7 +1637,7 @@ def save_dow_response(
             labels=["low", "mid", "high"], include_lowest=True,
         )
         df["bin"] = bins
-        df["dow"] = df.index.dayofweek
+        df["dow"] = df.index.day_of_week
         grid = df.groupby(["dow", "bin"], observed=True)["c"].mean().unstack("bin")
         grid = grid.reindex(index=range(7), columns=["low", "mid", "high"])
         fig, (ax0, ax1) = plt.subplots(

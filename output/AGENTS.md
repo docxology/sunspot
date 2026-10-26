@@ -4,7 +4,7 @@
 |------|---------|
 | [`README.md`](README.md) | Full directory tree for `sunspot correlate` runs (statistics, data, visualizations, analysis) |
 
-**Purpose:** Default run root for the CLI is `output/correlate/{user}__{since}__{until}/` (overridable with `--out`). The `output/` tree is typically **gitignored**; only this README and this file are meant to be versioned to document layout.
+**Purpose:** Default run root for the CLI is `output/correlate/{user}__{since}__{until}/` (overridable with `--out`). Run directories under `output/correlate/` are untracked scratch space; the versioned parts of this directory are the `README.md` / `AGENTS.md` layout stubs, the `github_data/` commit-cache tree, and the committed cohort logs and login lists.
 
 **Layout invariants:**
 

@@ -94,7 +94,7 @@ Flags:
 - **Statistics depth:** `--bootstrap N` (percentile bootstrap CI, default 0 = off), `--no-prewhiten` (disable AR(1) pre-whitening for the CCF), `--top-repos N` (default 8), `--no-acf`, `--no-spectral`.
 - **Plot style:** `--font-scale` (default 1.45), `--line-width` (1.9), `--dpi` (300), `--theme` (`light` | `dark`). Same knobs are also honoured via `SUNSPOT_FONT_SCALE`, `SUNSPOT_LINEWIDTH`, `SUNSPOT_DPI`, `SUNSPOT_THEME`.
 
-Override the run root with `--out /path/to/run`. The `output/` tree is listed in `.gitignore`. Metrics:
+Override the run root with `--out /path/to/run`. Run directories under `output/correlate/` are untracked local artifacts (the versioned `output/` contents are documented in [output/README.md](output/README.md)). Metrics:
 
 | id | source |
 |----|--------|
@@ -119,7 +119,7 @@ Override the run root with `--out /path/to/run`. The `output/` tree is listed in
 
 ## License
 
-The Python package in this repository is your project’s license; **SILSO** data remains CC BY-NC. Check NOAA/NASA terms for redistributed data in reports.
+No `LICENSE` file is included in this repository, so no license is granted for the Python package here. **SILSO** data remains CC BY-NC. Check NOAA/NASA terms for redistributed data in reports.
 
 ## Documentation
 

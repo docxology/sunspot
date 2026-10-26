@@ -258,7 +258,7 @@ def _commits_daily_summary(commits: pd.Series) -> dict[str, Any]:
             longest_quiet = max(longest_quiet, cur_q)
             cur_a = 0
 
-    dow = pd.to_datetime(s.index).dayofweek
+    dow = pd.to_datetime(s.index).day_of_week
     dow_means = [
         (float(s[dow == k].mean()) if int((dow == k).sum()) else float("nan"))
         for k in range(7)

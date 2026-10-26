@@ -28,8 +28,8 @@ Pushes to other branches and PRs that do not target `main` do not run this workf
 
 **Job:** single job `test` with three steps after checkout:
 
-1. **`actions/checkout@v4`** — full repo at `GITHUB_WORKSPACE` (default).
-2. **`astral-sh/setup-uv@v5`** — `version: "latest"`.
+1. **`actions/checkout@v7`** — full repo at `GITHUB_WORKSPACE` (default).
+2. **`astral-sh/setup-uv@v10.3.2`** — `version: "latest"`.
 3. **Sync and test** — one shell block with `working-directory: ${{ github.workspace }}` (explicit default):
 
    ```bash

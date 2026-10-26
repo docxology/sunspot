@@ -1,9 +1,5 @@
 # AGENTS.md — `sunspot/report/docxology`
 
-> Local-only path under `projects/ongoing/DataTools/` — matched by the
-> root `.gitignore` rule `projects/*`; never commit. Repo-wide policy:
-> see `/Volumes/external_drive/Git/template/projects/ongoing/AGENTS.md`.
-
 ## What this is
 
 docxology correlation-run report exports: one `report.json` with per-metric
@@ -25,4 +21,3 @@ ap/, dst/, f107/, r_ssn/, ssn/, report.json
 - `rolling.csv` files in the metric folders have empty values before the first
   90-day window; that is expected, not corruption.
 - Regenerate via the CLI (`uv run sunspot correlate …`); do not hand-edit artifacts.
-- Never `git add` anything under `projects/ongoing/`.

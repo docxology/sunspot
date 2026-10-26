@@ -10,5 +10,4 @@ development or tests.
 
 The canonical artifact layout is documented in
 [output/README.md](../output/README.md); regenerate runs with
-`uv run sunspot correlate …` rather than editing files here. Local-only under
-`projects/ongoing/DataTools/` — never commit. See [AGENTS.md](AGENTS.md).
+`uv run sunspot correlate …` rather than editing files here. See [AGENTS.md](AGENTS.md).

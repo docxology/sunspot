@@ -13,5 +13,4 @@ pass anchored on `docxology`).
 To reproduce a single log: `uv run sunspot correlate docxology -v` (see
 [`docs/api/logutil.md`](../../docs/api/logutil.md) for log-level flags).
 
-Local-only under `projects/ongoing/DataTools/` — never commit. Parent:
-[`../README.md`](../README.md).
+Parent: [`../README.md`](../README.md).

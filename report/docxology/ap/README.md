@@ -17,5 +17,5 @@ This per-metric subset is a manual export — the full canonical layout
 [`output/README.md`](../../../output/README.md). Per-metric PNGs are exploratory,
 not causal evidence.
 
-Local-only under `projects/ongoing/DataTools/` — never commit. Parent:
+Parent:
 [`../README.md`](../README.md).
