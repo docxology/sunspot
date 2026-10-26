@@ -2,7 +2,7 @@
 
 ## What this is
 
-Subdirectory of `sunspot/tests` (documented during the 2026-08-29 DataTools doc-fleet pass; purpose inferred from contents — treat as (unverified) until a project owner confirms).
+Subdirectory of `sunspot/tests` (documented during the 2026-08-29 documentation pass; purpose inferred from contents — treat as (unverified) until a project owner confirms).
 
 ## Layout (verified by direct listing, 2026-08-29)
 
