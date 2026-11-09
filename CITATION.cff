@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "sunspot"
+authors:
+  - family-names: Friedman
+    given-names: Daniel Ari
+    orcid: "https://orcid.org/0000-0001-6232-9096"
+repository-code: "https://github.com/docxology/sunspot"
+abstract: "Python toolkit correlating a GitHub user's commit history with solar and geomagnetic activity — sunspot numbers (SILSO), F10.7 flux, Dst and ap indices from OMNI2/NOAA SWPC. Computes lagged Pearson/Spearman correlations, Lomb-Scargle periodograms, and bootstrap CIs with heatmaps and multi-user comparison."
