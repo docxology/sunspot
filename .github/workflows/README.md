@@ -10,4 +10,4 @@ Triggers: `push` to `main` and `pull_request` targeting `main`. Pytest runs
 offline by default (`-m "not integration"` comes from `pyproject.toml`
 `addopts`); network/GitHub-API tests opt in via the `integration` marker.
 
-Parent: [`../README.md`](../README.md) / repo walkthrough: [`../AGENTS.md`](../AGENTS.md).
+Parent: [`../GITHUB.md`](../GITHUB.md) / repo walkthrough: [`../AGENTS.md`](../AGENTS.md).
