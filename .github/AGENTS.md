@@ -1,6 +1,6 @@
 # AGENTS — `.github/`
 
-Human-oriented walkthrough: [`README.md`](README.md).
+Human-oriented walkthrough: [`GITHUB.md`](GITHUB.md).
 
 | path | content |
 |------|---------|
