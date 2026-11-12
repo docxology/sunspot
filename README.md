@@ -1,5 +1,10 @@
 # sunspot
 
+<p align="center">
+  <a href="https://github.com/docxology/sunspot/actions/workflows/ci.yml"><img alt="ci.yml workflow status on main" src="https://github.com/docxology/sunspot/actions/workflows/ci.yml/badge.svg?branch=main"></a>
+  <img alt="Requires Python 3.12 or newer" src="https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white">
+</p>
+
 Correlate a GitHub user’s **public** commit history (per repository and in aggregate) with time series of **sunspot number**, **solar (F10.7)**, and **geomagnetic/ionospheric drivers** (Dst, ap from NASA OMNI2; NOAA SWPC for recent text products). Statistics and plots are **exploratory** only—not causal.
 
 ## Quickstart
