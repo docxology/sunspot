@@ -5,7 +5,7 @@
 - Ingest a GitHub user’s **public** commit timestamps on default branches, aggregated to **UTC calendar days**, per repository and as a single “all repos” series.
 - Load **real** vetted time series: international sunspot number (SILSO), and OMNI2-based daily means for F10.7, Dst, ap, and R (OMNI2).
 - Align series on a common day index, compute **Pearson / Spearman / Kendall** associations, **lag search** with multiple-comparison awareness (documented, not a substitute for preregistered research), and **rolling** correlation.
-- Emit static plots, CSVs, a machine-readable **report JSON** under `statistics/`, and a plaintext `analysis/summary.txt`—all under a run directory inside **`output/`** (see [output/README.md](output/README.md)).
+- Emit static plots, CSVs, a machine-readable **report JSON** under `statistics/`, and a plaintext `analysis/summary.txt`—all under a run directory inside **`output/`** (see [output/README.md](../output/README.md)).
 
 ## Out of scope (v1)
 

@@ -1,0 +1,33 @@
+paper:
+  title: "Sunspot as an Exploratory Time-Series Toolkit"
+  subtitle: "Calendar alignment, descriptive associations, and archived replay"
+  version: "0.1.0"
+
+authors:
+  - name: "Daniel Ari Friedman"
+    orcid: "0000-0001-6232-9096"
+
+publication:
+  github_repository: "docxology/sunspot"
+  repository_url: "https://github.com/docxology/sunspot"
+  year: "2026"
+
+keywords:
+  - exploratory time-series analysis
+  - solar activity
+  - calendar alignment
+  - reproducible reports
+
+metadata:
+  license: "MIT"
+  language: "en"
+
+manuscript_dir: docs/manuscript
+
+render:
+  formats:
+    pdf: true
+    html: true
+    slides: false
+    docx: false
+    epub: false

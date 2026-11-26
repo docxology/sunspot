@@ -4,7 +4,7 @@
 |------|---------|
 | `src/sunspot/` | Python package: CLI (`correlate` + `cohort`), `correlate/` (package) + `cohort.py`, `config.py`, `cohort_presets.py`, `datasets/`, `github/`, `align/`, `stats/`, `tables.py`, `viz/` (incl. `viz/cohort.py`) |
 | `docs/` | Modular reference: API (`docs/api/*.md`), topical method notes (`docs/methods/`), per-dataset references (`docs/measures/`); index in `docs/README.md` |
-| `tests/` | Pytest: parsers on real-style fixtures; offline report test with `correlate.public_commit_time_series` monkeypatched |
+| `tests/` | Pytest: parsers on real-style fixtures; offline report tests with synthetic activity and solar-like series |
 | `pyproject.toml` | `uv` project; `sunspot` script → `sunspot.cli:main` |
 | `.github/workflows/ci.yml` | `uv sync --all-groups`, `ruff check`, `pytest` |
 
@@ -66,3 +66,5 @@ see `output/github_data/README.md`. Set `SUNSPOT_COMMIT_SERIES` (CSV tree) or
 ## Learned Workspace Facts
 
 - Cohort among-user output includes `analysis/multi_user_associations.csv` with one row per (user, metric) and an `insufficient_active` column when the user is below `min_active_days` (missing `rho`/`p` for those rows). When the among-user block runs, the pipeline also writes per-metric `correlation_distribution_{metric}.*` under `visualizations/cohort/` and `analysis/`, and records `correlation_distribution` in `statistics/report.json`. See `docs/large_cohort.md` for `large_cohort` tradeoffs and skipped plots.
+
+The [documentation index](docs/README.md) links to the [offline verification guide](docs/quickstart.md).

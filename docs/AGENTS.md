@@ -24,5 +24,5 @@ When you add or change a public function, update the matching
 touches a dataset or a method — the matching page in
 [`measures/`](measures/AGENTS.md) or [`methods/`](methods/AGENTS.md).
 
-**Not duplicated here:** Project goals and ethics — [SPEC.md](../SPEC.md).
-CLI quickstart and caching env vars — [README.md](../README.md).
+**Not duplicated here:** Project goals and ethics — [project scope](scope.md).
+Verification setup — [quickstart](quickstart.md).

@@ -2,9 +2,23 @@ import json
 from datetime import date
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
+import pytest
 
 from sunspot.correlate import run_correlation_report
+
+
+@pytest.fixture(autouse=True)
+def local_metric_series(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Supply deterministic solar-like features without contacting data providers."""
+    def synthetic_metric(metric: str, *, since: date, until: date) -> pd.Series:
+        dates = pd.date_range(since, until, freq="D")
+        days = np.arange(len(dates))
+        phase = {"ssn": 0.0, "f107": 1.0, "dst": 2.0}.get(metric, 0.0)
+        return pd.Series(50 + 5 * np.sin(days / 8 + phase), index=dates, name=metric)
+
+    monkeypatch.setattr("sunspot.correlate.pipeline._series_for_metric", synthetic_metric)
 
 
 def test_report_with_zero_commits_offline(tmp_path: Path) -> None:
@@ -43,6 +57,7 @@ def test_report_with_zero_commits_offline(tmp_path: Path) -> None:
     for k in ("f107", "dst"):
         assert k in p["metrics"]
         block = p["metrics"][k]
+        assert "error" not in block, block
         if "error" not in block:
             assert "n_aligned" in block
             assert "pearson_ci95" in block
@@ -66,8 +81,6 @@ def test_report_with_zero_commits_offline(tmp_path: Path) -> None:
     assert (tables / "commits_daily_summary.csv").is_file()
     # Per-metric: dual/lag plus the new ccf/acf_pacf/periodogram when overlap exists
     for m in ("f107", "dst"):
-        if "error" in p["metrics"][m]:
-            continue
         for fn in (
             "dual_axis.png", "lag.png", "ccf.png", "acf_pacf.png", "periodogram.png",
         ):
@@ -131,30 +144,30 @@ def test_report_with_compare_users_offline(tmp_path: Path) -> None:
     p = json.loads((out / "statistics" / "report.json").read_text())
     assert p["compare_user_logins"] == ["bob", "carol"]
     block = p["metrics"]["f107"]
-    if "error" not in block:
-        assert "bootstrap_ci95" in block
-        assert "ccf" in block
-        assert "ccf_profile" in block
-        # New per-metric stats: MA correlations and AR(1)-controlled partials.
-        ma = block.get("ma_correlations") or []
-        assert len(ma) >= 4
-        for r in ma:
-            assert {"window", "pearson_r", "spearman_rho", "n", "n_eff"}.issubset(r)
-        pc = block.get("partial_correlation_ar1") or {}
-        assert "pearson" in pc and "spearman" in pc
-        mi = block.get("mutual_information") or {}
-        assert {"binned_nats", "ksg_nats", "n", "binned_bins"}.issubset(mi)
-        ml = block.get("mi_lag") or {}
-        assert {"lags", "values_nats", "best_lag", "method"}.issubset(ml)
-        reg = block.get("regression_ols") or {}
-        assert {"r2", "durbin_watson", "normality_p", "b1"}.issubset(reg)
-        assert "spectral_band_power" in block
-        # Per-metric juxtaposition tiles (incl. MA-correlation + MI-lag).
-        for fn in (
-            "quantile_response.png", "joint_density.png", "ma_corr_curve.png",
-            "mi_lag.png",
-        ):
-            assert (out / "visualizations" / "f107" / fn).is_file(), fn
+    assert "error" not in block, block
+    assert "bootstrap_ci95" in block
+    assert "ccf" in block
+    assert "ccf_profile" in block
+    # New per-metric stats: MA correlations and AR(1)-controlled partials.
+    ma = block.get("ma_correlations") or []
+    assert len(ma) >= 4
+    for r in ma:
+        assert {"window", "pearson_r", "spearman_rho", "n", "n_eff"}.issubset(r)
+    pc = block.get("partial_correlation_ar1") or {}
+    assert "pearson" in pc and "spearman" in pc
+    mi = block.get("mutual_information") or {}
+    assert {"binned_nats", "ksg_nats", "n", "binned_bins"}.issubset(mi)
+    ml = block.get("mi_lag") or {}
+    assert {"lags", "values_nats", "best_lag", "method"}.issubset(ml)
+    reg = block.get("regression_ols") or {}
+    assert {"r2", "durbin_watson", "normality_p", "b1"}.issubset(reg)
+    assert "spectral_band_power" in block
+    # Per-metric juxtaposition tiles (incl. MA-correlation + MI-lag).
+    for fn in (
+        "quantile_response.png", "joint_density.png", "ma_corr_curve.png",
+        "mi_lag.png",
+    ):
+        assert (out / "visualizations" / "f107" / fn).is_file(), fn
     # Per-user commit CSVs land under data/commits/by_user/.
     by_user = out / "data" / "commits" / "by_user"
     assert by_user.is_dir()

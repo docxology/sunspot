@@ -15,7 +15,7 @@ Use the `cohort` subcommand with **`--logins-file`** (one login per line, `#` co
 
 Hundreds or thousands of users implies many GitHub API calls to list repos and walk commits. Use **`GITHUB_TOKEN`**, `output/github_data/` caching, and an explicit **`--since`** date. If `--since` is omitted, the CLI resolves each user’s first commit date (one request per user) before the main fetch—avoid that for very large *n* by setting `--since` yourself.
 
-A **histogram** characterizes the logins *you* chose; it is not a sample of all GitHub users unless your list was designed that way. Results remain **exploratory** (see [SPEC.md](../SPEC.md)).
+A **histogram** characterizes the logins *you* chose; it is not a sample of all GitHub users unless your list was designed that way. Results remain **exploratory** (see [project scope](scope.md)).
 
 ## Example (not run in CI)
 

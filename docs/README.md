@@ -1,9 +1,9 @@
 # sunspot — documentation
 
-Narrow, module-scoped reference for the `sunspot` package. For
-installation, CLI examples, and data attribution start at the
-[repository README](../README.md). For product scope and limitations,
-see [SPEC.md](../SPEC.md).
+- [Setup, offline checks, and manuscript rendering](quickstart.md)
+- [Project scope and interpretation](scope.md)
+- [Manuscript](manuscript/README.md) and [status](manuscript_status.md)
+- [Maintenance backlog](TODO.md)
 
 ## Topical guides
 
