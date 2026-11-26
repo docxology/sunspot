@@ -1,0 +1,9 @@
+claims:
+  - claim_id: archived-author-ssn-pearson-rounded
+    value: 0.045
+    source: Archived author report, SSN association of kind pearson rounded to three decimals
+    artifact_path: report/docxology/report.json
+  - claim_id: archived-author-ssn-spearman-rounded
+    value: 0.191
+    source: Archived author report, SSN association of kind spearman rounded to three decimals
+    artifact_path: report/docxology/report.json

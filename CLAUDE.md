@@ -68,7 +68,7 @@ Every package directory has an `AGENTS.md` (root, `src/sunspot/`, and each subpa
 - **Logging** goes to `stderr` via the `sunspot` logger. Don't `print()` in library code.
 - **Style system** is centralized in `viz/style.py` as a global `PlotStyle`. `cli.py` sets it before any plot call — don't pass style knobs into individual plot functions.
 - **Datasets and attribution:** SILSO is CC BY-NC (non-commercial); OMNI2/SPDF and NOAA SWPC are public but want proper citation. Don't bake SILSO values into committed fixtures without checking the license angle.
-- **Framing:** results are **exploratory correlations**, never causal. `SPEC.md` is explicit about this; keep that tone in any `summary.txt`/`methods.md` edits.
+- **Framing:** results are **exploratory correlations**, never causal. `docs/scope.md` is explicit about this; keep that tone in any `summary.txt`/`methods.md` edits.
 
 ## Outputs and caches
 
