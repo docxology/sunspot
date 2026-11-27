@@ -1,8 +1,10 @@
 # AGENTS — `tests`
 
-Default `uv run pytest` applies `-m "not integration"` from `pyproject.toml`, so
-network tests are skipped unless you run `uv run pytest -m integration` or override
-`addopts`. Other tests are offline (no network).
+Default `uv run pytest` applies `-m "not integration"` from `pyproject.toml`.
+Run `uv run pytest -m integration` to select the marked live test.
+The offline report tests supply synthetic commits and metrics. The
+two correlation tests for CLI date defaults still invoke the real SILSO and
+OMNI2 loaders when the cache is empty. See [the test guide](README.md).
 Parsers exercise **real** dataset snippets in `fixtures/`, not hand-rolled mock
 numbers, so format regressions surface as failed parses instead of silent drift.
 
