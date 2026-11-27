@@ -8,7 +8,7 @@
 
 ## How it is computed
 
-Implemented in [`save_regression()`](../api/viz.md#plots) — the writer is
+Implemented in [`save_regression()`](../api/viz.md#plots-plotspy) — the writer is
 both the plot and the statistical record (it returns the diagnostics dict
 that ends up in `report.json["metrics"][m]["regression_ols"]`).
 
