@@ -19,16 +19,16 @@ from the Typer subcommand `cohort` (see [cli.md](cli.md)). There is no
 - `data/commits/` — `daily.csv` (sum across users), `daily_users_wide.csv`, `user_summary.csv`, `by_user/{login}.csv`, `cohort_logins.txt`, rollups `weekly.csv`, `monthly.csv`, `dow_means.csv`, `summary.csv`.
 - `visualizations/dynamics/` — e.g. `compare_users_30d_ma.png` (commits MAs vs z(SSN)).
 - `visualizations/cohort/` — In **full** mode: `user_pca_scatter.png`, `user_dendrogram.png` (if applicable), `user_weekly_heatmap.png`, `user_summary.png`. In **all** successful association runs: `correlation_distribution_{metric}.png` (Spearman ρ across users), plus `analysis/correlation_distribution_{metric}.csv`. Large-cohort mode omits PCA/dendrogram/heatmap user-summary PNGs; keeps distribution outputs.
-- `visualizations/multi_user/` — user×metric heatmap, overview, rank matrix, cumulative vs solar, phase by SSN quantile (see [viz.md](viz.md#multi_user)).
+- `visualizations/multi_user/` — user×metric heatmap, overview, rank matrix, cumulative vs solar, phase by SSN quantile (see [viz.md](viz.md#multi_user-multi_userpy)).
 - `visualizations/executive_summary.png`, `mosaic.png` (from `save_cohort_executive_summary`, `assemble_cohort_mosaic` when `make_mosaic` is true).
 - `analysis/summary.txt`, `multi_user_associations.csv` (and `write_analysis_tables` output where report fields exist, including `tables/cohort_user_summary.csv`; many single-user-only tables are empty or skipped for cohort).
 
 ## Among-user analysis
 
-- **User×metric** Spearman: [`multi_user_associations` in stats](stats.md#multi_user) (requires `min_active_days` of activity per user).
+- **User×metric** Spearman: [`multi_user_associations` in stats](stats.md#multi_user-multi_userpy) (requires `min_active_days` of activity per user).
 - **Pairwise user×user** (smoothed): `multi_user_rank_matrix` — stored in `report.json` and as a heatmap.
-- **PCA** on weekly sums (rows z-scored per user before SVD): `pca_users_weekly` — see [stats](stats.md#multi_user).
-- **Hierarchical clustering** (average linkage, correlation distance on weekly sums): users with **no week-to-week variation** (e.g. all-zero commits) are **excluded** so `pdist` stays finite; see `cohort_correlation_dendrogram_data` in [stats](stats.md#multi_user) and [viz cohort](viz.md#cohort).
+- **PCA** on weekly sums (rows z-scored per user before SVD): `pca_users_weekly` — see [stats](stats.md#multi_user-multi_userpy).
+- **Hierarchical clustering** (average linkage, correlation distance on weekly sums): users with **no week-to-week variation** (e.g. all-zero commits) are **excluded** so `pdist` stays finite; see `cohort_correlation_dendrogram_data` in [stats](stats.md#multi_user-multi_userpy) and [viz cohort](viz.md#cohort-cohortpy).
 
 **Private** helpers in `cohort.py` mirror pieces of the single-user pipeline (`_write_per_user_commits`, `_series_for_metric`, etc.) but do not add per-repo or per-metric deep statistics.
 

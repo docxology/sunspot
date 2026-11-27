@@ -15,11 +15,11 @@ information**
 picks up *any* statistical dependence (nonlinear, non-monotone,
 multimodal). It is zero iff `X ⟂ Y`. `sunspot` implements two
 estimators and a lag scan; both are exposed by
-[`sunspot.stats.information`](../api/stats.md#information).
+[`sunspot.stats.information`](../api/stats.md#information-informationpy).
 
 ## 1. Binned (histogram) estimator with Miller–Madow correction
 
-[`mutual_information_binned`](../api/stats.md#information):
+[`mutual_information_binned`](../api/stats.md#information-informationpy):
 
 1. Drop NaN-pairs.
 2. Choose a 2-D bin grid. Default uses the **Freedman–Diaconis** rule on
@@ -45,7 +45,7 @@ useful for cross-metric comparison inside the executive summary.
 
 ## 2. KSG (Kraskov-Stögbauer-Grassberger) k-NN estimator
 
-[`mutual_information_ksg`](../api/stats.md#information): the standard
+[`mutual_information_ksg`](../api/stats.md#information-informationpy): the standard
 distribution-free MI estimator (KSG-1):
 
 \[
@@ -62,13 +62,13 @@ values); the seed is fixed so re-runs are reproducible.
 
 ## 3. MI lag curve
 
-[`mutual_information_lag_curve`](../api/stats.md#information) mirrors
+[`mutual_information_lag_curve`](../api/stats.md#information-informationpy) mirrors
 the lag-correlation scan: at each \(\ell \in [-L, +L]\) it computes
 \(I(\text{commits}.\text{shift}(\ell); \text{metric})\) using the
 estimator of choice (default `binned`).
 
 The matching plot writer is
-[`save_mi_lag_curve`](../api/viz.md#plots) — it draws the chosen
+[`save_mi_lag_curve`](../api/viz.md#plots-plotspy) — it draws the chosen
 estimator solid and the alternate estimator faintly dashed as a
 sanity check.
 

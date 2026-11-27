@@ -85,6 +85,6 @@ positive; Dst anti-correlated with Ap; etc.).
 ## Among GitHub logins (cohort)
 
 For multiple **user** time series and no per-metric figure grid, the package
-uses Spearman (and similar) in [`multi_user_associations`](../api/stats.md#multi_user)
+uses Spearman (and similar) in [`multi_user_associations`](../api/stats.md#multi_user-multi_userpy)
 and pairwise user×user structure in `multi_user_rank_matrix`, not the
 commit-vs-metric blocks above. See [cohort.md](../api/cohort.md).

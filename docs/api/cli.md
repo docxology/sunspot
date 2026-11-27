@@ -56,7 +56,7 @@ On startup, `configure_sunspot_logging` (see [logutil.md](logutil.md)) runs, the
 | `--since-policy` | string | Used only when `--since` is omitted. Default **`union`**: `min` of known first-commit dates (longest calendar window; aligns with long solar/geomag series). **`intersection`** (aliases accepted in code: `i`, `max`, `tight`): `max` of first commits — shortest span where every account already existed. |
 | `--until` | `YYYY-MM-DD`, optional | Default: today (UTC). |
 | `--out` | path | Default: `output/correlate/cohort_n{N}__{since}__{until}/`. |
-| `--metrics` | comma list | Default `ssn,f107,dst,ap` — columns for the user×geophysics [multi_user](stats.md#multi_user) long table. |
+| `--metrics` | comma list | Default `ssn,f107,dst,ap` — columns for the user×geophysics [multi_user](stats.md#multi_user-multi_userpy) long table. |
 | `--no-commit-cache` | flag | Refetch per-repo series (ignore cache). |
 | `--no-mosaic` | flag | Skip `mosaic.png` / `mosaic_index.json`. |
 | `--log-level` | `DEBUG\|INFO\|WARNING\|ERROR` | Default `INFO`; same precedence as `correlate`. |
@@ -64,6 +64,6 @@ On startup, `configure_sunspot_logging` (see [logutil.md](logutil.md)) runs, the
 | `--quiet` | flag | `WARNING`. |
 | `--font-scale`, `--line-width`, `--dpi`, `--theme` | | Same role as `correlate`; feed `style_overrides` into `run_cohort_report`. |
 
-Cohort does **not** write `visualizations/{ssn,f107,…}/` per-metric trees — only `dynamics/`, `cohort/`, `multi_user/`, and cohort [mosaic / executive](viz.md#mosaic). See [cohort.md](cohort.md) for the report dict and [`multi_user.py`](../../src/sunspot/stats/multi_user.py) for clustering excludes when weekly activity is constant.
+Cohort does **not** write `visualizations/{ssn,f107,…}/` per-metric trees — only `dynamics/`, `cohort/`, `multi_user/`, and cohort [mosaic / executive](viz.md#mosaic-mosaicpy). See [cohort.md](cohort.md) for the report dict and [`multi_user.py`](../../src/sunspot/stats/multi_user.py) for clustering excludes when weekly activity is constant.
 
 **Private** helpers: `_root`, `_dt`, `_resolve_log_level` — not part of a stable API.

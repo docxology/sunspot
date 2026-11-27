@@ -60,7 +60,7 @@ Environment overrides at import time:
 
 ## `cohort` ([`cohort.py`](../../src/sunspot/viz/cohort.py))
 
-Cohort runs only; backend `Agg` like other viz modules. Uses [`cohort_correlation_dendrogram_data`](stats.md#multi_user) so users with no weekly variation are not fed to `pdist` (no file if a tree cannot be built).
+Cohort runs only; backend `Agg` like other viz modules. Uses [`cohort_correlation_dendrogram_data`](stats.md#multi_user-multi_userpy) so users with no weekly variation are not fed to `pdist` (no file if a tree cannot be built).
 
 | function | role |
 |----------|------|

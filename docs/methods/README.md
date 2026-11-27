@@ -20,4 +20,4 @@ Cross-cutting references:
   [`docs/api/viz.md`](../api/viz.md).
 - The single-user pipeline: [`docs/api/correlate.md`](../api/correlate.md).
 - **Among GitHub logins** (no per-metric deep dive):
-  [`docs/api/cohort.md`](../api/cohort.md) and [`docs/api/stats.md`](../api/stats.md#multi_user) `multi_user` helpers.
+  [`docs/api/cohort.md`](../api/cohort.md) and [`docs/api/stats.md`](../api/stats.md#multi_user-multi_userpy) `multi_user` helpers.

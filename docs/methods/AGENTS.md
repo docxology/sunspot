@@ -8,7 +8,7 @@
 | [`time_lag.md`](time_lag.md)         | Lag scan, CCF, AR(1) pre-whitening, Bartlett bands |
 | [`mutual_information.md`](mutual_information.md) | Binned (Miller–Madow) + KSG-1, MI lag curve |
 
-**Multi-login runs:** [cohort.md](../api/cohort.md) and [stats#multi_user](../api/stats.md#multi_user) — not the same report blocks as single-user `correlate`.
+**Multi-login runs:** [cohort.md](../api/cohort.md) and [stats#multi_user](../api/stats.md#multi_user-multi_userpy) — not the same report blocks as single-user `correlate`.
 
 **Source of truth:** Every formula or default parameter cited here must
 match the implementation in `src/sunspot/stats/*.py`. When a default
